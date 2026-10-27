@@ -9,11 +9,11 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../WebiroGateway.php';
+require __DIR__ . '/../PayViro.php';
 
 use WebiroGateway;
 
-$gateway = new WebiroGateway(
+$gateway = new PayViro(
     'https://webiro.ir/gateway',
     'wgr_...your-api-key...',
     'wgs_...your-secret...'
@@ -21,10 +21,10 @@ $gateway = new WebiroGateway(
 
 try {
     $hook = $gateway->readWebhook();   // امضا روی بدنه‌ی خام بررسی می‌شود
-} catch (WebiroSignatureException $e) {
+} catch (PayViroSignatureException $e) {
     http_response_code(400);
     exit('invalid signature');
-} catch (WebiroGatewayException $e) {
+} catch (PayViroException $e) {
     http_response_code(400);
     exit('bad request');
 }

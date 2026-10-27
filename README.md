@@ -1,6 +1,8 @@
-# Webiro Gateway
+# PayViro
 
-**درگاه پرداخت مرکزی وبیرو** — یک نقطه‌ی اتصال روی `webiro.ir/gateway` که درگاه‌های پرداخت وبیرو (بانک سامان، بلوبانک، زرین‌پال، زیبال) را برای همه‌ی دامنه‌های شما فراهم می‌کند.
+**درگاه پرداخت مرکزی وبیرو (PayViro)** — یک نقطه‌ی اتصال روی `webiro.ir/gateway` که همه‌ی درگاه‌های پرداخت شما (بانکی، قسطی و کریپتو) را برای تمام دامنه‌ها فراهم می‌کند.
+
+> PayViro = **Pay** + **Viro** (از Webiro) — سوئیچ پرداخت چنددامنه‌ای.
 
 دامنه‌های دیگر (مثل `lahze-app.ir` و `webirox.ir`) با **API Key** به این سرویس درخواست می‌زنند؛ گیت‌وی پرداخت را با درگاه بانکی انجام می‌دهد، نتیجه را سمت سرور تایید می‌کند و نتیجه‌ی امضاشده را به دامنه‌ی مبدا برمی‌گرداند (ریدایرکت + وبهوک).
 
@@ -48,12 +50,12 @@ wget -q -O /dev/null "https://webiro.ir/gateway/api/cron/webhooks?key=YOUR_CRON_
 
 ## استفاده از دامنه‌ی پذیرنده
 
-فایل `sdk/WebiroGateway.php` را در پروژه‌ی دامنه‌ی دیگر کپی کنید:
+فایل `sdk/PayViro.php` را در پروژه‌ی دامنه‌ی دیگر کپی کنید:
 
 ```php
-require 'WebiroGateway.php';
+require 'PayViro.php';
 
-$gateway = new WebiroGateway(
+$gateway = new PayViro(
     'https://webiro.ir/gateway',
     'wgr_...',   // API Key این دامنه
     'wgs_...'    // Secret (امضا)

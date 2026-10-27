@@ -1,7 +1,7 @@
 <?php
 /**
  * ------------------------------------------------------------------
- *  Webiro Gateway — تنظیمات اصلی
+ *  PayViro — تنظیمات اصلی
  * ------------------------------------------------------------------
  *  ۱) این فایل را با نام «config.php» در همین پوشه کپی کنید:
  *        cp config.example.php config.php
@@ -76,10 +76,11 @@ return [
         'max_amount'   => 500000000,
 
         // درگاه پیش‌فرض وقتی درخواست gateway نفرستد
-        'default_gateway' => 'zarinpal',
+        'default_gateway' => 'saman',
 
         // ترتیب انتخاب خودکار وقتی gateway = "auto" باشد
-        'auto_order'   => ['zarinpal', 'zibal', 'saman', 'idpay', 'nextpay', 'payping', 'sepordeh', 'payir', 'aqayepardakht', 'vandar', 'bluebank', 'oxapay'],
+        // ⭐ بانک سامان و پاسارگاد در اولویت هستند
+        'auto_order'   => ['saman', 'pasargad', 'zarinpal', 'zibal', 'idpay', 'nextpay', 'payping', 'sepordeh', 'payir', 'aqayepardakht', 'vandar', 'bluebank', 'snappay', 'digipay', 'tara', 'lendo', 'ghasta', 'oxapay'],
 
         // محدودیت فراخوانی API (درخواست در دقیقه، به‌ازای هر IP)
         'rate_limit'   => 60,
@@ -174,6 +175,14 @@ return [
             'verify_mode' => 'simple',
         ],
 
+        /* ---------- ⭐ بانک پاسارگاد (نسل جدید — pep.shaparak.ir) ---------- */
+        'pasargad' => [
+            'base_url'        => 'https://pep.shaparak.ir/dorsa1',
+            'username'        => 'CHANGE_ME_PASARGAD_USERNAME',
+            'password'        => 'CHANGE_ME_PASARGAD_PASSWORD',
+            'terminal_number' => 'CHANGE_ME_PASARGAD_TERMINAL',
+        ],
+
         /* ---------- بلوبانک ----------
          * مستندات IPG بلوبانک برای عموم منتشر نمی‌شود و از پنل پذیرندگی
          * بلوبانک دریافت می‌شود. مقادیر زیر را طبق مستندات خودتان پر کنید.
@@ -241,6 +250,54 @@ return [
         /* ---------- وندار (Vandar) ---------- */
         'vandar' => [
             'api_key' => 'CHANGE_ME_VANDAR_API_KEY',
+        ],
+
+        /* ---------- ⭐ اسنپ‌پی (خرید قسطی) ----------
+         * مقادیر را از پنل پذیرندگان اسنپ‌پی دریافت کنید.
+         * base_url نمونهٔ استیجینگ: https://fms-gateway-staging.apps.public.teh-1.snappcloud.io
+         */
+        'snappay' => [
+            'base_url'      => 'CHANGE_ME_SNAPPPAY_BASE_URL',
+            'client_id'     => 'CHANGE_ME_CLIENT_ID',
+            'client_secret' => 'CHANGE_ME_CLIENT_SECRET',
+            'username'      => 'CHANGE_ME_USERNAME',
+            'password'      => 'CHANGE_ME_PASSWORD',
+        ],
+
+        /* ---------- خرید قسطی (BNPL) — کانفیگ‌محور ----------
+         * مستندات API این سرویس‌ها فقط بعد از عقد قرارداد به پذیرنده داده می‌شود.
+         * ساختار فرض‌شده: purchase → redirect → callback → verify
+         * هر سرویس را با مقادیر مستندات خودتان پر و enabled کنید:
+         */
+        'digipay' => [
+            'enabled'         => false,
+            'purchase_url'    => null,
+            'purchase_headers'=> [],
+            'payment_url'     => null,           // با {token}
+            'token_field'     => 'token',
+            'callback_token_param'   => 'token',
+            'callback_success_param' => 'status',
+            'callback_success_values'=> ['OK'],
+            'verify_url'      => null,
+            'verify_result_field'    => 'result',
+            'verify_success_values'  => ['100'],
+            'verify_ref_field'       => 'ref_no',
+            'verify_amount_field'    => null,
+        ],
+
+        'tara' => [
+            'enabled' => false,
+            // همان ساختار digipay — مقادیر را از مستندات تارا پر کنید
+        ],
+
+        'lendo' => [
+            'enabled' => false,
+            // همان ساختار digipay — مقادیر را از مستندات لندو پر کنید
+        ],
+
+        'ghasta' => [
+            'enabled' => false,
+            // همان ساختار digipay — مقادیر را از مستندات قسطا پر کنید
         ],
 
         /* ---------- کریپتو (OxaPay) ----------

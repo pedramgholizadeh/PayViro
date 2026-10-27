@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Webiro\Drivers;
 
+use Webiro\ApiException;
 use Webiro\Core\Config;
 use Webiro\Core\Http\Request;
 
@@ -15,17 +16,28 @@ use Webiro\Core\Http\Request;
  */
 abstract class AbstractRestDriver implements DriverInterface
 {
-    /** @var string gateway id used in config (drivers.<id>) */
+    /** @var string gateway id used in config (drivers.<id>); generic drivers override via constructor */
     protected const ID = '';
+
+    /** @var string|null config override for generic (multi-instance) drivers */
+    protected $gatewayId = null;
+
+    public function __construct(?string $gatewayId = null)
+    {
+        if ($gatewayId !== null) {
+            $this->gatewayId = $gatewayId;
+        }
+    }
 
     /**
      * Config block of this driver (drivers.<id>).
      *
      * @return array<string,mixed>
      */
-    protected static function cfg(): array
+    protected function cfg(): array
     {
-        return (array) Config::get('drivers.' . static::ID, []);
+        $id = $this->gatewayId !== null ? $this->gatewayId : static::ID;
+        return (array) Config::get('drivers.' . $id, []);
     }
 
     /**
@@ -39,11 +51,11 @@ abstract class AbstractRestDriver implements DriverInterface
     /**
      * Standard "gateway not configured" guard.
      */
-    protected static function requireCredential(string $key, string $label): string
+    protected function requireCredential(string $key, string $label): string
     {
-        $value = trim((string) (self::cfg()[$key] ?? ''));
+        $value = trim((string) ($this->cfg()[$key] ?? ''));
         if ($value === '' || strpos($value, 'CHANGE_ME') === 0) {
-            throw \Webiro\ApiException::driverNotConfigured($label);
+            throw ApiException::driverNotConfigured($label);
         }
         return $value;
     }

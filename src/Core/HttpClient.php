@@ -10,7 +10,7 @@ namespace Webiro\Core;
  */
 final class HttpClient
 {
-    public const UA = 'WebiroGateway/' . WG_VERSION;
+    public const UA = 'PayViro/' . WG_VERSION;
 
     /**
      * @param array<string,string> $headers

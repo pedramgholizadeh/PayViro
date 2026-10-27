@@ -126,13 +126,13 @@ final class OxapayDriver extends AbstractRestDriver
      *
      * @return array<string,mixed>
      */
-    private static function judge(array $txn, string $trackId, float $paidAmount, array $raw): array
+    private function judge(array $txn, string $trackId, float $paidAmount, array $raw): array
     {
         $status = strtolower((string) ($raw['status'] ?? ''));
 
         if (in_array($status, ['paid', 'completed'], true)) {
             if ($paidAmount > 0) {
-                $expected = self::cryptoAmount($txn, (string) (self::cfg()['amount_unit'] ?? 'toman'));
+                $expected = self::cryptoAmount($txn, (string) ($this->cfg()['amount_unit'] ?? 'toman'));
                 if (abs($paidAmount - $expected) > 0.5) {
                     return self::result(false, 'failed', $trackId, null, null, 'مبلغ پرداخت‌شده کریپتو با مبلغ تراکنش مغایرت دارد.', $raw);
                 }

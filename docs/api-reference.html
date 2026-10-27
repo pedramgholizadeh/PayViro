@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="مرجع کامل API درگاه پرداخت وبیرو — endpointها، پارامترها، پاسخ‌ها و کدهای خطا">
-<title>API Reference | مستندات درگاه پرداخت وبیرو</title>
+<title>API Reference | مستندات PayViro — درگاه پرداخت مرکزی</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
@@ -19,7 +19,7 @@
     <div class="side-head">
       <a class="brand" href="index.html">
         <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
-        <div><b>Webiro Gateway</b><span>مستندات درگاه پرداخت — نسخه ۱.۰</span></div>
+        <div><b>PayViro</b><span>مستندات رسمی درگاه پرداخت — نسخه ۱.۰</span></div>
       </a>
       <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
     </div>
@@ -90,7 +90,7 @@
         <tr><td><code>amount</code></td><td>بله</td><td>integer</td><td>مبلغ بر حسب واحد <code>currency</code> — عدد صحیح مثبت.</td></tr>
         <tr><td><code>currency</code></td><td>خیر</td><td>string</td><td><code>rial</code> (پیش‌فرض) یا <code>toman</code> — ذخیره‌سازی و همه‌ی پاسخ‌ها به ریال است.</td></tr>
         <tr><td><code>callback_url</code></td><td>بله</td><td>string</td><td>آدرس بازگشت کاربر پس از پرداخت؛ باید HTTPS و هم‌دامنه با <code>callback_domain</code> پذیرنده باشد.</td></tr>
-        <tr><td><code>gateway</code></td><td>خیر</td><td>string</td><td><code>zarinpal</code> · <code>zibal</code> · <code>saman</code> · <code>idpay</code> · <code>nextpay</code> · <code>payping</code> · <code>sepordeh</code> · <code>payir</code> · <code>aqayepardakht</code> · <code>vandar</code> · <code>bluebank</code> · <code>oxapay</code> (کریپتو) · <code>test</code> · <code>auto</code> (پیش‌فرض کانفیگ).</td></tr>
+        <tr><td><code>gateway</code></td><td>خیر</td><td>string</td><td><code>saman</code> · <code>pasargad</code> (اولویت) · <code>zarinpal</code> · <code>zibal</code> · <code>idpay</code> · <code>nextpay</code> · <code>payping</code> · <code>sepordeh</code> · <code>payir</code> · <code>aqayepardakht</code> · <code>vandar</code> · <code>bluebank</code> · <code>snappay</code> · <code>digipay</code> · <code>tara</code> · <code>lendo</code> · <code>ghasta</code> (قسطی) · <code>oxapay</code> (کریپتو) · <code>test</code> · <code>auto</code> (پیش‌فرض کانفیگ).</td></tr>
         <tr><td><code>order_id</code></td><td>خیر</td><td>string</td><td>شناسه‌ی سفارش شما (حداکثر ۶۴ کاراکتر) — در callback و وبهوک عودت داده می‌شود.</td></tr>
         <tr><td><code>description</code></td><td>خیر</td><td>string</td><td>شرح تراکنش (حداکثر ۵۰۰ کاراکتر).</td></tr>
         <tr><td><code>mobile</code></td><td>خیر</td><td>string</td><td>موبایل خریدار <code>09xxxxxxxxx</code> — به بانک هم ارسال می‌شود.</td></tr>
@@ -152,7 +152,9 @@
   <span class="tok-p">"status"</span>: <span class="tok-s">"success"</span>,
   <span class="tok-p">"data"</span>: {
     <span class="tok-p">"gateways"</span>: [
-      { <span class="tok-p">"id"</span>: <span class="tok-s">"zarinpal"</span>, <span class="tok-p">"name"</span>: <span class="tok-s">"زرین‌پال"</span>, <span class="tok-p">"redirect"</span>: <span class="tok-s">"GET"</span>, <span class="tok-p">"type"</span>: <span class="tok-s">"bank"</span> },
+      { <span class="tok-p">"id"</span>: <span class="tok-s">"saman"</span>, <span class="tok-p">"name"</span>: <span class="tok-s">"بانک سامان"</span>, <span class="tok-p">"type"</span>: <span class="tok-s">"bank"</span> },
+      { <span class="tok-p">"id"</span>: <span class="tok-s">"pasargad"</span>, <span class="tok-p">"name"</span>: <span class="tok-s">"بانک پاسارگاد"</span>, <span class="tok-p">"type"</span>: <span class="tok-s">"bank"</span> },
+      { <span class="tok-p">"id"</span>: <span class="tok-s">"snappay"</span>, <span class="tok-p">"name"</span>: <span class="tok-s">"اسنپ‌پی (خرید قسطی)"</span>, <span class="tok-p">"type"</span>: <span class="tok-s">"bnpl"</span> },
       { <span class="tok-p">"id"</span>: <span class="tok-s">"idpay"</span>,    <span class="tok-p">"name"</span>: <span class="tok-s">"آیدی‌پی"</span>,   <span class="tok-p">"redirect"</span>: <span class="tok-s">"GET"</span>, <span class="tok-p">"type"</span>: <span class="tok-s">"bank"</span> },
       { <span class="tok-p">"id"</span>: <span class="tok-s">"oxapay"</span>,   <span class="tok-p">"name"</span>: <span class="tok-s">"کریپتو OxaPay"</span>, <span class="tok-p">"redirect"</span>: <span class="tok-s">"GET"</span>, <span class="tok-p">"type"</span>: <span class="tok-s">"crypto"</span> }
     ],
@@ -206,7 +208,7 @@
       </div>
 
       <footer class="foot">
-        <span>Webiro Gateway v1.0 — مستندات رسمی</span>
+        <span>PayViro v1.0 — مستندات رسمی</span>
         <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a>
       </footer>
     </div>

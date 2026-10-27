@@ -127,7 +127,7 @@ if (!$logged) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>ورود به پنل مدیریت | Webiro Gateway</title>
+<title>ورود به پنل مدیریت | PayViro</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
 <style>
@@ -152,8 +152,8 @@ button:hover{filter:brightness(1.1)}
   <input type="hidden" name="csrf" value="{$csrf}">
   <div class="logo">
     <div class="mark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>
-    <h1>پنل مدیریت درگاه پرداخت</h1>
-    <p>Webiro Gateway — نسخه ۱.۰</p>
+    <h1>پنل مدیریت PayViro</h1>
+    <p>درگاه پرداخت مرکزی — نسخه ۱.۰</p>
   </div>
   {$errHtml}
   <label for="u">نام کاربری</label>
@@ -220,7 +220,7 @@ $csrf = e(admin_csrf());
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
-<title>پنل مدیریت | Webiro Gateway</title>
+<title>پنل مدیریت | PayViro</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
 <style>
@@ -271,7 +271,7 @@ pre.raw{background:#020617;border:1px solid #1E293B;border-radius:10px;padding:1
 </head>
 <body>
 <div class="topbar">
-  <h1><span class="dot"></span> درگاه پرداخت وبیرو</h1>
+  <h1><span class="dot"></span> PayViro — درگاه پرداخت مرکزی</h1>
   <div><a href="?logout=1">خروج</a></div>
 </div>
 <div class="container">
@@ -393,7 +393,7 @@ pre.raw{background:#020617;border:1px solid #1E293B;border-radius:10px;padding:1
   </div>
 
   <p style="color:#475569;font-size:11.5px;text-align:center;padding:10px 0 20px">
-    Webiro Gateway v<?= e(WG_VERSION) ?> — مستندات: <a href="../docs/">/gateway/docs</a>
+    PayViro v<?= e(WG_VERSION) ?> — مستندات: <a href="../docs/">/gateway/docs</a>
   </p>
 </div>
 </body>

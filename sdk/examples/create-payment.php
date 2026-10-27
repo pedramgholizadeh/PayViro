@@ -6,11 +6,11 @@
 
 declare(strict_types=1);
 
-require __DIR__ . '/../WebiroGateway.php';
+require __DIR__ . '/../PayViro.php';
 
 use WebiroGateway;
 
-$gateway = new WebiroGateway(
+$gateway = new PayViro(
     'https://webiro.ir/gateway',          // آدرس گیت‌وی
     'wgr_...your-api-key...',             // X-API-Key پذیرنده
     'wgs_...your-secret...'               // کلید امضا
@@ -40,7 +40,7 @@ try {
     header('Location: ' . $payment['payment_url']);
     exit;
 
-} catch (WebiroGatewayException $e) {
+} catch (PayViroException $e) {
     http_response_code(500);
     echo 'خطا در ایجاد پرداخت: ' . htmlspecialchars($e->getMessage());
 }

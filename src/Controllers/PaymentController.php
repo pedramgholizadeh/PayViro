@@ -88,7 +88,7 @@ final class PaymentController
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="no-referrer">
-<title>درگاه پرداخت آزمایشی | Webiro Gateway Sandbox</title>
+<title>درگاه پرداخت آزمایشی | PayViro Sandbox</title>
 <style>
 :root { color-scheme: dark; }
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -120,7 +120,7 @@ button:active { transform:scale(.98); }
 <div class="terminal">
   <div class="header">
     <div class="logo">TEST<br>BANK</div>
-    <div><h2>درگاه پرداخت آزمایشی</h2><span>Webiro Gateway Sandbox</span></div>
+    <div><h2>درگاه پرداخت آزمایشی</h2><span>PayViro Sandbox</span></div>
   </div>
   <div class="body">
     <div class="amount"><b>' . $amount . '</b><span>ریال</span></div>

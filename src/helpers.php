@@ -87,7 +87,7 @@ p { font-size:14px; line-height:1.9; color:#94A3B8; }
   <h1>' . $safeTitle . '</h1>
   <p>' . $safeMessage . '</p>
   ' . ($safeDetail !== '' ? '<div class="detail">' . $safeDetail . '</div>' : '') . '
-  <div class="brand">درگاه پرداخت وبیرو &mdash; webiro.ir</div>
+  <div class="brand">PayViro &mdash; webiro.ir</div>
 </div>
 </body>
 </html>';

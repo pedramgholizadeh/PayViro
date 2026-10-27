@@ -1,17 +1,17 @@
 <?php
 /**
  * ------------------------------------------------------------------
- *  Webiro Gateway — PHP SDK (سمت دامنه‌های پذیرنده)
+ *  PayViro — PHP SDK (سمت دامنه‌های پذیرنده)
  * ------------------------------------------------------------------
  *  این فایل را در پروژه‌ی هر دامنه (مثلاً lahze-app.ir) کپی کنید و
  *  بدون هیچ وابستگی خارجی استفاده کنید. PHP 7.4+ با cURL کافی است.
  *
- *  مستندات کامل: https://webiro.ir/gateway/docs
+ *  مستندات کامل: https://webiro.ir/gateway/docs  |  PayViro — درگاه پرداخت مرکزی
  */
 
 declare(strict_types=1);
 
-class WebiroGatewayException extends RuntimeException
+class PayViroException extends RuntimeException
 {
     /** @var int HTTP status returned by the gateway */
     private $httpStatus;
@@ -37,11 +37,11 @@ class WebiroGatewayException extends RuntimeException
     }
 }
 
-class WebiroSignatureException extends WebiroGatewayException
+class PayViroSignatureException extends PayViroException
 {
 }
 
-class WebiroGateway
+class PayViro
 {
     /** @var string */
     private $baseUrl;
@@ -215,7 +215,7 @@ class WebiroGateway
             CURLOPT_TIMEOUT        => $this->timeout,
             CURLOPT_CONNECTTIMEOUT => 10,
             CURLOPT_SSL_VERIFYPEER => true,
-            CURLOPT_USERAGENT      => 'WebiroGateway-SDK/1.0',
+            CURLOPT_USERAGENT      => 'PayViro-SDK/1.0',
         ]);
 
         $raw = curl_exec($ch);

@@ -46,34 +46,18 @@ final class ApiController
     {
         $enabled = DriverFactory::enabled();
         $list = [];
-        $meta = [
-            'zarinpal'      => ['name' => 'زرین‌پال',       'redirect' => 'GET',  'type' => 'bank'],
-            'zibal'         => ['name' => 'زیبال',          'redirect' => 'GET',  'type' => 'bank'],
-            'saman'         => ['name' => 'بانک سامان',     'redirect' => 'POST', 'type' => 'bank'],
-            'idpay'         => ['name' => 'آیدی‌پی',         'redirect' => 'GET',  'type' => 'bank'],
-            'nextpay'       => ['name' => 'نکست‌پی',         'redirect' => 'GET',  'type' => 'bank'],
-            'payping'       => ['name' => 'پی‌پینگ',         'redirect' => 'GET',  'type' => 'bank'],
-            'sepordeh'      => ['name' => 'سپرده',          'redirect' => 'GET',  'type' => 'bank'],
-            'payir'         => ['name' => 'پی.آی‌آر',        'redirect' => 'GET',  'type' => 'bank'],
-            'aqayepardakht' => ['name' => 'آقای پرداخت',    'redirect' => 'GET',  'type' => 'bank'],
-            'vandar'        => ['name' => 'وندار',          'redirect' => 'GET',  'type' => 'bank'],
-            'bluebank'      => ['name' => 'بلوبانک',        'redirect' => 'GET',  'type' => 'bank'],
-            'oxapay'        => ['name' => 'کریپتو OxaPay',  'redirect' => 'GET',  'type' => 'crypto'],
-            'test'          => ['name' => 'درگاه تست (سندباکس)', 'redirect' => 'GET', 'type' => 'test'],
-        ];
         foreach ($enabled as $gateway => $isEnabled) {
             if (!$isEnabled) {
                 continue;
             }
             $list[] = [
                 'id'       => $gateway,
-                'name'     => $meta[$gateway]['name'] ?? $gateway,
-                'redirect' => $meta[$gateway]['redirect'] ?? 'GET',
-                'type'     => $meta[$gateway]['type'] ?? 'bank',
+                'name'     => DriverFactory::NAMES[$gateway] ?? $gateway,
+                'type'     => DriverFactory::TYPES[$gateway] ?? 'bank',
             ];
         }
 
-        return Response::json(['status' => 'success', 'data' => ['gateways' => $list, 'default' => (string) Config::get('payments.default_gateway', 'zarinpal')]]);
+        return Response::json(['status' => 'success', 'data' => ['gateways' => $list, 'default' => (string) Config::get('payments.default_gateway', 'saman')]]);
     }
 
     public function create(Request $request, array $params): Response

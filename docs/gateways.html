@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="تنظیم درگاه‌های پرداخت وبیرو — زرین‌پال، زیبال، سامان، بلوبانک و درگاه تست">
-<title>تنظیم درگاه‌ها | مستندات درگاه پرداخت وبیرو</title>
+<title>تنظیم درگاه‌ها | مستندات PayViro — درگاه پرداخت مرکزی</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
@@ -19,7 +19,7 @@
     <div class="side-head">
       <a class="brand" href="index.html">
         <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
-        <div><b>Webiro Gateway</b><span>مستندات درگاه پرداخت — نسخه ۱.۰</span></div>
+        <div><b>PayViro</b><span>مستندات رسمی درگاه پرداخت — نسخه ۱.۰</span></div>
       </a>
       <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
     </div>
@@ -96,7 +96,7 @@
         <tr><td><code>106</code></td><td>callback نامعتبر</td></tr>
       </table></div>
 
-      <h2 id="saman">بانک سامان<a class="h-anchor" href="#saman">#</a></h2>
+      <h2 id="saman">⭐ بانک سامان<a class="h-anchor" href="#saman">#</a></h2>
       <p>سه مقدار <code>merchant_id</code> (MID)، <code>terminal_id</code> (TID) و <code>password</code> را از پنل پذیرندگی سپ/سامان بردارید. این درگاه برای تایید تراکنش به اکستنشن <code>soap</code> نیاز دارد.</p>
       <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>config.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-s">'saman'</span> =&gt; [
     <span class="tok-s">'merchant_id'</span> =&gt; <span class="tok-s">'…'</span>,
@@ -116,6 +116,16 @@
         <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg>
         <p><b>سامان و ای‌نماد:</b> سامان ممکن است دامنه‌ی callback را با مالکیت درگاه تطبیق دهد؛ چون callback همیشه روی <code>webiro.ir</code> است (دامنه‌ی درگاه)، این محدودیت به‌صورت پیش‌فرض برطرف است — همین اصل، دلیل اصلی ساختن این گیت‌وی است.</p>
       </div>
+
+      <h2 id="pasargad">⭐ بانک پاسارگاد<a class="h-anchor" href="#pasargad">#</a></h2>
+      <p>درگاه نسل جدید پاسارگاد (<code>pep.shaparak.ir/dorsa1</code>). سه مقدار را از پنل پذیرندگی پاسارگاد بردارید:</p>
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>config.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-s">'pasargad'</span> =&gt; [
+    <span class="tok-s">'base_url'</span>        =&gt; <span class="tok-s">'https://pep.shaparak.ir/dorsa1'</span>,
+    <span class="tok-s">'username'</span>        =&gt; <span class="tok-s">'…'</span>,
+    <span class="tok-s">'password'</span>        =&gt; <span class="tok-s">'…'</span>,
+    <span class="tok-s">'terminal_number'</span> =&gt; <span class="tok-s">'…'</span>,
+],</code></pre></div>
+      <p>جریان: دریافت توکن Bearer → خرید → بازگشت با <code>invoiceId</code> → استعلام (<code>payment-inquiry</code>) → تایید نهایی (<code>confirm-transactions</code>). مبلغ ریال است.</p>
 
       <h2 id="idpay">آیدی‌پی (IDPay)<a class="h-anchor" href="#idpay">#</a></h2>
       <p>کلید API را از پنل آیدی‌پی بردارید. مبلغ به ریال ارسال می‌شود و سندباکس با هدر <code>X-SANDBOX</code> فعال می‌شود.</p>
@@ -157,6 +167,36 @@
       <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>config.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-s">'vandar'</span> =&gt; [
     <span class="tok-s">'api_key'</span> =&gt; <span class="tok-s">'…'</span>,   <span class="tok-c">// کلید IPG از پنل وندار</span>
 ],</code></pre></div>
+
+      <h2 id="snappay">اسنپ‌پی (خرید قسطی)<a class="h-anchor" href="#snappay">#</a></h2>
+      <p>درایور اختصاصی با جریان رسمی اسنپ‌پی: OAuth2 → ایجاد پرداخت قسطی → verify → settle. مقادیر را از پنل پذیرندگان اسنپ‌پی بگیرید:</p>
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>config.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-s">'snappay'</span> =&gt; [
+    <span class="tok-s">'base_url'</span>      =&gt; <span class="tok-s">'…'</span>,   <span class="tok-c">// از پنل پذیرندگی (مثال استیجینگ در کانفیگ نمونه)</span>
+    <span class="tok-s">'client_id'</span>     =&gt; <span class="tok-s">'…'</span>,
+    <span class="tok-s">'client_secret'</span> =&gt; <span class="tok-s">'…'</span>,
+    <span class="tok-s">'username'</span>      =&gt; <span class="tok-s">'…'</span>,
+    <span class="tok-s">'password'</span>      =&gt; <span class="tok-s">'…'</span>,
+],</code></pre></div>
+      <p>سبد خرید به‌صورت خودکار از تراکنش ساخته می‌شود و پس از verify، عملیات settle هم اجرا می‌شود (لازمه‌ی اسنپ‌پی).</p>
+
+      <h2 id="bnpl">خرید قسطی — دیجی‌پی، تارا، لندو، قسطا<a class="h-anchor" href="#bnpl">#</a></h2>
+      <p>مستندات API این سرویس‌ها عمومی نیست و بعد از عقد قرارداد به پذیرنده داده می‌شود. درایور آن‌ها <strong>کانفیگ‌محور</strong> است (مثل بلوبانک): ساختار purchase → redirect → callback → verify ثابت است و فقط مقادیر را از مستندات خودتان در <code>config.php</code> پر کنید:</p>
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>config.php — نمونه برای دیجی‌پی (سایر درگاه‌ها هم همین ساختار)</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-s">'digipay'</span> =&gt; [
+    <span class="tok-s">'enabled'</span>         =&gt; <span class="tok-k">true</span>,
+    <span class="tok-s">'purchase_url'</span>    =&gt; <span class="tok-s">'https://…/create'</span>,
+    <span class="tok-s">'purchase_headers'</span> =&gt; [<span class="tok-s">'Authorization: Bearer …'</span>],
+    <span class="tok-s">'payment_url'</span>     =&gt; <span class="tok-s">'https://…/pay/{token}'</span>,
+    <span class="tok-s">'token_field'</span>     =&gt; <span class="tok-s">'token'</span>,
+    <span class="tok-s">'callback_token_param'</span>   =&gt; <span class="tok-s">'token'</span>,
+    <span class="tok-s">'callback_success_param'</span> =&gt; <span class="tok-s">'status'</span>,
+    <span class="tok-s">'callback_success_values'</span> =&gt; [<span class="tok-s">'OK'</span>],
+    <span class="tok-s">'verify_url'</span>      =&gt; <span class="tok-s">'https://…/verify'</span>,
+    <span class="tok-s">'verify_result_field'</span>    =&gt; <span class="tok-s">'result'</span>,
+    <span class="tok-s">'verify_success_values'</span>  =&gt; [<span class="tok-s">'100'</span>],
+    <span class="tok-s">'verify_ref_field'</span>       =&gt; <span class="tok-s">'ref_no'</span>,
+    <span class="tok-s">'verify_amount_field'</span>    =&gt; <span class="tok-k">null</span>,  <span class="tok-c">// مثال: 'amount' برای چک مبلغ</span>
+],</code></pre></div>
+      <p>همین ساختار برای <code>tara</code>، <code>lendo</code> و <code>ghasta</code> هم در کانفیگ نمونه آمده است. (درایور: <code>src/Drivers/BnplDriver.php</code>)</p>
 
       <h2 id="oxapay">کریپتو — OxaPay<a class="h-anchor" href="#oxapay">#</a></h2>
       <p>پرداخت با تتر، بیت‌کوین و ده‌ها رمزارز دیگر روی شبکه‌های TRON، ERC20، BEP20 و… . کلید Merchant را از پنل OxaPay بردارید (<a href="https://docs.oxapay.com" target="_blank" rel="noopener">docs.oxapay.com</a>). تایید نهایی با وب‌هوک امضاشده‌ی HMAC-SHA512 انجام می‌شود — یعنی وضعیت پرداخت بدون اعتماد به ریدایرکت مرورگر، از خود OxaPay تایید می‌شود.</p>
@@ -216,7 +256,7 @@
       <p>وقتی <code>"gateway": "auto"</code> می‌فرستید، اولین درگاهِ پیکربندی‌شده از این لیست انتخاب می‌شود — ترتیب را در کانفیگ عوض کنید:</p>
       <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>config.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-s">'payments'</span> =&gt; [
     <span class="tok-c">// ...</span>
-    <span class="tok-s">'auto_order'</span> =&gt; [<span class="tok-s">'zarinpal'</span>, <span class="tok-s">'zibal'</span>, <span class="tok-s">'idpay'</span>, <span class="tok-s">'payping'</span>, <span class="tok-s">'oxapay'</span>, <span class="tok-s">'…'</span>],
+    <span class="tok-s">'auto_order'</span> =&gt; [<span class="tok-s">'saman'</span>, <span class="tok-s">'pasargad'</span>, <span class="tok-s">'zarinpal'</span>, <span class="tok-s">'snappay'</span>, <span class="tok-s">'oxapay'</span>, <span class="tok-s">'…'</span>],
 ],</code></pre></div>
       <p>هر پذیرنده می‌تواند لیست درگاه‌های مجاز خودش را هم داشته باشد (<code>gateways</code> در بخش merchants) — مثلاً فقط زرین‌پال و زیبال.</p>
 
@@ -226,7 +266,7 @@
       </div>
 
       <footer class="foot">
-        <span>Webiro Gateway v1.0 — مستندات رسمی</span>
+        <span>PayViro v1.0 — مستندات رسمی</span>
         <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a>
       </footer>
     </div>
