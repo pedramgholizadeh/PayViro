@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Services;
+namespace PayViro\Services;
 
-use Webiro\ApiException;
-use Webiro\Core\Config;
-use Webiro\Core\Crypto;
-use Webiro\Core\Http\Request;
-use Webiro\Core\Http\Response;
-use Webiro\Core\Logger;
-use Webiro\Drivers\DriverFactory;
-use Webiro\Models\Transaction;
+use PayViro\ApiException;
+use PayViro\Core\Config;
+use PayViro\Core\Crypto;
+use PayViro\Core\Http\Request;
+use PayViro\Core\Http\Response;
+use PayViro\Core\Logger;
+use PayViro\Drivers\DriverFactory;
+use PayViro\Models\Transaction;
 /**
  * Orchestrates the full payment lifecycle:
  * merchant request → bank → callback → verify → webhook → merchant redirect.

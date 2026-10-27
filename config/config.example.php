@@ -20,7 +20,7 @@ return [
      * -------------------------------------------------------------- */
     'app' => [
         // آدرس کامل محل نصب گیت‌وی (بدون اسلش انتهایی)
-        'base_url'   => 'https://webiro.ir/gateway',
+        'base_url'   => 'https://your-domain.ir/gateway',
 
         'timezone'   => 'Asia/Tehran',
 
@@ -47,7 +47,7 @@ return [
         'mysql' => [
             'host'    => 'localhost',
             'port'    => 3306,
-            'dbname'  => 'webiro_gateway',
+            'dbname'  => 'payviro',
             'user'    => 'CHANGE_ME',
             'pass'    => 'CHANGE_ME',
             'charset' => 'utf8mb4',
@@ -105,14 +105,14 @@ return [
             'enabled'         => true,
             'api_key'         => 'wgr_CHANGE_ME',
             'secret'          => 'wgs_CHANGE_ME',
-            'callback_domain' => 'https://lahze-app.ir',
-            'webhook_url'     => 'https://lahze-app.ir/api/payment/webhook',
+            'callback_domain' => 'https://your-shop.ir',
+            'webhook_url'     => 'https://your-shop.ir/api/payment/webhook',
             'gateways'        => null,
         ],
     ],
 
     /* --------------------------------------------------------------
-     *  پنل مدیریت  ( https://webiro.ir/gateway/admin )
+     *  پنل مدیریت  ( https://your-domain.ir/gateway/admin )
      * -------------------------------------------------------------- */
     'admin' => [
         'username' => 'admin',
@@ -124,7 +124,7 @@ return [
     /* --------------------------------------------------------------
      *  کلید فراخوانی کرون (ارسال مجدد وبهوک‌های ناموفق)
      *  کرون سی‌پنل — هر ۵ دقیقه:
-     *  wget -q -O /dev/null "https://webiro.ir/gateway/api/cron/webhooks?key=CHANGE_ME_CRON"
+     *  wget -q -O /dev/null "https://your-domain.ir/gateway/api/cron/webhooks?key=CHANGE_ME_CRON"
      * -------------------------------------------------------------- */
     'cron' => [
         'key' => 'CHANGE_ME_CRON',

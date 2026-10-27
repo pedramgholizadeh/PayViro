@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Http\Request;
-use Webiro\Core\HttpClient;
-use Webiro\Core\Logger;
+use PayViro\Core\Config;
+use PayViro\Core\Http\Request;
+use PayViro\Core\HttpClient;
+use PayViro\Core\Logger;
 
 /**
  * IDPay driver (v1.1) — popular Iranian payment aggregator.
@@ -41,7 +41,7 @@ final class IdpayDriver extends AbstractRestDriver
         if ($response['status'] !== 201 || empty($json['id']) || empty($json['link'])) {
             $errorMessage = is_array($json['error_message'] ?? null) ? '' : (string) ($json['error_message'] ?? '');
             Logger::warning('idpay.request.failed', ['status' => $response['status'], 'error' => $errorMessage ?: mb_substr($response['body'], 0, 200)]);
-            throw \Webiro\ApiException::gatewayRejected('آیدی‌پی', (int) ($json['error_code'] ?? $response['status']), $errorMessage);
+            throw \PayViro\ApiException::gatewayRejected('آیدی‌پی', (int) ($json['error_code'] ?? $response['status']), $errorMessage);
         }
 
         return [

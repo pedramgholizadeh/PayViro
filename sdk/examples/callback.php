@@ -1,7 +1,7 @@
 <?php
 /**
  * مثال ۲ — صفحه بازگشت از پرداخت (callback_url)
- * آدرس:  https://lahze-app.ir/payment/result
+ * آدرس:  https://your-shop.ir/payment/result
  *
  * گیت‌وی کاربر را با پارامترهای امضاشده به همین آدرس برمی‌گرداند:
  *   token, status, order_id, amount, gateway, ref_no, card_no, message, sig
@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 require __DIR__ . '/../PayViro.php';
 
-use WebiroGateway;
+use PayViroGateway;
 
 $gateway = new PayViro(
-    'https://webiro.ir/gateway',
+    'https://your-domain.ir/gateway',
     'wgr_...your-api-key...',
     'wgs_...your-secret...'
 );

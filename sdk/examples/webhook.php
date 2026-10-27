@@ -1,7 +1,7 @@
 <?php
 /**
  * مثال ۳ — دریافت وبهوک (webhook_url)
- * آدرس:  https://lahze-app.ir/api/payment/webhook
+ * آدرس:  https://your-shop.ir/api/payment/webhook
  *
  * گیت‌وی وضعیت نهایی را با امضای HMAC به این آدرس POST می‌کند.
  * پاسخ باید HTTP 2xx باشد؛ در غیر این صورت گیت‌وی با backoff دوباره تلاش می‌کند.
@@ -11,10 +11,10 @@ declare(strict_types=1);
 
 require __DIR__ . '/../PayViro.php';
 
-use WebiroGateway;
+use PayViroGateway;
 
 $gateway = new PayViro(
-    'https://webiro.ir/gateway',
+    'https://your-domain.ir/gateway',
     'wgr_...your-api-key...',
     'wgs_...your-secret...'
 );

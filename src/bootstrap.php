@@ -5,33 +5,33 @@
  * License: MIT
  */
 /**
- * Webiro Gateway — bootstrap
- * Central Payment Gateway Service for webiro.ir
+ * PayViro — bootstrap
+ * Generic multi-domain payment switch — self-hosted & open source
  *
  * PHP 7.4+ / cPanel compatible, zero Composer dependencies.
  */
 
 declare(strict_types=1);
 
-if (!defined('WG_ROOT')) {
+if (!defined('PV_ROOT')) {
     exit('No direct access.');
 }
 
-if (!defined('WG_START')) {
-    define('WG_START', microtime(true));
+if (!defined('PV_START')) {
+    define('PV_START', microtime(true));
 }
 
-define('WG_VERSION', '1.0.0');
+define('PV_VERSION', '1.0.0');
 
 /* ------------------------------------------------------------------
- |  PSR-4 style autoloader:  Webiro\Core\Config  →  src/Core/Config.php
+ |  PSR-4 style autoloader:  PayViro\Core\Config  →  src/Core/Config.php
  * ------------------------------------------------------------------ */
 spl_autoload_register(static function (string $class): void {
-    if (strpos($class, 'Webiro\\') !== 0) {
+    if (strpos($class, 'PayViro\\') !== 0) {
         return;
     }
-    $relative = substr($class, strlen('Webiro\\'));
-    $file = WG_ROOT . '/src/' . str_replace('\\', '/', $relative) . '.php';
+    $relative = substr($class, strlen('PayViro\\'));
+    $file = PV_ROOT . '/src/' . str_replace('\\', '/', $relative) . '.php';
     if (is_file($file)) {
         require $file;
     }
@@ -39,7 +39,7 @@ spl_autoload_register(static function (string $class): void {
 
 mb_internal_encoding('UTF-8');
 
-require WG_ROOT . '/src/helpers.php';
+require PV_ROOT . '/src/helpers.php';
 
 /* ------------------------------------------------------------------
  |  Fatal-error safety net: never leak a stack trace to the client.
@@ -52,7 +52,7 @@ error_reporting(E_ALL);
     if ($err === null || !in_array($err['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR], true)) {
         return;
     }
-    \Webiro\Core\Logger::error('fatal', [
+    \PayViro\Core\Logger::error('fatal', [
         'message' => $err['message'],
         'file'    => $err['file'],
         'line'    => $err['line'],
@@ -77,8 +77,8 @@ error_reporting(E_ALL);
  * ------------------------------------------------------------------ */
 try {
     if (PHP_SAPI !== 'cli'
-        && \Webiro\Core\Config::get('app.https_only', true)
-        && strpos((string) \Webiro\Core\Config::get('app.base_url', ''), 'https://') === 0
+        && \PayViro\Core\Config::get('app.https_only', true)
+        && strpos((string) \PayViro\Core\Config::get('app.base_url', ''), 'https://') === 0
         && empty($_SERVER['HTTPS'])
         && strtolower((string) ($_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '')) !== 'https'
     ) {

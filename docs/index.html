@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="درگاه پرداخت وبیرو — یک نقطه‌ی اتصال برای استفاده از درگاه‌های پرداخت وبیرو در همه‌ی دامنه‌ها">
+<meta name="description" content="PayViro — یک نقطه‌ی اتصال برای استفاده از درگاه‌های پرداخت PayViro در همه‌ی دامنه‌ها">
 <title>معرفی و شروع سریع | مستندات PayViro — درگاه پرداخت مرکزی</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/index.min.css" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23032018' stroke='%2300c389' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
+<link href="assets/fonts/fonts.css" rel="stylesheet">
 <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -59,20 +57,20 @@
   <div class="main">
     <div class="topbar">
       <button class="icon-btn" data-open-sidebar aria-label="باز کردن منو" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>Webiro Gateway</div>
+      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>PayViro</div>
       <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
     </div>
 
     <div class="content">
 
-      <h1>درگاه پرداخت وبیرو (PayViro)</h1>
-      <p class="lead">یک نقطه‌ی اتصال روی <code>webiro.ir/gateway</code> که درگاه‌های پرداخت وبیرو را برای همه‌ی دامنه‌های شما فراهم می‌کند — بدون نیاز به درگاه و ای‌نماد جداگانه روی هیچ دامنه‌ی دیگری.</p>
+      <h1>PayViro (PayViro)</h1>
+      <p class="lead">یک نقطه‌ی اتصال روی <code>your-domain.ir/gateway</code> که درگاه‌های پرداخت PayViro را برای همه‌ی دامنه‌های شما فراهم می‌کند — بدون نیاز به درگاه و ای‌نماد جداگانه روی هیچ دامنه‌ی دیگری.</p>
 
       <div class="grid reveal">
         <div class="card-box">
           <div class="cb-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
           <h3>یک کلید برای هر دامنه</h3>
-          <p>هر دامنه (lahze-app.ir، webirox.ir و…) یک API Key مستقل می‌گیرد؛ دامنه‌ی مجاز، آدرس بازگشت و وبهوک مخصوص خودش را دارد.</p>
+          <p>هر دامنه (your-shop.ir، your-shop2.ir و…) یک API Key مستقل می‌گیرد؛ دامنه‌ی مجاز، آدرس بازگشت و وبهوک مخصوص خودش را دارد.</p>
         </div>
         <div class="card-box">
           <div class="cb-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V8l8-5 8 5v13M9 21v-4a3 3 0 0 1 6 0v4"/></svg></div>
@@ -92,9 +90,9 @@
       </div>
 
       <h2 id="arch">معماری<a class="h-anchor" href="#arch">#</a></h2>
-      <p>دامنه‌های شما هرگز مستقیماً با بانک صحبت نمی‌کنند؛ همه‌چیز از گیت‌وی وبیرو عبور می‌کند. به این ترتیب اعتبار درگاه‌ها و ای‌نماد فقط روی وبیرو لازم است.</p>
+      <p>دامنه‌های شما هرگز مستقیماً با بانک صحبت نمی‌کنند؛ همه‌چیز از گیت‌وی PayViro عبور می‌کند. به این ترتیب اعتبار درگاه‌ها و ای‌نماد فقط روی PayViro لازم است.</p>
 
-      <div class="diagram reveal" role="img" aria-label="نمودار معماری: فروشگاه، گیت‌وی وبیرو، درگاه بانکی">
+      <div class="diagram reveal" role="img" aria-label="نمودار معماری: فروشگاه، گیت‌وی PayViro، درگاه بانکی">
         <svg width="760" height="220" viewBox="0 0 760 220" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -104,11 +102,11 @@
           <!-- nodes -->
           <rect class="dg-node" x="20" y="88" width="180" height="66" rx="12"/>
           <text class="dg-text" x="110" y="114" text-anchor="middle" font-weight="700">فروشگاه شما</text>
-          <text class="dg-sub" x="110" y="136" text-anchor="middle" direction="ltr">lahze-app.ir · webirox.ir</text>
+          <text class="dg-sub" x="110" y="136" text-anchor="middle" direction="ltr">your-shop.ir · your-shop2.ir</text>
 
           <rect class="dg-node" x="290" y="88" width="180" height="66" rx="12"/>
-          <text class="dg-text" x="380" y="114" text-anchor="middle" font-weight="700">Webiro Gateway</text>
-          <text class="dg-sub" x="380" y="136" text-anchor="middle" direction="ltr">webiro.ir/gateway</text>
+          <text class="dg-text" x="380" y="114" text-anchor="middle" font-weight="700">PayViro</text>
+          <text class="dg-sub" x="380" y="136" text-anchor="middle" direction="ltr">your-domain.ir/gateway</text>
 
           <rect class="dg-node" x="560" y="88" width="180" height="66" rx="12"/>
           <text class="dg-text" x="650" y="114" text-anchor="middle" font-weight="700">درگاه بانکی</text>
@@ -134,8 +132,8 @@
       <div class="steps">
         <div class="step reveal">
           <h3>کلید API برای دامنه بسازید</h3>
-          <p>روی سرور وبیرو، برای هر دامنه یک کلید بسازید و تکه‌ی خروجی را در <code>config/config.php</code> بخش <code>merchants</code> اضافه کنید:</p>
-          <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>SSH / Terminal</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>php /home/username/public_html/gateway/tools/make-api-key.php "lahze-app" "https://lahze-app.ir"</code></pre></div>
+          <p>روی سرور PayViro، برای هر دامنه یک کلید بسازید و تکه‌ی خروجی را در <code>config/config.php</code> بخش <code>merchants</code> اضافه کنید:</p>
+          <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>SSH / Terminal</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>php /home/username/public_html/gateway/tools/make-api-key.php "lahze-app" "https://your-shop.ir"</code></pre></div>
         </div>
         <div class="step reveal">
           <h3>از دامنه‌ی خودتان درخواست پرداخت بزنید</h3>
@@ -148,14 +146,14 @@
               <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>start-payment.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-k">require</span> <span class="tok-s">'PayViro.php'</span>;
 
 <span class="tok-n">$gateway</span> = <span class="tok-k">new</span> <span class="tok-f">PayViro</span>(
-    <span class="tok-s">'https://webiro.ir/gateway'</span>,
+    <span class="tok-s">'https://your-domain.ir/gateway'</span>,
     <span class="tok-s">'wgr_...'</span>,   <span class="tok-c">// API Key این دامنه</span>
     <span class="tok-s">'wgs_...'</span>    <span class="tok-c">// Secret برای بررسی امضا</span>
 );
 
 <span class="tok-n">$payment</span> = <span class="tok-n">$gateway</span>-&gt;<span class="tok-f">requestPayment</span>([
     <span class="tok-s">'amount'</span>       =&gt; <span class="tok-n">2500000</span>,                                <span class="tok-c">// ریال</span>
-    <span class="tok-s">'callback_url'</span> =&gt; <span class="tok-s">'https://lahze-app.ir/payment/result'</span>,
+    <span class="tok-s">'callback_url'</span> =&gt; <span class="tok-s">'https://your-shop.ir/payment/result'</span>,
     <span class="tok-s">'order_id'</span>     =&gt; <span class="tok-s">'ORD-101'</span>,
     <span class="tok-s">'description'</span>  =&gt; <span class="tok-s">'خرید اشتراک یک‌ساله'</span>,
     <span class="tok-s">'gateway'</span>      =&gt; <span class="tok-s">'auto'</span>,
@@ -165,12 +163,12 @@
 <span class="tok-k">exit</span>;</code></pre></div>
             </div>
             <div class="tab-panel">
-              <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>cURL</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>curl -X POST https://webiro.ir/gateway/api/v1/payments \
+              <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>cURL</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>curl -X POST https://your-domain.ir/gateway/api/v1/payments \
   -H <span class="tok-s">"X-API-Key: wgr_..."</span> \
   -H <span class="tok-s">"Content-Type: application/json"</span> \
   -d <span class="tok-s">'{
         "amount": 2500000,
-        "callback_url": "https://lahze-app.ir/payment/result",
+        "callback_url": "https://your-shop.ir/payment/result",
         "order_id": "ORD-101",
         "gateway": "auto"
       }'</span></code></pre></div>
@@ -218,8 +216,8 @@
       </div>
 
       <footer class="foot">
-        <span>PayViro v1.0 — توسعه‌ی Pedram Gholizadeh (WEBIRO) · مستندات رسمی</span>
-        <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a>
+        <span>PayViro v1.0 — اوپن‌سورس · توسعه‌ی <a href="https://github.com/pedramgholizadeh" target="_blank" rel="noopener">Pedram Gholizadeh (WEBIRO)</a></span>
+        <a href="https://apps.webiro.ir/payviro" target="_blank" rel="noopener">apps.webiro.ir/payviro</a>
       </footer>
     </div>
   </div>

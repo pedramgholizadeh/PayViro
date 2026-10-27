@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Services;
+namespace PayViro\Services;
 
-use Webiro\Core\Config;
-use Webiro\Core\Crypto;
-use Webiro\Core\HttpClient;
-use Webiro\Core\Logger;
-use Webiro\Models\Transaction;
+use PayViro\Core\Config;
+use PayViro\Core\Crypto;
+use PayViro\Core\HttpClient;
+use PayViro\Core\Logger;
+use PayViro\Models\Transaction;
 
 /**
  * Signed webhook delivery with retries.
  *
  * Payload:   {"event":"payment.succeeded","data":{...}}
- * Signature: X-Webiro-Signature: sha256=<HMAC-SHA256 of raw body with merchant secret>
+ * Signature: X-PayViro-Signature: sha256=<HMAC-SHA256 of raw body with merchant secret>
  *
  * Failed deliveries are retried by the cron endpoint with backoff.
  */
@@ -44,9 +44,9 @@ final class WebhookService
         $signature = 'sha256=' . Crypto::signBody($secret, $body);
 
         $response = HttpClient::postJson($url, $payload, [
-            'X-Webiro-Signature' => $signature,
-            'X-Webiro-Event'     => $event,
-            'X-Webiro-Token'     => (string) $txn['token'],
+            'X-PayViro-Signature' => $signature,
+            'X-PayViro-Event'     => $event,
+            'X-PayViro-Token'     => (string) $txn['token'],
         ], 10);
 
         $ok = $response['error'] === null && $response['status'] >= 200 && $response['status'] < 300;

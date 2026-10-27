@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="PHP SDK درگاه پرداخت وبیرو — اتصال دامنه‌های دیگر به گیت‌وی با چند خط کد">
+<meta name="description" content="PHP SDK PayViro — اتصال دامنه‌های دیگر به گیت‌وی با چند خط کد">
 <title>PHP SDK | مستندات PayViro — درگاه پرداخت مرکزی</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/index.min.css" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23032018' stroke='%2300c389' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
+<link href="assets/fonts/fonts.css" rel="stylesheet">
 <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -54,20 +52,20 @@
   <div class="main">
     <div class="topbar">
       <button class="icon-btn" data-open-sidebar aria-label="باز کردن منو" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>Webiro Gateway</div>
+      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>PayViro</div>
       <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
     </div>
 
     <div class="content">
       <h1>PHP SDK</h1>
-      <p class="lead">یک فایل، بدون وابستگی: <code>sdk/WebiroGateway.php</code> را از گیت‌وی بردارید و در هر دامنه‌ای (PHP 7.4+ با cURL) استفاده کنید.</p>
+      <p class="lead">یک فایل، بدون وابستگی: <code>sdk/PayViro.php</code> را از گیت‌وی بردارید و در هر دامنه‌ای (PHP 7.4+ با cURL) استفاده کنید.</p>
 
       <h2 id="install">نصب<a class="h-anchor" href="#install">#</a></h2>
       <p>فایل <code>PayViro.php</code> را کپی کنید (مثلاً در <code>lib/</code> پروژه‌ی خودتان) و در ابتدای اسکریپت‌ها require کنید. مثال‌های آماده هم در <code>sdk/examples/</code> هست.</p>
-      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>boot.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-k">require</span> <span class="tok-s">__DIR__</span> . <span class="tok-s">'/lib/WebiroGateway.php'</span>;
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>boot.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-k">require</span> <span class="tok-s">__DIR__</span> . <span class="tok-s">'/lib/PayViro.php'</span>;
 
 <span class="tok-n">$gateway</span> = <span class="tok-k">new</span> <span class="tok-f">PayViro</span>(
-    <span class="tok-s">'https://webiro.ir/gateway'</span>,   <span class="tok-c">// آدرس گیت‌وی</span>
+    <span class="tok-s">'https://your-domain.ir/gateway'</span>,   <span class="tok-c">// آدرس گیت‌وی</span>
     <span class="tok-s">'wgr_...'</span>,                      <span class="tok-c">// API Key این دامنه</span>
     <span class="tok-s">'wgs_...'</span>,                      <span class="tok-c">// Secret (برای امضاها)</span>
     <span class="tok-n">20</span>                              <span class="tok-c">// timeout (اختیاری)</span>
@@ -87,7 +85,7 @@
       <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>payment/start.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-k">try</span> {
     <span class="tok-n">$payment</span> = <span class="tok-n">$gateway</span>-&gt;<span class="tok-f">requestPayment</span>([
         <span class="tok-s">'amount'</span>          =&gt; <span class="tok-n">2500000</span>,                 <span class="tok-c">// ریال</span>
-        <span class="tok-s">'callback_url'</span>    =&gt; <span class="tok-s">'https://lahze-app.ir/payment/result'</span>,
+        <span class="tok-s">'callback_url'</span>    =&gt; <span class="tok-s">'https://your-shop.ir/payment/result'</span>,
         <span class="tok-s">'order_id'</span>        =&gt; <span class="tok-s">'ORD-101'</span>,
         <span class="tok-s">'description'</span>     =&gt; <span class="tok-s">'خرید اشتراک یک‌ساله'</span>,
         <span class="tok-s">'mobile'</span>          =&gt; <span class="tok-s">'09121234567'</span>,
@@ -165,7 +163,7 @@
 {
     <span class="tok-n">$payment</span> = <span class="tok-n">$order</span>-&gt;<span class="tok-f">getGatewayTokenAttribute</span>() ?? <span class="tok-k">null</span>;
 
-    <span class="tok-n">$gw</span> = <span class="tok-k">new</span> \<span class="tok-f">PayViro</span>(<span class="tok-f">config</span>(<span class="tok-s">'services.webiro.base_url'</span>), <span class="tok-f">config</span>(<span class="tok-s">'services.webiro.key'</span>), <span class="tok-f">config</span>(<span class="tok-s">'services.webiro.secret'</span>));
+    <span class="tok-n">$gw</span> = <span class="tok-k">new</span> \<span class="tok-f">PayViro</span>(<span class="tok-f">config</span>(<span class="tok-s">'services.payviro.base_url'</span>), <span class="tok-f">config</span>(<span class="tok-s">'services.payviro.key'</span>), <span class="tok-f">config</span>(<span class="tok-s">'services.payviro.secret'</span>));
     <span class="tok-n">$p</span> = <span class="tok-n">$gw</span>-&gt;<span class="tok-f">requestPayment</span>([
         <span class="tok-s">'amount'</span>       =&gt; <span class="tok-n">$order</span>-&gt;<span class="tok-f">amount_rial</span>,
         <span class="tok-s">'callback_url'</span> =&gt; <span class="tok-f">route</span>(<span class="tok-s">'payment.result'</span>),
@@ -178,14 +176,14 @@
 }</code></pre></div>
 
       <h2 id="raw">بدون SDK (cURL خام)<a class="h-anchor" href="#raw">#</a></h2>
-      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>خام — بدون فایل SDK</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-n">$ch</span> = <span class="tok-f">curl_init</span>(<span class="tok-s">'https://webiro.ir/gateway/api/v1/payments'</span>);
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>خام — بدون فایل SDK</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-n">$ch</span> = <span class="tok-f">curl_init</span>(<span class="tok-s">'https://your-domain.ir/gateway/api/v1/payments'</span>);
 <span class="tok-f">curl_setopt_array</span>(<span class="tok-n">$ch</span>, [
     CURLOPT_POST           =&gt; <span class="tok-k">true</span>,
     CURLOPT_RETURNTRANSFER =&gt; <span class="tok-k">true</span>,
     CURLOPT_HTTPHEADER     =&gt; [<span class="tok-s">'X-API-Key: wgr_...'</span>, <span class="tok-s">'Content-Type: application/json'</span>],
     CURLOPT_POSTFIELDS     =&gt; <span class="tok-f">json_encode</span>([
         <span class="tok-s">'amount'</span>       =&gt; <span class="tok-n">2500000</span>,
-        <span class="tok-s">'callback_url'</span> =&gt; <span class="tok-s">'https://lahze-app.ir/payment/result'</span>,
+        <span class="tok-s">'callback_url'</span> =&gt; <span class="tok-s">'https://your-shop.ir/payment/result'</span>,
         <span class="tok-s">'order_id'</span>     =&gt; <span class="tok-s">'ORD-101'</span>,
     ]),
 ]);
@@ -203,8 +201,8 @@
       </div>
 
       <footer class="foot">
-        <span>PayViro v1.0 — توسعه‌ی Pedram Gholizadeh (WEBIRO) · مستندات رسمی</span>
-        <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a>
+        <span>PayViro v1.0 — اوپن‌سورس · توسعه‌ی <a href="https://github.com/pedramgholizadeh" target="_blank" rel="noopener">Pedram Gholizadeh (WEBIRO)</a></span>
+        <a href="https://apps.webiro.ir/payviro" target="_blank" rel="noopener">apps.webiro.ir/payviro</a>
       </footer>
     </div>
   </div>

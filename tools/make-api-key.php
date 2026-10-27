@@ -1,9 +1,9 @@
 <?php
 /**
- * Webiro Gateway — تولید کلید API برای پذیرنده‌ی جدید
+ * PayViro — تولید کلید API برای پذیرنده‌ی جدید
  *
  *  اجرا (فقط CLI):
- *      php tools/make-api-key.php "lahze-app" "https://lahze-app.ir"
+ *      php tools/make-api-key.php "lahze-app" "https://your-shop.ir"
  *
  *  خروجی، تکه‌ی آماده‌ی config.php را چاپ می‌کند — آن را داخل
  *  بخش merchants در config/config.php اضافه کنید.
@@ -16,11 +16,11 @@ if (PHP_SAPI !== 'cli') {
     exit('فقط از خط فرمان اجرا شود.');
 }
 
-define('WG_ROOT', dirname(__DIR__));
+define('PV_ROOT', dirname(__DIR__));
 
-require WG_ROOT . '/src/bootstrap.php';
+require PV_ROOT . '/src/bootstrap.php';
 
-use Webiro\Core\Crypto;
+use PayViro\Core\Crypto;
 
 $name = $argv[1] ?? '';
 $callbackDomain = rtrim($argv[2] ?? '', '/');

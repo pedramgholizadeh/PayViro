@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Http\Request;
+use PayViro\Core\Config;
+use PayViro\Core\Http\Request;
 
 /**
  * Built-in sandbox driver — a fake bank page for end-to-end testing

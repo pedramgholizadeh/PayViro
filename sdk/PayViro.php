@@ -4,10 +4,10 @@
  *  PayViro — PHP SDK (سمت دامنه‌های پذیرنده)
  *  Author: Pedram Gholizadeh (WEBIRO) — https://github.com/pedramgholizadeh
  * ------------------------------------------------------------------
- *  این فایل را در پروژه‌ی هر دامنه (مثلاً lahze-app.ir) کپی کنید و
+ *  این فایل را در پروژه‌ی هر دامنه (مثلاً your-shop.ir) کپی کنید و
  *  بدون هیچ وابستگی خارجی استفاده کنید. PHP 7.4+ با cURL کافی است.
  *
- *  مستندات کامل: https://webiro.ir/gateway/docs  |  PayViro — درگاه پرداخت مرکزی
+ *  مستندات کامل: https://your-domain.ir/gateway/docs  |  PayViro — درگاه پرداخت مرکزی
  */
 
 declare(strict_types=1);
@@ -68,7 +68,7 @@ class PayViro
      |  ۱) ایجاد پرداخت
      |  $fields = [
      |      'amount'        => 2500000,            // ریال (یا with 'currency' => 'toman')
-     |      'callback_url'  => 'https://lahze-app.ir/payment/result',
+     |      'callback_url'  => 'https://your-shop.ir/payment/result',
      |      'order_id'      => 'ORD-123',
      |      'description'   => 'خرید اشتراک یک‌ساله',
      |      'mobile'        => '09121234567',      // اختیاری
@@ -117,7 +117,7 @@ class PayViro
     /* ------------------------------------------------------------------
      |  ۳) تایید بازگشت کاربر از بانک (در callback_url شما)
      |  پارامتر sig را با کلید رمز پذیرنده بررسی می‌کند؛ در صورت دستکاری،
-     |  WebiroSignatureException پرتاب می‌شود.
+     |  PayViroSignatureException پرتاب می‌شود.
      * ----------------------------------------------------------------- */
 
     /**
@@ -131,7 +131,7 @@ class PayViro
 
         $signature = (string) ($query['sig'] ?? '');
         if ($signature === '') {
-            throw new WebiroSignatureException('امضای بازگشت پرداخت (sig) موجود نیست.', 0, 'missing_signature');
+            throw new PayViroSignatureException('امضای بازگشت پرداخت (sig) موجود نیست.', 0, 'missing_signature');
         }
 
         $parts = [
@@ -146,7 +146,7 @@ class PayViro
         $expected = hash_hmac('sha256', implode('|', $parts), $this->secret);
 
         if (!hash_equals($expected, $signature)) {
-            throw new WebiroSignatureException('امضای بازگشت پرداخت نامعتبر است — احتمال دستکاری پارامترها.', 0, 'invalid_signature');
+            throw new PayViroSignatureException('امضای بازگشت پرداخت نامعتبر است — احتمال دستکاری پارامترها.', 0, 'invalid_signature');
         }
 
         return [
@@ -164,7 +164,7 @@ class PayViro
 
     /* ------------------------------------------------------------------
      |  ۴) دریافت و تایید وبهوک (در webhook_url شما)
-     |  هدر X-Webiro-Signature روی بدنه‌ی خام بررسی می‌شود.
+     |  هدر X-PayViro-Signature روی بدنه‌ی خام بررسی می‌شود.
      * ----------------------------------------------------------------- */
 
     /**
@@ -176,17 +176,17 @@ class PayViro
         $signature = $signatureHeader ?? (string) ($_SERVER['HTTP_X_WEBIRO_SIGNATURE'] ?? '');
 
         if ($signature === '') {
-            throw new WebiroSignatureException('هدر امضای وبهوک وجود ندارد.', 0, 'missing_signature');
+            throw new PayViroSignatureException('هدر امضای وبهوک وجود ندارد.', 0, 'missing_signature');
         }
 
         $expected = 'sha256=' . hash_hmac('sha256', $rawBody, $this->secret);
         if (!hash_equals($expected, $signature)) {
-            throw new WebiroSignatureException('امضای وبهوک نامعتبر است.', 0, 'invalid_signature');
+            throw new PayViroSignatureException('امضای وبهوک نامعتبر است.', 0, 'invalid_signature');
         }
 
         $decoded = json_decode($rawBody, true);
         if (!is_array($decoded)) {
-            throw new WebiroGatewayException('بدنه وبهوک JSON معتبر نیست.', 0, 'invalid_body');
+            throw new PayViroGatewayException('بدنه وبهوک JSON معتبر نیست.', 0, 'invalid_body');
         }
         return $decoded;
     }
@@ -223,7 +223,7 @@ class PayViro
         if ($raw === false) {
             $error = curl_error($ch);
             curl_close($ch);
-            throw new WebiroGatewayException('اتصال به گیت‌وی برقرار نشد: ' . $error, 0, 'connection_failed');
+            throw new PayViroGatewayException('اتصال به گیت‌وی برقرار نشد: ' . $error, 0, 'connection_failed');
         }
 
         $status = (int) curl_getinfo($ch, CURLINFO_RESPONSE_CODE);
@@ -231,12 +231,12 @@ class PayViro
 
         $decoded = json_decode((string) $raw, true);
         if (!is_array($decoded)) {
-            throw new WebiroGatewayException('پاسخ نامعتبر از گیت‌وی (HTTP ' . $status . ')', $status, 'invalid_response');
+            throw new PayViroGatewayException('پاسخ نامعتبر از گیت‌وی (HTTP ' . $status . ')', $status, 'invalid_response');
         }
 
         if ($status >= 400 || ($decoded['status'] ?? '') === 'error') {
             $error = $decoded['error'] ?? [];
-            throw new WebiroGatewayException(
+            throw new PayViroGatewayException(
                 (string) ($error['message'] ?? 'خطای ناشناخته از گیت‌وی'),
                 $status,
                 (string) ($error['code'] ?? 'unknown')

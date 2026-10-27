@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Core\Http;
+namespace PayViro\Core\Http;
 
 /**
  * Outgoing HTTP response.

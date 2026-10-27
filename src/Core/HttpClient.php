@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Core;
+namespace PayViro\Core;
 
 /**
  * cURL-based HTTP client for talking to the payment providers.
@@ -10,7 +10,7 @@ namespace Webiro\Core;
  */
 final class HttpClient
 {
-    public const UA = 'PayViro/' . WG_VERSION;
+    public const UA = 'PayViro/' . PV_VERSION;
 
     /**
      * @param array<string,string> $headers

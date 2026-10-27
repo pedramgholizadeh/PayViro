@@ -1,4 +1,4 @@
-/* Webiro Gateway — landing behaviours (theme, reveal, copy) */
+/* PayViro — landing behaviours (theme, reveal, copy) */
 (function () {
   'use strict';
 

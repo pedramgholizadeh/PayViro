@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Http\Request;
-use Webiro\Core\HttpClient;
-use Webiro\Core\Logger;
+use PayViro\Core\Http\Request;
+use PayViro\Core\HttpClient;
+use PayViro\Core\Logger;
 
 /**
  * SnappPay driver (اسنپ‌پی) — Buy-Now-Pay-Later.
@@ -46,7 +46,7 @@ final class SnappPayDriver extends AbstractRestDriver
         $data = [
             'amount'               => self::amount($txn, 'rial'),
             'paymentMethodTypeDto' => 'INSTALLMENT',
-            'returnURL'            => \Webiro\Core\Config::base() . '/callback/' . $txn['token'],
+            'returnURL'            => \PayViro\Core\Config::base() . '/callback/' . $txn['token'],
             'transactionId'        => (string) $txn['token'],
             'externalSourceAmount' => 0,
             'discountAmount'       => 0,
@@ -63,7 +63,7 @@ final class SnappPayDriver extends AbstractRestDriver
 
         if (!$successful || $paymentUrl === '' || $paymentToken === '') {
             Logger::warning('snappay.request.failed', ['msg' => $response['message'] ?? mb_substr((string) ($response['error'] ?? ''), 0, 200)]);
-            throw \Webiro\ApiException::gatewayRejected('اسنپ‌پی', 0, (string) ($response['message'] ?? ''));
+            throw \PayViro\ApiException::gatewayRejected('اسنپ‌پی', 0, (string) ($response['message'] ?? ''));
         }
 
         return [
@@ -165,11 +165,11 @@ final class SnappPayDriver extends AbstractRestDriver
     {
         $base = rtrim((string) ($cfg['base_url'] ?? ''), '/');
         if ($base === '' || strpos($base, 'CHANGE_ME') === 0) {
-            throw \Webiro\ApiException::driverNotConfigured('اسنپ‌پی (آدرس base_url از پنل پذیرندگی)');
+            throw \PayViro\ApiException::driverNotConfigured('اسنپ‌پی (آدرس base_url از پنل پذیرندگی)');
         }
         foreach (['client_id', 'client_secret', 'username', 'password'] as $key) {
             if (trim((string) ($cfg[$key] ?? '')) === '') {
-                throw \Webiro\ApiException::driverNotConfigured('اسنپ‌پی (' . $key . ')');
+                throw \PayViro\ApiException::driverNotConfigured('اسنپ‌پی (' . $key . ')');
             }
         }
         return $base;

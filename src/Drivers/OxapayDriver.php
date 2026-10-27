@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Crypto;
-use Webiro\Core\Http\Request;
-use Webiro\Core\HttpClient;
-use Webiro\Core\Logger;
+use PayViro\Core\Config;
+use PayViro\Core\Crypto;
+use PayViro\Core\Http\Request;
+use PayViro\Core\HttpClient;
+use PayViro\Core\Logger;
 
 /**
  * OxaPay driver — crypto payment gateway (USDT/BTC/… over Tron, ERC20, …).
@@ -67,7 +67,7 @@ final class OxapayDriver extends AbstractRestDriver
             $error = (array) ($json['error'] ?? []);
             $detail = (string) ($error['message'] ?? $json['message'] ?? '');
             Logger::warning('oxapay.request.failed', ['status' => $response['status'], 'detail' => $detail]);
-            throw \Webiro\ApiException::gatewayRejected('OxaPay', (int) ($json['status'] ?? $response['status']), $detail);
+            throw \PayViro\ApiException::gatewayRejected('OxaPay', (int) ($json['status'] ?? $response['status']), $detail);
         }
 
         return [

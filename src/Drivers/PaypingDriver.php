@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Http\Request;
-use Webiro\Core\HttpClient;
-use Webiro\Core\Logger;
+use PayViro\Core\Config;
+use PayViro\Core\Http\Request;
+use PayViro\Core\HttpClient;
+use PayViro\Core\Logger;
 
 /**
  * PayPing driver (v2) — Iranian payment aggregator (payping.ir).
@@ -40,7 +40,7 @@ final class PaypingDriver extends AbstractRestDriver
         if ($response['status'] !== 200 || $code === '') {
             $detail = is_array($json) && $json !== [] ? (string) (array_values($json)[0] ?? '') : '';
             Logger::warning('payping.request.failed', ['status' => $response['status'], 'detail' => $detail]);
-            throw \Webiro\ApiException::gatewayRejected('پی‌پینگ', $response['status'], $detail);
+            throw \PayViro\ApiException::gatewayRejected('پی‌پینگ', $response['status'], $detail);
         }
 
         return [

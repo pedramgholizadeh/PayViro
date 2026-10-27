@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\ApiException;
-use Webiro\Core\Config;
+use PayViro\ApiException;
+use PayViro\Core\Config;
 
 /**
  * Resolves gateway names to driver instances.

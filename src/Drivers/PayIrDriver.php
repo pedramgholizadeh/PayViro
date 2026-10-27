@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Http\Request;
-use Webiro\Core\HttpClient;
-use Webiro\Core\Logger;
+use PayViro\Core\Config;
+use PayViro\Core\Http\Request;
+use PayViro\Core\HttpClient;
+use PayViro\Core\Logger;
 
 /**
  * Pay.ir driver — popular Iranian payment aggregator.
@@ -37,7 +37,7 @@ final class PayIrDriver extends AbstractRestDriver
 
         if ((int) ($json['status'] ?? 0) !== 1 || empty($json['token'])) {
             Logger::warning('payir.request.failed', ['status' => $response['status'], 'message' => $json['message'] ?? '']);
-            throw \Webiro\ApiException::gatewayRejected('پی.آی‌آر', (int) ($json['status'] ?? $response['status']), (string) ($json['message'] ?? ''));
+            throw \PayViro\ApiException::gatewayRejected('پی.آی‌آر', (int) ($json['status'] ?? $response['status']), (string) ($json['message'] ?? ''));
         }
 
         return [

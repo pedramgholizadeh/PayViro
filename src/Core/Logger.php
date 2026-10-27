@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Core;
+namespace PayViro\Core;
 
 /**
  * Minimal file logger:  logs/app-Y-m-d.log
@@ -43,7 +43,7 @@ final class Logger
             if (self::LEVELS[$level] < self::LEVELS[$min]) {
                 return;
             }
-            $dir = (string) Config::get('log.dir', WG_ROOT . '/logs');
+            $dir = (string) Config::get('log.dir', PV_ROOT . '/logs');
             if (!is_dir($dir)) {
                 @mkdir($dir, 0755, true);
             }

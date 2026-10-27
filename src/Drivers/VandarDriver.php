@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Http\Request;
-use Webiro\Core\HttpClient;
-use Webiro\Core\Logger;
+use PayViro\Core\Config;
+use PayViro\Core\Http\Request;
+use PayViro\Core\HttpClient;
+use PayViro\Core\Logger;
 
 /**
  * Vandar driver (v3) — Iranian payment aggregator (vandar.io).
@@ -38,7 +38,7 @@ final class VandarDriver extends AbstractRestDriver
             $errors = $json['errors'] ?? [];
             $detail = is_array($errors) && $errors !== [] ? (string) (array_values($errors)[0] ?? '') : '';
             Logger::warning('vandar.request.failed', ['status' => $response['status'], 'detail' => $detail]);
-            throw \Webiro\ApiException::gatewayRejected('وندار', (int) ($json['status'] ?? $response['status']), $detail);
+            throw \PayViro\ApiException::gatewayRejected('وندار', (int) ($json['status'] ?? $response['status']), $detail);
         }
 
         return [

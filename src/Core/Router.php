@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Core;
+namespace PayViro\Core;
 
-use Webiro\ApiException;
-use Webiro\Core\Http\Request;
-use Webiro\Core\Http\Response;
+use PayViro\ApiException;
+use PayViro\Core\Http\Request;
+use PayViro\Core\Http\Response;
 
 /**
  * Minimal pattern router:  '/api/v1/payments/{token}'

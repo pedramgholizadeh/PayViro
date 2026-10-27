@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Core;
+namespace PayViro\Core;
 
-use Webiro\ApiException;
+use PayViro\ApiException;
 
 /**
  * Configuration loader — reads config/config.php once.
@@ -22,7 +22,7 @@ final class Config
         if (self::$data !== null) {
             return;
         }
-        $file = WG_ROOT . '/config/config.php';
+        $file = PV_ROOT . '/config/config.php';
         if (!is_file($file)) {
             throw new ApiException(
                 500,

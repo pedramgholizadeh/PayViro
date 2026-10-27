@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Http\Request;
-use Webiro\Core\HttpClient;
-use Webiro\Core\Logger;
+use PayViro\Core\Config;
+use PayViro\Core\Http\Request;
+use PayViro\Core\HttpClient;
+use PayViro\Core\Logger;
 
 /**
  * Aqayepardakht driver (v2) — Iranian payment service (aqayepardakht.ir).
@@ -38,7 +38,7 @@ final class AqayepardakhtDriver extends AbstractRestDriver
 
         if ((string) ($json['status'] ?? '') !== 'success' || empty($json['transid'])) {
             Logger::warning('aqayepardakht.request.failed', ['status' => $response['status'], 'code' => $json['code'] ?? '']);
-            throw \Webiro\ApiException::gatewayRejected('آقای پرداخت', (string) ($json['code'] ?? $response['status']), self::messageFor((string) ($json['code'] ?? '')));
+            throw \PayViro\ApiException::gatewayRejected('آقای پرداخت', (string) ($json['code'] ?? $response['status']), self::messageFor((string) ($json['code'] ?? '')));
         }
 
         $startBase = $sandbox

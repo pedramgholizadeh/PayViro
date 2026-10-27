@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="مرجع کامل API درگاه پرداخت وبیرو — endpointها، پارامترها، پاسخ‌ها و کدهای خطا">
+<meta name="description" content="مرجع کامل API PayViro — endpointها، پارامترها، پاسخ‌ها و کدهای خطا">
 <title>API Reference | مستندات PayViro — درگاه پرداخت مرکزی</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/index.min.css" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23032018' stroke='%2300c389' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
+<link href="assets/fonts/fonts.css" rel="stylesheet">
 <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -54,13 +52,13 @@
   <div class="main">
     <div class="topbar">
       <button class="icon-btn" data-open-sidebar aria-label="باز کردن منو" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>Webiro Gateway</div>
+      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>PayViro</div>
       <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
     </div>
 
     <div class="content">
       <h1>API Reference</h1>
-      <p class="lead">همه‌ی مسیرها زیر آدرس پایه <code>https://webiro.ir/gateway</code> سرو می‌شوند. فرمت درخواست و پاسخ JSON است و پارامترهای متنی UTF-8 می‌پذیرند.</p>
+      <p class="lead">همه‌ی مسیرها زیر آدرس پایه <code>https://your-domain.ir/gateway</code> سرو می‌شوند. فرمت درخواست و پاسخ JSON است و پارامترهای متنی UTF-8 می‌پذیرند.</p>
 
       <div class="callout tip">
         <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
@@ -70,18 +68,18 @@
       <h2 id="create">ایجاد پرداخت<a class="h-anchor" href="#create">#</a></h2>
       <div class="endpoint"><span class="m m-post">POST</span><span class="path">/api/v1/payments</span><span class="desc">ساخت تراکنش و دریافت لینک پرداخت</span></div>
 
-      <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>Request</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>curl -X POST https://webiro.ir/gateway/api/v1/payments \
+      <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>Request</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>curl -X POST https://your-domain.ir/gateway/api/v1/payments \
   -H <span class="tok-s">"X-API-Key: wgr_..."</span> \
   -H <span class="tok-s">"Content-Type: application/json"</span> \
   -d <span class="tok-s">'{
         "amount": 2500000,
         "currency": "toman",
         "gateway": "auto",
-        "callback_url": "https://lahze-app.ir/payment/result",
+        "callback_url": "https://your-shop.ir/payment/result",
         "order_id": "ORD-101",
         "description": "خرید اشتراک یک‌ساله",
         "mobile": "09121234567",
-        "webhook_url": "https://lahze-app.ir/api/payment/webhook",
+        "webhook_url": "https://your-shop.ir/api/payment/webhook",
         "idempotency_key": "ORD-101"
       }'</span></code></pre></div>
 
@@ -104,7 +102,7 @@
   <span class="tok-p">"status"</span>: <span class="tok-s">"success"</span>,
   <span class="tok-p">"data"</span>: {
     <span class="tok-p">"token"</span>: <span class="tok-s">"pay_bf5adb5758e2bd64e42c59ca386228b5"</span>,
-    <span class="tok-p">"payment_url"</span>: <span class="tok-s">"https://webiro.ir/gateway/go/pay_bf5adb..."</span>,
+    <span class="tok-p">"payment_url"</span>: <span class="tok-s">"https://your-domain.ir/gateway/go/pay_bf5adb..."</span>,
     <span class="tok-p">"gateway"</span>: <span class="tok-s">"zarinpal"</span>,
     <span class="tok-p">"status"</span>: <span class="tok-s">"pending"</span>,
     <span class="tok-p">"amount"</span>: <span class="tok-n">25000000</span>,
@@ -119,7 +117,7 @@
 
       <h2 id="status">استعلام وضعیت<a class="h-anchor" href="#status">#</a></h2>
       <div class="endpoint"><span class="m m-get">GET</span><span class="path">/api/v1/payments/{token}</span><span class="desc">وضعیت لحظه‌ای تراکنش — منبع حقیقت</span></div>
-      <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>Request / Response</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>curl https://webiro.ir/gateway/api/v1/payments/pay_bf5adb... \
+      <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>Request / Response</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>curl https://your-domain.ir/gateway/api/v1/payments/pay_bf5adb... \
   -H <span class="tok-s">"X-API-Key: wgr_..."</span>
 
 {
@@ -208,8 +206,8 @@
       </div>
 
       <footer class="foot">
-        <span>PayViro v1.0 — توسعه‌ی Pedram Gholizadeh (WEBIRO) · مستندات رسمی</span>
-        <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a>
+        <span>PayViro v1.0 — اوپن‌سورس · توسعه‌ی <a href="https://github.com/pedramgholizadeh" target="_blank" rel="noopener">Pedram Gholizadeh (WEBIRO)</a></span>
+        <a href="https://apps.webiro.ir/payviro" target="_blank" rel="noopener">apps.webiro.ir/payviro</a>
       </footer>
     </div>
   </div>

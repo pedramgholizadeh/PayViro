@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Core;
+namespace PayViro\Core;
 
 /**
  * HMAC signing / token generation helpers.

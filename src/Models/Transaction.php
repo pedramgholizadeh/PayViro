@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Models;
+namespace PayViro\Models;
 
-use Webiro\Core\Database;
+use PayViro\Core\Database;
 
 /**
  * Transaction repository & state machine.

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Http\Request;
-use Webiro\Core\HttpClient;
-use Webiro\Core\Logger;
+use PayViro\Core\Config;
+use PayViro\Core\Http\Request;
+use PayViro\Core\HttpClient;
+use PayViro\Core\Logger;
 
 /**
  * NextPay driver — Iranian payment aggregator (nextpay.org).
@@ -39,7 +39,7 @@ final class NextpayDriver extends AbstractRestDriver
 
         if ($code !== -1 || empty($json['trans_id'])) {
             Logger::warning('nextpay.request.failed', ['code' => $code, 'message' => $json['message'] ?? '']);
-            throw \Webiro\ApiException::gatewayRejected('نکست‌پی', $code, (string) ($json['message'] ?? ''));
+            throw \PayViro\ApiException::gatewayRejected('نکست‌پی', $code, (string) ($json['message'] ?? ''));
         }
 
         return [

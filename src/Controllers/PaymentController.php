@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Controllers;
+namespace PayViro\Controllers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Http\Request;
-use Webiro\Core\Http\Response;
-use Webiro\Core\Logger;
-use Webiro\Drivers\DriverFactory;
-use Webiro\Models\Transaction;
-use Webiro\Services\PaymentService;
+use PayViro\Core\Config;
+use PayViro\Core\Http\Request;
+use PayViro\Core\Http\Response;
+use PayViro\Core\Logger;
+use PayViro\Drivers\DriverFactory;
+use PayViro\Models\Transaction;
+use PayViro\Services\PaymentService;
 
 /**
  * Browser-facing flow: /go/{token}, /callback/{token} and the sandbox page.
@@ -92,28 +92,28 @@ final class PaymentController
 <style>
 :root { color-scheme: dark; }
 * { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Vazirmatn, "Segoe UI", Tahoma, sans-serif; background:#020617; color:#F8FAFC; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:16px; }
-.terminal { width:100%; max-width:420px; background:#0E1223; border:1px solid #1E293B; border-radius:20px; overflow:hidden; }
-.header { background:linear-gradient(135deg,#064e3b,#022c22); padding:18px 24px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #166534; }
-.logo { width:44px; height:44px; border-radius:12px; background:#022c22; border:1px solid #22c55e55; display:flex; align-items:center; justify-content:center; font-size:11px; color:#22C55E; font-weight:700; }
-.header h2 { font-size:14px; font-weight:600; color:#D1FAE5; }
-.header span { font-size:11px; color:#6EE7B7; display:block; }
+body { font-family: Vazirmatn, "Segoe UI", Tahoma, sans-serif; background:#030806; color:#eefdf6; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:16px; }
+.terminal { width:100%; max-width:420px; background:#0a1410; border:1px solid #1a332a; border-radius:20px; overflow:hidden; }
+.header { background:linear-gradient(135deg,#065f46,#032018); padding:18px 24px; display:flex; align-items:center; gap:12px; border-bottom:1px solid #065f46; }
+.logo { width:44px; height:44px; border-radius:12px; background:#032018; border:1px solid #00c38955; display:flex; align-items:center; justify-content:center; font-size:11px; color:#00c389; font-weight:700; }
+.header h2 { font-size:14px; font-weight:600; color:#c9f7e8; }
+.header span { font-size:11px; color:#6ee7c7; display:block; }
 .body { padding:24px; }
-.row { display:flex; justify-content:space-between; padding:10px 0; font-size:13px; border-bottom:1px dashed #1E293B; }
+.row { display:flex; justify-content:space-between; padding:10px 0; font-size:13px; border-bottom:1px dashed #1a332a; }
 .row:last-of-type { border-bottom:0; }
-.row .label { color:#94A3B8; }
+.row .label { color:#8fb8a8; }
 .row .value { font-weight:600; }
 .amount { text-align:center; padding:18px 0; }
-.amount b { font-size:26px; color:#22C55E; letter-spacing:.5px; }
-.amount span { display:block; font-size:12px; color:#94A3B8; margin-top:4px; }
+.amount b { font-size:26px; color:#00c389; letter-spacing:.5px; }
+.amount span { display:block; font-size:12px; color:#8fb8a8; margin-top:4px; }
 .actions { display:grid; gap:10px; margin-top:20px; }
 button { font-family:inherit; font-size:14px; font-weight:600; padding:13px; border-radius:12px; border:1px solid transparent; cursor:pointer; transition:transform .15s ease, filter .15s ease; }
 button:hover { filter:brightness(1.1); }
 button:active { transform:scale(.98); }
-.pay { background:#22C55E; color:#052e16; }
+.pay { background:#00c389; color:#032018; }
 .fail { background:#7f1d1d; color:#fecaca; }
-.cancel { background:transparent; color:#94A3B8; border-color:#334155; }
-.sandbox-note { margin-top:16px; font-size:11px; color:#64748B; text-align:center; line-height:1.8; }
+.cancel { background:transparent; color:#8fb8a8; border-color:#334155; }
+.sandbox-note { margin-top:16px; font-size:11px; color:#5e8577; text-align:center; line-height:1.8; }
 </style>
 </head>
 <body>

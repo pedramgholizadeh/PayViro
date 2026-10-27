@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Core;
+namespace PayViro\Core;
 
 /**
  * Simple per-minute rate limiter backed by the database.

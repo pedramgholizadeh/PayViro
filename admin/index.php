@@ -1,8 +1,8 @@
 <?php
 /**
  * ------------------------------------------------------------------
- *  Webiro Gateway — پنل مدیریت
- *  آدرس: https://webiro.ir/gateway/admin
+ *  PayViro — پنل مدیریت
+ *  آدرس: https://your-domain.ir/gateway/admin
  * ------------------------------------------------------------------
  *  احراز هویت: username/password از config/config.php
  *  امکانات: داشبورد آماری، لیست تراکنش‌ها با فیلتر، جزئیات تراکنش،
@@ -11,16 +11,16 @@
 
 declare(strict_types=1);
 
-define('WG_ROOT', dirname(__DIR__));
+define('PV_ROOT', dirname(__DIR__));
 
-require WG_ROOT . '/src/bootstrap.php';
+require PV_ROOT . '/src/bootstrap.php';
 
-use Webiro\Core\Config;
-use Webiro\Core\Database;
-use Webiro\Core\Http\Response;
-use Webiro\Models\Transaction;
-use Webiro\Services\PaymentService;
-use Webiro\Services\WebhookService;
+use PayViro\Core\Config;
+use PayViro\Core\Database;
+use PayViro\Core\Http\Response;
+use PayViro\Models\Transaction;
+use PayViro\Services\PaymentService;
+use PayViro\Services\WebhookService;
 
 session_name('wg_admin');
 session_start();
@@ -128,20 +128,19 @@ if (!$logged) {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>ورود به پنل مدیریت | PayViro</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="../assets/fonts/fonts.css" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Vazirmatn,Tahoma,sans-serif;background:#020617;color:#F8FAFC;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
-.login{width:100%;max-width:380px;background:#0E1223;border:1px solid #1E293B;border-radius:20px;padding:40px 32px}
+body{font-family:Vazirmatn,Tahoma,sans-serif;background:#030806;color:#eefdf6;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
+.login{width:100%;max-width:380px;background:#0a1410;border:1px solid #1a332a;border-radius:20px;padding:40px 32px}
 .logo{text-align:center;margin-bottom:28px}
-.logo .mark{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#166534,#052e16);border:1px solid #22c55e44;margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
+.logo .mark{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#065f46,#032018);border:1px solid #00c38944;margin:0 auto 14px;display:flex;align-items:center;justify-content:center}
 .logo h1{font-size:17px;font-weight:700}
-.logo p{font-size:12px;color:#64748B;margin-top:4px}
-label{display:block;font-size:12px;color:#94A3B8;margin:14px 0 6px}
-input{width:100%;background:#020617;border:1px solid #1E293B;border-radius:10px;padding:11px 14px;color:#F8FAFC;font-family:inherit;font-size:14px;outline:none;transition:border-color .2s}
-input:focus{border-color:#22C55E}
-button{width:100%;margin-top:22px;background:#22C55E;color:#052e16;font-family:inherit;font-weight:700;font-size:14px;border:0;border-radius:10px;padding:12px;cursor:pointer;transition:filter .2s}
+.logo p{font-size:12px;color:#5e8577;margin-top:4px}
+label{display:block;font-size:12px;color:#8fb8a8;margin:14px 0 6px}
+input{width:100%;background:#030806;border:1px solid #1a332a;border-radius:10px;padding:11px 14px;color:#eefdf6;font-family:inherit;font-size:14px;outline:none;transition:border-color .2s}
+input:focus{border-color:#00c389}
+button{width:100%;margin-top:22px;background:#00c389;color:#032018;font-family:inherit;font-weight:700;font-size:14px;border:0;border-radius:10px;padding:12px;cursor:pointer;transition:filter .2s}
 button:hover{filter:brightness(1.1)}
 .alert{border-radius:10px;padding:10px 14px;font-size:12.5px;margin-top:16px}
 .alert-error{background:#450a0a;color:#fca5a5;border:1px solid #7f1d1d}
@@ -151,7 +150,7 @@ button:hover{filter:brightness(1.1)}
 <form class="login" method="post">
   <input type="hidden" name="csrf" value="{$csrf}">
   <div class="logo">
-    <div class="mark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>
+    <div class="mark"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00c389" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>
     <h1>پنل مدیریت PayViro</h1>
     <p>درگاه پرداخت مرکزی — نسخه ۱.۰</p>
   </div>
@@ -221,51 +220,50 @@ $csrf = e(admin_csrf());
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>پنل مدیریت | PayViro</title>
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="../assets/fonts/fonts.css" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Vazirmatn,Tahoma,sans-serif;background:#020617;color:#F8FAFC;font-size:14px}
-a{color:#4ADE80;text-decoration:none}
-.topbar{background:#0E1223;border-bottom:1px solid #1E293B;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
+body{font-family:Vazirmatn,Tahoma,sans-serif;background:#030806;color:#eefdf6;font-size:14px}
+a{color:#2ee6b0;text-decoration:none}
+.topbar{background:#0a1410;border-bottom:1px solid #1a332a;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:10}
 .topbar h1{font-size:15px;font-weight:700;display:flex;align-items:center;gap:10px}
-.topbar h1 .dot{width:9px;height:9px;border-radius:50%;background:#22C55E;box-shadow:0 0 12px #22C55E88}
-.topbar a{font-size:12.5px;color:#94A3B8}
+.topbar h1 .dot{width:9px;height:9px;border-radius:50%;background:#00c389;box-shadow:0 0 12px #00c38988}
+.topbar a{font-size:12.5px;color:#8fb8a8}
 .container{max-width:1100px;margin:0 auto;padding:24px}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:24px}
-.stat{background:#0E1223;border:1px solid #1E293B;border-radius:14px;padding:18px}
-.stat .label{font-size:12px;color:#94A3B8;margin-bottom:8px}
-.stat .value{font-size:22px;font-weight:800;color:#F8FAFC}
-.stat .value small{font-size:11px;color:#64748B;font-weight:400}
-.stat.green .value{color:#22C55E}
-.card{background:#0E1223;border:1px solid #1E293B;border-radius:14px;padding:20px;margin-bottom:20px}
+.stat{background:#0a1410;border:1px solid #1a332a;border-radius:14px;padding:18px}
+.stat .label{font-size:12px;color:#8fb8a8;margin-bottom:8px}
+.stat .value{font-size:22px;font-weight:800;color:#eefdf6}
+.stat .value small{font-size:11px;color:#5e8577;font-weight:400}
+.stat.green .value{color:#00c389}
+.card{background:#0a1410;border:1px solid #1a332a;border-radius:14px;padding:20px;margin-bottom:20px}
 .card h2{font-size:14px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .filters{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
-.filters label{display:block;font-size:11px;color:#94A3B8;margin-bottom:4px}
-.filters select,.filters input{background:#020617;border:1px solid #1E293B;border-radius:8px;color:#F8FAFC;padding:8px 10px;font-family:inherit;font-size:13px;min-width:130px}
-.filters button,.btn{background:#166534;border:0;color:#DCFCE7;border-radius:8px;padding:8px 16px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:filter .2s}
+.filters label{display:block;font-size:11px;color:#8fb8a8;margin-bottom:4px}
+.filters select,.filters input{background:#030806;border:1px solid #1a332a;border-radius:8px;color:#eefdf6;padding:8px 10px;font-family:inherit;font-size:13px;min-width:130px}
+.filters button,.btn{background:#065f46;border:0;color:#d7fff0;border-radius:8px;padding:8px 16px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:filter .2s}
 .filters button:hover,.btn:hover{filter:brightness(1.15)}
 table{width:100%;border-collapse:collapse}
-th{font-size:11.5px;color:#64748B;text-align:right;padding:10px 8px;border-bottom:1px solid #1E293B;font-weight:600}
-td{padding:11px 8px;border-bottom:1px solid #141a2e;font-size:12.5px}
-tr:hover td{background:#0a0e1d}
+th{font-size:11.5px;color:#5e8577;text-align:right;padding:10px 8px;border-bottom:1px solid #1a332a;font-weight:600}
+td{padding:11px 8px;border-bottom:1px solid #12241d;font-size:12.5px}
+tr:hover td{background:#081209}
 .ltr{direction:ltr;text-align:left;font-family:ui-monospace,monospace;font-size:11.5px}
 .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
-.s-paid{background:#052e16;color:#4ADE80;border:1px solid #166534}
+.s-paid{background:#032018;color:#2ee6b0;border:1px solid #065f46}
 .s-pending{background:#422006;color:#FCD34D;border:1px solid #92400e}
 .s-failed{background:#450a0a;color:#FCA5A5;border:1px solid #7f1d1d}
 .s-canceled{background:#1e1b4b;color:#A5B4FC;border:1px solid #3730a3}
 .s-expired{background:#1c1917;color:#D6D3D1;border:1px solid #44403c}
 .alert{border-radius:10px;padding:11px 16px;font-size:13px;margin-bottom:16px}
-.alert-ok{background:#052e16;color:#86EFAC;border:1px solid #166534}
+.alert-ok{background:#032018;color:#8cf5d4;border:1px solid #065f46}
 .alert-error{background:#450a0a;color:#FCA5A5;border:1px solid #7f1d1d}
 .pagination{display:flex;gap:6px;justify-content:center;margin-top:16px}
-.pagination a{padding:6px 12px;border:1px solid #1E293B;border-radius:8px;font-size:12px;color:#94A3B8}
-.pagination a.active{background:#166534;color:#fff;border-color:#166534}
+.pagination a{padding:6px 12px;border:1px solid #1a332a;border-radius:8px;font-size:12px;color:#8fb8a8}
+.pagination a.active{background:#065f46;color:#fff;border-color:#065f46}
 .kv{display:grid;grid-template-columns:170px 1fr;gap:8px 14px;font-size:13px}
-.kv .k{color:#94A3B8}
+.kv .k{color:#8fb8a8}
 .kv .v{word-break:break-all}
-pre.raw{background:#020617;border:1px solid #1E293B;border-radius:10px;padding:14px;font-size:11.5px;overflow-x:auto;direction:ltr;text-align:left;line-height:1.7}
+pre.raw{background:#030806;border:1px solid #1a332a;border-radius:10px;padding:14px;font-size:11.5px;overflow-x:auto;direction:ltr;text-align:left;line-height:1.7}
 @media (max-width:640px){.kv{grid-template-columns:1fr}.container{padding:14px}table{font-size:11px}}
 </style>
 </head>
@@ -339,7 +337,7 @@ pre.raw{background:#020617;border:1px solid #1E293B;border-radius:10px;padding:1
   <?php endif; ?>
 
   <div class="card">
-    <h2>تراکنش‌ها <span style="font-weight:400;font-size:12px;color:#64748B">(<?= fmt_rial($total) ?> مورد)</span></h2>
+    <h2>تراکنش‌ها <span style="font-weight:400;font-size:12px;color:#5e8577">(<?= fmt_rial($total) ?> مورد)</span></h2>
     <form method="get" class="filters" style="margin-bottom:16px">
       <div><label>وضعیت</label>
         <select name="status">
@@ -367,7 +365,7 @@ pre.raw{background:#020617;border:1px solid #1E293B;border-radius:10px;padding:1
     <table>
       <tr><th>زمان</th><th>توکن</th><th>پذیرنده</th><th>درگاه</th><th>مبلغ (ریال)</th><th>سفارش</th><th>وضعیت</th><th></th></tr>
       <?php if ($rows === []): ?>
-      <tr><td colspan="8" style="text-align:center;color:#64748B;padding:24px">تراکنشی یافت نشد.</td></tr>
+      <tr><td colspan="8" style="text-align:center;color:#5e8577;padding:24px">تراکنشی یافت نشد.</td></tr>
       <?php endif; ?>
       <?php foreach ($rows as $r): ?>
       <tr>
@@ -393,7 +391,7 @@ pre.raw{background:#020617;border:1px solid #1E293B;border-radius:10px;padding:1
   </div>
 
   <p style="color:#475569;font-size:11.5px;text-align:center;padding:10px 0 20px">توسعه: Pedram Gholizadeh (WEBIRO) — <br>
-    PayViro v<?= e(WG_VERSION) ?> — مستندات: <a href="../docs/">/gateway/docs</a>
+    PayViro v<?= e(PV_VERSION) ?> — مستندات: <a href="../docs/">/gateway/docs</a>
   </p>
 </div>
 </body>

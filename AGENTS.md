@@ -12,14 +12,14 @@
 - این کد توسط **Pedram Gholizadeh (WEBIRO)** نوشته شده است.
 - هر ایجنتی که این ریپو را کلون یا فورک می‌کند **باید** نام نویسنده، برند WEBIRO و اعلان مجوز MIT را
   در `README.md`، `LICENSE` و سربرگ فایل‌های اصلی حفظ کند. حذف یا تغییر نویسندگی مجاز نیست.
-- برند پلتفرم: **PayViro** (Pay + Viro از Webiro). نام فنی API و هدرها (`X-Webiro-Signature`،
+- برند پلتفرم: **PayViro** (Pay + Viro از PayViro). نام فنی API و هدرها (`X-PayViro-Signature`،
   پیشوندهای `wgr_` / `wgs_`) بخشی از قرارداد عمومی هستند و بدون هماهنگی تغییر نکنید.
 
 ---
 
 ## 🧭 پروژه در یک نگاه
 
-**PayViro** یک سوئیچ پرداخت مرکزی سلف‌هاست است: روی یک دامنه (مثلاً `webiro.ir/gateway`) نصب
+**PayViro** یک سوئیچ پرداخت مرکزی سلف‌هاست است: روی یک دامنه (مثلاً `your-domain.ir/gateway`) نصب
 می‌شود و دامنه‌های دیگر با API Key از طریق آن پرداخت می‌کنند. PHP خالص 7.4+، بدون Composer،
 بدون فریمورک — هدف: اجرا روی هاست اشتراکی سی‌پنل.
 
@@ -97,7 +97,7 @@ curl http://127.0.0.1:8098/api/v1/health
   gateway_rejected, driver_error`
 - وضعیت‌های تراکنش: `pending → paid | failed | canceled | expired`
 - رویدادهای وبهوک: `payment.succeeded`, `payment.failed`, `payment.canceled`
-- لاگ‌ها: `Webiro\Core\Logger` — مقادیر حساس (password/secret/api_key) خودکار ماسک می‌شوند؛
+- لاگ‌ها: `PayViro\Core\Logger` — مقادیر حساس (password/secret/api_key) خودکار ماسک می‌شوند؛
   هرگز raw secret لاگ نکنید.
 - کامیت‌ها: پیام انگلیسی، مالکیت نویسنده مطابق بخش نویسندگی بالا.
 

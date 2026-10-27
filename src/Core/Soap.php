@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Core;
+namespace PayViro\Core;
 
 /**
  * Tiny SOAP helper for gateways that still expose .asmx endpoints

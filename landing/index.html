@@ -8,10 +8,8 @@
 <meta property="og:description" content="یک بار نصب کنید، همه‌ی دامنه‌هایتان پرداخت داشته باشند. بانک سامان و پاسارگاد در اولویت، ۱۰+ درگاه بانکی، درگاه‌های قسطی (اسنپ‌پی، دیجی‌پی، تارا، لندو، قسطا) و کریپتو — با یک API واحد.">
 <meta property="og:type" content="website">
 <title>PayViro — سوئیچ پرداخت مرکزی اوپن‌سورس</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/index.min.css" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23032018' stroke='%2300c389' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
+<link href="assets/fonts/fonts.css" rel="stylesheet">
 <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -27,8 +25,8 @@
       <a href="#features">امکانات</a>
       <a href="#gateways">درگاه‌ها</a>
       <a href="#security">امنیت</a>
-      <a href="https://webiro.ir/gateway/docs/" target="_blank" rel="noopener">مستندات</a>
-      <a class="cta" href="#repo">دریافت از گیت‌هاب</a>
+      <a href="docs/" target="_blank" rel="noopener">مستندات</a>
+      <a class="cta" href="https://github.com/pedramgholizadeh/PayViro" target="_blank" rel="noopener">دریافت از گیت‌هاب</a>
     </nav>
   </div>
 </header>
@@ -45,11 +43,11 @@
       درگاه‌های پرداخت روی یک دامنه‌ی مرکزی متمرکز می‌شوند و بقیه‌ی سایت‌ها و اپلیکیشن‌هایتان با یک فراخوانی ساده API از آن استفاده می‌کنند — بدون نیاز به درگاه و ای‌نماد جداگانه برای هر دامنه.
     </p>
     <div class="actions reveal">
-      <a class="btn btn-primary" href="https://webiro.ir/gateway/docs/" target="_blank" rel="noopener">
+      <a class="btn btn-primary" href="docs/" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
         شروع سریع در مستندات
       </a>
-      <a class="btn btn-ghost" href="#repo">
+      <a class="btn btn-ghost" href="https://github.com/pedramgholizadeh/PayViro" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.36 1.12 2.94.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9 0 1.38-.01 2.49-.01 2.83 0 .27.18.6.69.49A10.03 10.03 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
         سورس روی گیت‌هاب
       </a>
@@ -67,9 +65,9 @@
 <section id="features">
   <div class="wrap">
     <div class="sec-head reveal">
-      <span class="kicker">چرا وبیرو گیت‌وی؟</span>
+      <span class="kicker">چرا PayViro گیت‌وی؟</span>
       <h2>یک سوئیچ برای تمام امپراتوری</h2>
-      <p>هرچه دامنه و محصول بیشتر، مدیریت درگاه سخت‌تر. وبیرو گیت‌وی همه را پشت یک API جمع می‌کند.</p>
+      <p>هرچه دامنه و محصول بیشتر، مدیریت درگاه سخت‌تر. PayViro گیت‌وی همه را پشت یک API جمع می‌کند.</p>
     </div>
     <div class="grid cols-3">
       <div class="card reveal">
@@ -157,7 +155,7 @@
       </div>
     </div>
     <p style="text-align:center;margin-top:22px;font-size:13px;color:var(--faint)">
-      درایور جدید اضافه کردن؟ یک کلاس با دو متد کافی است — <a href="https://webiro.ir/gateway/docs/gateways.html" target="_blank" rel="noopener">راهنمای معماری درایور</a>
+      درایور جدید اضافه کردن؟ یک کلاس با دو متد کافی است — <a href="docs/gateways.html" target="_blank" rel="noopener">راهنمای معماری درایور</a>
     </p>
   </div>
 </section>
@@ -190,9 +188,9 @@
     <div style="margin-top:44px" class="reveal">
       <div class="codebox">
         <div class="head"><span><span class="dot"></span>شروع سریع — سمت دامنه‌ی پذیرنده</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div>
-        <pre><code><span class="tok-k">require</span> <span class="tok-s">'WebiroGateway.php'</span>;
+        <pre><code><span class="tok-k">require</span> <span class="tok-s">'PayViro.php'</span>;
 
-<span class="tok-n">$gateway</span> = <span class="tok-k">new</span> <span class="tok-f">WebiroGateway</span>(<span class="tok-s">'https://webiro.ir/gateway'</span>, <span class="tok-s">'wgr_...'</span>, <span class="tok-s">'wgs_...'</span>);
+<span class="tok-n">$gateway</span> = <span class="tok-k">new</span> <span class="tok-f">PayViro</span>(<span class="tok-s">'https://your-domain.ir/gateway'</span>, <span class="tok-s">'wgr_...'</span>, <span class="tok-s">'wgs_...'</span>);
 
 <span class="tok-c">// ۱) ایجاد پرداخت و هدایت کاربر (ریال یا تومان، هر درگاهی)</span>
 <span class="tok-n">$payment</span> = <span class="tok-n">$gateway</span>-&gt;<span class="tok-f">requestPayment</span>([
@@ -200,7 +198,7 @@
     <span class="tok-s">'currency'</span>     =&gt; <span class="tok-s">'toman'</span>,
     <span class="tok-s">'gateway'</span>      =&gt; <span class="tok-s">'auto'</span>,    <span class="tok-c">// یا oxapay برای کریپتو</span>
     <span class="tok-s">'order_id'</span>     =&gt; <span class="tok-s">'ORD-101'</span>,
-    <span class="tok-s">'callback_url'</span> =&gt; <span class="tok-s">'https://lahze-app.ir/payment/result'</span>,
+    <span class="tok-s">'callback_url'</span> =&gt; <span class="tok-s">'https://your-shop.ir/payment/result'</span>,
 ]);
 <span class="tok-f">header</span>(<span class="tok-s">'Location: '</span> . <span class="tok-n">$payment</span>[<span class="tok-s">'payment_url'</span>]);
 
@@ -242,8 +240,8 @@
         روی هاست خودتان نصب می‌شود؛ هیچ داده‌ای از زیرساخت شما خارج نمی‌شود. مشارکت، فورک و درایور جدید — همه خوش‌آمدگویی.
       </p>
       <div class="actions" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a class="btn btn-primary" href="#repo">مشاهده‌ی سورس روی گیت‌هاب</a>
-        <a class="btn btn-ghost" href="https://webiro.ir/gateway/docs/" target="_blank" rel="noopener">مطالعه‌ی مستندات</a>
+        <a class="btn btn-primary" href="https://github.com/pedramgholizadeh/PayViro" target="_blank" rel="noopener">مشاهده‌ی سورس روی گیت‌هاب</a>
+        <a class="btn btn-ghost" href="docs/" target="_blank" rel="noopener">مطالعه‌ی مستندات</a>
       </div>
       <div class="license">مجوز MIT — استفاده تجاری آزاد است، با حفظ اعلان مجوز.</div>
     </div>
@@ -254,9 +252,9 @@
   <div class="wrap inner">
     <span>PayViro v1.0 — اوپن‌سورس · توسعه‌ی <b style="color:var(--muted)">Pedram Gholizadeh (WEBIRO)</b> · مجوز MIT</span>
     <span>
-      <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a> ·
-      <a href="https://webiro.ir/gateway/docs/" target="_blank" rel="noopener">مستندات</a> ·
-      <a href="#repo">گیت‌هاب</a>
+      <a href="https://github.com/pedramgholizadeh/PayViro" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="docs/" target="_blank" rel="noopener">مستندات</a> ·
+      <a href="https://github.com/pedramgholizadeh/PayViro" target="_blank" rel="noopener">گیت‌هاب</a>
     </span>
   </div>
 </footer>

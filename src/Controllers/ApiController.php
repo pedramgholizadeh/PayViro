@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Controllers;
+namespace PayViro\Controllers;
 
-use Webiro\ApiException;
-use Webiro\Core\Config;
-use Webiro\Core\Crypto;
-use Webiro\Core\Database;
-use Webiro\Core\Http\Request;
-use Webiro\Core\Http\Response;
-use Webiro\Core\RateLimiter;
-use Webiro\Drivers\DriverFactory;
-use Webiro\Models\Transaction;
-use Webiro\Services\PaymentService;
+use PayViro\ApiException;
+use PayViro\Core\Config;
+use PayViro\Core\Crypto;
+use PayViro\Core\Database;
+use PayViro\Core\Http\Request;
+use PayViro\Core\Http\Response;
+use PayViro\Core\RateLimiter;
+use PayViro\Drivers\DriverFactory;
+use PayViro\Models\Transaction;
+use PayViro\Services\PaymentService;
 
 /**
  * Server-to-server JSON API for merchant domains.
@@ -33,8 +33,8 @@ final class ApiController
         return Response::json([
             'status'  => 'success',
             'data'    => [
-                'service'  => 'Webiro Gateway',
-                'version'  => WG_VERSION,
+                'service'  => 'PayViro',
+                'version'  => PV_VERSION,
                 'time'     => wg_now(),
                 'database' => $dbOk ? 'ok' : 'error',
                 'gateways' => array_keys(array_filter(DriverFactory::enabled())),

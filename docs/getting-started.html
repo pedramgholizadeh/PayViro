@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="نصب درگاه پرداخت وبیرو روی هاست سی‌پنل — قدم به قدم">
+<meta name="description" content="نصب PayViro روی هاست سی‌پنل — قدم به قدم">
 <title>نصب و راه‌اندازی | مستندات PayViro — درگاه پرداخت مرکزی</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/index.min.css" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23032018' stroke='%2300c389' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
+<link href="assets/fonts/fonts.css" rel="stylesheet">
 <link href="assets/css/style.css" rel="stylesheet">
 </head>
 <body>
@@ -54,25 +52,25 @@
   <div class="main">
     <div class="topbar">
       <button class="icon-btn" data-open-sidebar aria-label="باز کردن منو" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>Webiro Gateway</div>
+      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>PayViro</div>
       <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
     </div>
 
     <div class="content">
       <h1>نصب و راه‌اندازی</h1>
-      <p class="lead">گیت‌وی روی هاست سی‌پنل شما (webiro.ir) نصب می‌شود؛ طراحی‌شده برای هاست اشتراکی، بدون Composer و بدون دسترسی روت.</p>
+      <p class="lead">گیت‌وی روی هاست سی‌پنل شما (your-domain.ir) نصب می‌شود؛ طراحی‌شده برای هاست اشتراکی، بدون Composer و بدون دسترسی روت.</p>
 
       <h2 id="requirements">پیش‌نیازها<a class="h-anchor" href="#requirements">#</a></h2>
       <div class="tbl-wrap"><table>
         <tr><th>نیاز</th><th>جزئیات</th></tr>
         <tr><td><code>PHP 7.4+</code></td><td>PHP 8.x هم کاملاً پشتیبانی می‌شود. از MultiPHP Manager سی‌پنل انتخاب کنید.</td></tr>
         <tr><td>اکستنشن‌های PHP</td><td><code>curl</code> و <code>PDO</code> اجباری · <code>pdo_sqlite</code> (پیش‌فرض) یا <code>pdo_mysql</code> · <code>soap</code> فقط برای درگاه سامان</td></tr>
-        <tr><td>HTTPS</td><td>گواهی SSL روی webiro.ir فعال باشد (AutoSSL/Let's Encrypt کافی است).</td></tr>
+        <tr><td>HTTPS</td><td>گواهی SSL روی دامنه‌ی شما فعال باشد (AutoSSL/Let's Encrypt کافی است).</td></tr>
         <tr><td>فضا</td><td>کمتر از ۲ مگابایت.</td></tr>
       </table></div>
 
       <h2 id="upload">۱) آپلود روی سی‌پنل<a class="h-anchor" href="#upload">#</a></h2>
-      <p>محتویات پوشه‌ی <code>webiro-gateway</code> را داخل <code>public_html/gateway/</code> آپلود کنید تا ساختار به این شکل باشد:</p>
+      <p>محتویات پوشه‌ی <code>payviro</code> را داخل <code>public_html/gateway/</code> آپلود کنید تا ساختار به این شکل باشد:</p>
       <div class="code-wrap" data-lang="text"><div class="code-head"><span class="code-lang"><span class="dot"></span>ساختار پوشه‌ها</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>public_html/
 └── gateway/
     ├── .htaccess          ← روتینگ و مسدودسازی مسیرهای داخلی
@@ -90,7 +88,14 @@
         <p><b>نکته:</b> مسیرهای <code>config</code>، <code>data</code>، <code>logs</code>، <code>src</code>، <code>sdk</code> و <code>tools</code> با <code>.htaccess</code> از دسترسی وب مسدود شده‌اند. فقط <code>index.php</code>، <code>admin/</code> و <code>docs/</code> عمومی هستند.</p>
       </div>
 
-      <h2 id="config">۲) ساخت فایل کانفیگ<a class="h-anchor" href="#config">#</a></h2>
+      <h2 id="installer">۲) نصب‌کننده‌ی وب (پیشنهادی)<a class="h-anchor" href="#installer">#</a></h2>
+      <p>در مرورگر <code>https://your-domain.ir/gateway/install.php</code> را باز کنید. نصب‌کننده پیش‌نیازها را چک می‌کند، دیتابیس را می‌سازد، فایل کانفیگ را می‌نویسد، پنل مدیریت را آماده می‌کند و یک <strong>کلید API دمو</strong> هم تحویل می‌دهد. پس از نصب، نصب‌کننده با فایل <code>data/installed.lock</code> قفل می‌شود.</p>
+      <div class="callout tip">
+        <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p>اعتبارنامه‌ی درگاه‌های بانکی را پس از نصب در <code>config/config.php</code> بخش <code>drivers</code> وارد کنید — روش دستی در ادامه توضیح داده شده است.</p>
+      </div>
+
+      <h2 id="config">۳) ساخت فایل کانفیگ (روش دستی)<a class="h-anchor" href="#config">#</a></h2>
       <p>از File Manager سی‌پنل (یا SSH) یک کپی از فایل نمونه بسازید و مقادیر <code>CHANGE_ME</code> را پر کنید:</p>
       <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>SSH</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>cd ~/public_html/gateway
 cp config/config.example.php config/config.php
@@ -98,38 +103,38 @@ nano config/config.php</code></pre></div>
       <p>مهم‌ترین مقادیر:</p>
       <div class="tbl-wrap"><table>
         <tr><th>کلید</th><th>توضیح</th></tr>
-        <tr><td><code>app.base_url</code></td><td><code>https://webiro.ir/gateway</code> — دقیقاً با همین مسیر، بدون اسلش انتهایی.</td></tr>
+        <tr><td><code>app.base_url</code></td><td><code>https://your-domain.ir/gateway</code> — دقیقاً با همین مسیر، بدون اسلش انتهایی.</td></tr>
         <tr><td><code>admin.username / admin.password</code></td><td>اطلاعات ورود پنل مدیریت — یک رمز قوی بگذارید.</td></tr>
         <tr><td><code>cron.key</code></td><td>کلید فراخوانی کرون وبهوک — یک رشته‌ی تصادفی.</td></tr>
         <tr><td><code>drivers.*</code></td><td>اعتبارنامه‌ی درگاه‌ها — <a href="gateways.html">راهنمای هر درگاه</a>.</td></tr>
         <tr><td><code>db.driver</code></td><td><code>sqlite</code> (پیش‌فرض، بدون تنظیم) یا <code>mysql</code> با مشخصات دیتابیس سی‌پنل.</td></tr>
       </table></div>
 
-      <h2 id="permissions">۳) سطح دسترسی<a class="h-anchor" href="#permissions">#</a></h2>
+      <h2 id="permissions">۴) سطح دسترسی<a class="h-anchor" href="#permissions">#</a></h2>
       <p>پوشه‌های <code>data</code> و <code>logs</code> باید برای کاربر PHP قابل نوشتن باشند (در سی‌پنل معمولاً همان مالک است و کاری لازم نیست). اگر خطای «permission» دیدید، Permission این دو پوشه را روی <code>755</code> بگذارید.</p>
 
-      <h2 id="apikey">۴) ساخت کلید برای دامنه‌ها<a class="h-anchor" href="#apikey">#</a></h2>
+      <h2 id="apikey">۵) ساخت کلید برای دامنه‌ها<a class="h-anchor" href="#apikey">#</a></h2>
       <p>برای هر دامنه‌ی پذیرنده یک کلید بسازید و تکه‌ی خروجی را در <code>merchants</code> کانفیگ اضافه کنید:</p>
-      <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>SSH</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>php tools/make-api-key.php "lahze-app"  "https://lahze-app.ir"
-php tools/make-api-key.php "webirox"    "https://webirox.ir"</code></pre></div>
+      <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>SSH</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>php tools/make-api-key.php "lahze-app"  "https://your-shop.ir"
+php tools/make-api-key.php "shop-two"   "https://your-shop2.ir"</code></pre></div>
       <div class="callout warn">
         <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg>
-        <p><b>محدودیت دامنه:</b> فیلد <code>callback_domain</code> هر پذیرنده، دامنه‌ی مجاز آدرس بازگشت را قفل می‌کند. یعنی کلید lahze-app.ir روی دامنه‌ی دیگری کار نمی‌کند — حتی اگر لو رود.</p>
+        <p><b>محدودیت دامنه:</b> فیلد <code>callback_domain</code> هر پذیرنده، دامنه‌ی مجاز آدرس بازگشت را قفل می‌کند. یعنی کلید your-shop.ir روی دامنه‌ی دیگری کار نمی‌کند — حتی اگر لو رود.</p>
       </div>
 
-      <h2 id="test-drive">۵) تست بدون پول (درگاه سندباکس)<a class="h-anchor" href="#test-drive">#</a></h2>
+      <h2 id="test-drive">۶) تست بدون پول (درگاه سندباکس)<a class="h-anchor" href="#test-drive">#</a></h2>
       <p>تا وقتی اعتبارنامه‌ی بانکی ست نشده، از درگاه داخلی <code>test</code> استفاده کنید. این درگاه یک <a href="gateways.html#test">شبیه‌ساز بانک</a> دارد و همه‌ی مراحل — callback، verify، وبهوک و امضا — را واقعاً اجرا می‌کند:</p>
-      <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>cURL</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>curl -X POST https://webiro.ir/gateway/api/v1/payments \
+      <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>cURL</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>curl -X POST https://your-domain.ir/gateway/api/v1/payments \
   -H <span class="tok-s">"X-API-Key: wgr_..."</span> -H <span class="tok-s">"Content-Type: application/json"</span> \
   -d <span class="tok-s">'{"amount": 1500000, "gateway": "test",
-        "callback_url": "https://lahze-app.ir/payment/result",
+        "callback_url": "https://your-shop.ir/payment/result",
         "order_id": "TEST-1"}'</span>
 
 <span class="tok-c"># payment_url را در مرورگر باز کنید → صفحه‌ی شبیه‌ساز بانک</span></code></pre></div>
 
-      <h2 id="cron">۶) کرون وبهوک (سی‌پنل)<a class="h-anchor" href="#cron">#</a></h2>
+      <h2 id="cron">۷) کرون وبهوک (سی‌پنل)<a class="h-anchor" href="#cron">#</a></h2>
       <p>اگر سرور پذیرنده هنگام ارسال وبهوک در دسترس نباشد، گیت‌وی با فاصله‌های ۱، ۵، ۱۵، ۶۰ و ۲۴۰ دقیقه دوباره تلاش می‌کند. برای اینکه این تلاش‌ها خودکار اجرا شوند، در سی‌پنل → <strong>Cron Jobs</strong> یک کار هر ۵ دقیقه اضافه کنید:</p>
-      <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>Cron command</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>wget -q -O /dev/null "https://webiro.ir/gateway/api/cron/webhooks?key=YOUR_CRON_KEY"</code></pre></div>
+      <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>Cron command</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>wget -q -O /dev/null "https://your-domain.ir/gateway/api/cron/webhooks?key=YOUR_CRON_KEY"</code></pre></div>
       <p>این کرون علاوه بر وبهوک‌های معوق، تراکنش‌های منقضی‌شده را هم نهایی می‌کند.</p>
 
       <h2 id="checklist">چک‌لیست قبل از پروداکشن<a class="h-anchor" href="#checklist">#</a></h2>
@@ -148,8 +153,8 @@ php tools/make-api-key.php "webirox"    "https://webirox.ir"</code></pre></div>
       </div>
 
       <footer class="foot">
-        <span>PayViro v1.0 — توسعه‌ی Pedram Gholizadeh (WEBIRO) · مستندات رسمی</span>
-        <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a>
+        <span>PayViro v1.0 — اوپن‌سورس · توسعه‌ی <a href="https://github.com/pedramgholizadeh" target="_blank" rel="noopener">Pedram Gholizadeh (WEBIRO)</a></span>
+        <a href="https://apps.webiro.ir/payviro" target="_blank" rel="noopener">apps.webiro.ir/payviro</a>
       </footer>
     </div>
   </div>

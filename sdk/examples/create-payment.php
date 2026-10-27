@@ -1,17 +1,17 @@
 <?php
 /**
  * مثال ۱ — ایجاد پرداخت و هدایت کاربر به گیت‌وی
- * این فایل روی دامنه‌ی پذیرنده است، مثلاً:  https://lahze-app.ir/payment/start
+ * این فایل روی دامنه‌ی پذیرنده است، مثلاً:  https://your-shop.ir/payment/start
  */
 
 declare(strict_types=1);
 
 require __DIR__ . '/../PayViro.php';
 
-use WebiroGateway;
+use PayViroGateway;
 
 $gateway = new PayViro(
-    'https://webiro.ir/gateway',          // آدرس گیت‌وی
+    'https://your-domain.ir/gateway',          // آدرس گیت‌وی
     'wgr_...your-api-key...',             // X-API-Key پذیرنده
     'wgs_...your-secret...'               // کلید امضا
 );
@@ -24,12 +24,12 @@ try {
     $payment = $gateway->requestPayment([
         'amount'        => $amountRial,
         'currency'      => 'rial',                          // یا 'toman'
-        'callback_url'  => 'https://lahze-app.ir/payment/result',
+        'callback_url'  => 'https://your-shop.ir/payment/result',
         'order_id'      => $orderId,
         'description'   => 'خرید اشتراک یک‌ساله',
         'mobile'        => '09121234567',
         'gateway'       => 'auto',                          // یا zarinpal / zibal / saman / bluebank
-        // 'webhook_url' => 'https://lahze-app.ir/api/payment/webhook',
+        // 'webhook_url' => 'https://your-shop.ir/api/payment/webhook',
         // 'idempotency_key' => $orderId,
     ]);
 

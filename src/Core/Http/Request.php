@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Core\Http;
+namespace PayViro\Core\Http;
 
-use Webiro\Core\Config;
+use PayViro\Core\Config;
 
 /**
  * Incoming HTTP request abstraction.
@@ -71,7 +71,7 @@ final class Request
         $uri  = (string) ($_SERVER['REQUEST_URI'] ?? '/');
         $path = (string) (parse_url($uri, PHP_URL_PATH) ?: '/');
 
-        // Strip the mount prefix, e.g. "/gateway" from "https://webiro.ir/gateway/go/pay_x"
+        // Strip the mount prefix, e.g. "/gateway" from "https://your-domain.ir/gateway/go/pay_x"
         // Config may be missing on a fresh install — treat mount as empty then.
         $mount = '';
         try {

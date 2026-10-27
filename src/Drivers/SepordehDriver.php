@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Http\Request;
-use Webiro\Core\HttpClient;
-use Webiro\Core\Logger;
+use PayViro\Core\Config;
+use PayViro\Core\Http\Request;
+use PayViro\Core\HttpClient;
+use PayViro\Core\Logger;
 
 /**
  * Sepordeh driver (sepordeh.com) — Iranian payment aggregator.
@@ -41,7 +41,7 @@ final class SepordehDriver extends AbstractRestDriver
 
         if ((int) ($json['status'] ?? 0) !== 200 || empty($json['information']['invoice_id'])) {
             Logger::warning('sepordeh.request.failed', ['status' => $response['status'], 'message' => $json['message'] ?? '']);
-            throw \Webiro\ApiException::gatewayRejected('سپرده', (int) ($json['status'] ?? $response['status']), (string) ($json['message'] ?? ''));
+            throw \PayViro\ApiException::gatewayRejected('سپرده', (int) ($json['status'] ?? $response['status']), (string) ($json['message'] ?? ''));
         }
 
         $invoiceId = (string) $json['information']['invoice_id'];

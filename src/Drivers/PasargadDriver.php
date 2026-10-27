@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Http\Request;
-use Webiro\Core\HttpClient;
-use Webiro\Core\Logger;
+use PayViro\Core\Config;
+use PayViro\Core\Http\Request;
+use PayViro\Core\HttpClient;
+use PayViro\Core\Logger;
 
 /**
  * Pasargad Bank (PEP) driver — new-generation REST API.
@@ -38,7 +38,7 @@ final class PasargadDriver extends AbstractRestDriver
         $password = (string) ($cfg['password'] ?? '');
         $terminal = (string) ($cfg['terminal_number'] ?? '');
         if ($terminal === '' || strpos($terminal, 'CHANGE_ME') === 0) {
-            throw \Webiro\ApiException::driverNotConfigured('پاسارگاد (شماره ترمینال)');
+            throw \PayViro\ApiException::driverNotConfigured('پاسارگاد (شماره ترمینال)');
         }
 
         // Unique numeric invoice number — our token is hex, so hash it.
@@ -133,7 +133,7 @@ final class PasargadDriver extends AbstractRestDriver
             $json = $response['json'] ?? [];
             if ((int) ($json['resultCode'] ?? -1) !== 0 || empty($json['token'])) {
                 Logger::warning('pasargad.token.failed', ['msg' => $json['resultMsg'] ?? '']);
-                throw new \Webiro\ApiException(
+                throw new \PayViro\ApiException(
                     502,
                     'gateway_rejected',
                     'درگاه پاسارگاد: احراز هویت ناموفق بود («' . (string) ($json['resultMsg'] ?? 'نامشخص') . '») — username/password پنل پذیرندگی را بررسی کنید.'

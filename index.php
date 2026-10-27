@@ -5,21 +5,21 @@
  * License: MIT
  */
 /**
- * Webiro Gateway — front controller
+ * PayViro — front controller
  * همه‌ی درخواست‌های /gateway/* (به‌جز docs/ و admin/) از اینجا عبور می‌کنند.
  */
 
 declare(strict_types=1);
 
-define('WG_ROOT', __DIR__);
+define('PV_ROOT', __DIR__);
 
-require WG_ROOT . '/src/bootstrap.php';
+require PV_ROOT . '/src/bootstrap.php';
 
-use Webiro\Controllers\ApiController;
-use Webiro\Controllers\CronController;
-use Webiro\Controllers\PaymentController;
-use Webiro\Core\Http\Request;
-use Webiro\Core\Router;
+use PayViro\Controllers\ApiController;
+use PayViro\Controllers\CronController;
+use PayViro\Controllers\PaymentController;
+use PayViro\Core\Http\Request;
+use PayViro\Core\Router;
 
 $router = new Router();
 

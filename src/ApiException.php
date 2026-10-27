@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Webiro;
+namespace PayViro;
 
 /**
  * Structured API exception → converted to a JSON error response by the Router.

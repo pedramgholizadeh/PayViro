@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Core;
+namespace PayViro\Core;
 
 use PDO;
 use RuntimeException;
@@ -36,7 +36,7 @@ final class Database
                 'mysql:host=%s;port=%d;dbname=%s;charset=%s',
                 (string) ($cfg['host'] ?? 'localhost'),
                 (int) ($cfg['port'] ?? 3306),
-                (string) ($cfg['dbname'] ?? 'webiro_gateway'),
+                (string) ($cfg['dbname'] ?? 'payviro'),
                 (string) ($cfg['charset'] ?? 'utf8mb4')
             );
             self::$pdo = new PDO($dsn, (string) ($cfg['user'] ?? ''), (string) ($cfg['pass'] ?? ''), [
@@ -45,7 +45,7 @@ final class Database
                 PDO::ATTR_EMULATE_PREPARES   => false,
             ]);
         } else {
-            $path = (string) Config::get('db.sqlite_path', WG_ROOT . '/data/gateway.sqlite');
+            $path = (string) Config::get('db.sqlite_path', PV_ROOT . '/data/gateway.sqlite');
             $dir  = dirname($path);
             if (!is_dir($dir)) {
                 @mkdir($dir, 0755, true);

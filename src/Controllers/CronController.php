@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Controllers;
+namespace PayViro\Controllers;
 
-use Webiro\Core\Config;
-use Webiro\Core\Http\Request;
-use Webiro\Core\Http\Response;
-use Webiro\Models\Transaction;
-use Webiro\Services\WebhookService;
+use PayViro\Core\Config;
+use PayViro\Core\Http\Request;
+use PayViro\Core\Http\Response;
+use PayViro\Models\Transaction;
+use PayViro\Services\WebhookService;
 
 /**
  * Cron endpoint for shared hosting:
  *   GET /api/cron/webhooks?key=<config cron.key>
  *
  * cPanel cron (every 5 minutes):
- *   wget -q -O /dev/null "https://webiro.ir/gateway/api/cron/webhooks?key=..."
+ *   wget -q -O /dev/null "https://your-domain.ir/gateway/api/cron/webhooks?key=..."
  */
 final class CronController
 {

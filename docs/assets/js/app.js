@@ -1,5 +1,5 @@
 /* ============================================================
-   Webiro Gateway Docs — client behaviour
+   PayViro Docs — client behaviour
    (theme, sidebar, search filter, copy buttons, tabs, progress)
    ============================================================ */
 (function () {

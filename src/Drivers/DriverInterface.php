@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Webiro\Drivers;
+namespace PayViro\Drivers;
 
-use Webiro\Core\Http\Request;
+use PayViro\Core\Http\Request;
 
 /**
  * Contract for every payment driver.

@@ -1,5 +1,5 @@
 /* ============================================================
-   Webiro Gateway — Landing (apps.webiro.ir/gateway-service)
+   PayViro — Landing (official website bundle)
    Dark-first · RTL · Vazirmatn · emerald accent
    ============================================================ */
 
@@ -10,42 +10,44 @@
   --radius: 16px;
   --radius-sm: 10px;
 
-  --bg: #020617;
-  --surface: #0e1223;
-  --surface-2: #131a2e;
-  --border: #1e293b;
-  --border-strong: #334155;
-  --fg: #f8fafc;
-  --muted: #94a3b8;
-  --faint: #64748b;
-  --accent: #22c55e;
-  --accent-strong: #4ade80;
-  --accent-fg: #052e16;
-  --accent-soft: rgba(34, 197, 94, 0.12);
-  --amber: #fbbf24;
-  --amber-soft: rgba(251, 191, 36, 0.1);
-  --blue: #60a5fa;
-  --code-bg: #0b101e;
+  --bg: #030806;
+  --surface: #0a1410;
+  --surface-2: #0f2019;
+  --border: #1a332a;
+  --border-strong: #2c5145;
+  --fg: #eefdf6;
+  --muted: #8fb8a8;
+  --faint: #5e8577;
+  --accent: #00c389;
+  --accent-strong: #2ee6b0;
+  --accent-fg: #032018;
+  --accent-soft: rgba(0, 195, 137, 0.11);
+  --accent-2: #2dd4bf;
+  --amber: #fcd34d;
+  --amber-soft: rgba(252, 211, 77, 0.1);
+  --blue: #2dd4bf;
+  --code-bg: #06120e;
   color-scheme: dark;
 }
 
 [data-theme="light"] {
-  --bg: #f8fafc;
+  --bg: #f2faf6;
   --surface: #ffffff;
-  --surface-2: #f1f5f9;
-  --border: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --fg: #0f172a;
+  --surface-2: #e6f4ee;
+  --border: #d4e7dd;
+  --border-strong: #b4d2c6;
+  --fg: #06251b;
   --muted: #4b5a70;
-  --faint: #64748b;
-  --accent: #059669;
-  --accent-strong: #047857;
+  --faint: #5e8577;
+  --accent: #059b72;
+  --accent-strong: #07835f;
   --accent-fg: #ecfdf5;
-  --accent-soft: rgba(5, 150, 105, 0.1);
+  --accent-soft: rgba(5, 155, 114, 0.1);
+  --accent-2: #0d9488;
   --amber: #b45309;
   --amber-soft: rgba(180, 83, 9, 0.08);
-  --blue: #2563eb;
-  --code-bg: #0f172a;
+  --blue: #0d9488;
+  --code-bg: #062019;
   --shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
   color-scheme: light;
 }
@@ -84,7 +86,7 @@ header.site .inner {
 .brand { display: flex; align-items: center; gap: 11px; }
 .brand .mark {
   width: 38px; height: 38px; border-radius: 11px;
-  background: linear-gradient(135deg, #166534, #052e16);
+  background: linear-gradient(135deg, #065f46, #032018);
   border: 1px solid rgba(34, 197, 94, 0.35);
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
@@ -134,7 +136,7 @@ nav.top a.cta:hover { filter: brightness(1.08); }
   margin-bottom: 20px;
 }
 .hero h1 .grad {
-  background: linear-gradient(120deg, var(--accent), #38bdf8);
+  background: linear-gradient(120deg, var(--accent), var(--accent-2));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
