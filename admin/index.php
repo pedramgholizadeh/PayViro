@@ -392,7 +392,7 @@ pre.raw{background:#020617;border:1px solid #1E293B;border-radius:10px;padding:1
     <?php endif; ?>
   </div>
 
-  <p style="color:#475569;font-size:11.5px;text-align:center;padding:10px 0 20px">
+  <p style="color:#475569;font-size:11.5px;text-align:center;padding:10px 0 20px">توسعه: Pedram Gholizadeh (WEBIRO) — <br>
     PayViro v<?= e(WG_VERSION) ?> — مستندات: <a href="../docs/">/gateway/docs</a>
   </p>
 </div>

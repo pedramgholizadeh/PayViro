@@ -1,5 +1,10 @@
 <?php
 /**
+ * PayViro — Multi-domain payment switch (open source)
+ * Author: Pedram Gholizadeh (WEBIRO) — https://github.com/pedramgholizadeh
+ * License: MIT
+ */
+/**
  * Webiro Gateway — front controller
  * همه‌ی درخواست‌های /gateway/* (به‌جز docs/ و admin/) از اینجا عبور می‌کنند.
  */
