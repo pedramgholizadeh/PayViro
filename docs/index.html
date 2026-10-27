@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="درگاه پرداخت وبیرو — یک نقطه‌ی اتصال برای استفاده از درگاه‌های پرداخت وبیرو در همه‌ی دامنه‌ها">
+<title>معرفی و شروع سریع | مستندات درگاه پرداخت وبیرو</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/index.min.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div id="progress"></div>
+
+<div class="shell">
+
+  <!-- ===================== Sidebar ===================== -->
+  <aside class="sidebar" aria-label="فهرست مستندات">
+    <div class="side-head">
+      <a class="brand" href="index.html">
+        <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
+        <div><b>Webiro Gateway</b><span>مستندات درگاه پرداخت — نسخه ۱.۰</span></div>
+      </a>
+      <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
+    </div>
+
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="جست‌وجو در منو…" aria-label="جست‌وجو">
+      <kbd>Ctrl K</kbd>
+      <div class="no-result">موردی در منو پیدا نشد.</div>
+    </div>
+
+    <nav>
+      <div class="nav-group">
+        <div class="nav-title">شروع</div>
+        <a class="item active" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1Z"/></svg>معرفی و شروع سریع</a>
+        <a class="item" href="getting-started.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>نصب و راه‌اندازی</a>
+        <a class="item" href="payment-flow.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/><path d="M11 7h6a2 2 0 0 1 2 2v4M13 17H7a2 2 0 0 1-2-2v-4"/></svg>جریان پرداخت</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-title">مرجع</div>
+        <a class="item" href="api-reference.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>API Reference</a>
+        <a class="item" href="gateways.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V8l8-5 8 5v13M9 21v-4a3 3 0 0 1 6 0v4"/></svg>تنظیم درگاه‌ها</a>
+        <a class="item" href="sdk.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>PHP SDK</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-title">عمق</div>
+        <a class="item" href="security.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg>امنیت و امضا</a>
+        <a class="item" href="faq.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>سوالات متداول</a>
+      </div>
+    </nav>
+  </aside>
+  <div class="sidebar-backdrop"></div>
+
+  <!-- ===================== Main ===================== -->
+  <div class="main">
+    <div class="topbar">
+      <button class="icon-btn" data-open-sidebar aria-label="باز کردن منو" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>Webiro Gateway</div>
+      <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
+    </div>
+
+    <div class="content">
+
+      <h1>درگاه پرداخت وبیرو</h1>
+      <p class="lead">یک نقطه‌ی اتصال روی <code>webiro.ir/gateway</code> که درگاه‌های پرداخت وبیرو را برای همه‌ی دامنه‌های شما فراهم می‌کند — بدون نیاز به درگاه و ای‌نماد جداگانه روی هیچ دامنه‌ی دیگری.</p>
+
+      <div class="grid reveal">
+        <div class="card-box">
+          <div class="cb-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3>یک کلید برای هر دامنه</h3>
+          <p>هر دامنه (lahze-app.ir، webirox.ir و…) یک API Key مستقل می‌گیرد؛ دامنه‌ی مجاز، آدرس بازگشت و وبهوک مخصوص خودش را دارد.</p>
+        </div>
+        <div class="card-box">
+          <div class="cb-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V8l8-5 8 5v13M9 21v-4a3 3 0 0 1 6 0v4"/></svg></div>
+          <h3>۱۲+ درگاه، یک API</h3>
+          <p>سامان، زرین‌پال، زیبال، آیدی‌پی، نکست‌پی، پی‌پینگ، سپرده، Pay.ir، آقای پرداخت، وندار، بلوبانک و کریپتو (OxaPay) — با یک قرارداد واحد و انتخاب خودکار.</p>
+        </div>
+        <div class="card-box">
+          <div class="cb-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>امنیت با امضای HMAC</h3>
+          <p>هم ریدایرکت بازگشت و هم وبهوک با امضای HMAC-SHA256 محافظت می‌شوند؛ دستکاری مبلغ یا وضعیت قابل تشخیص است.</p>
+        </div>
+        <div class="card-box">
+          <div class="cb-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 13 4-4 4 4 5-6"/></svg></div>
+          <h3>پنل مدیریت و وبهوک</h3>
+          <p>داشبورد آماری، جزئیات تراکنش‌ها، ارسال مجدد وبهوک و خروجی CSV در <code>/gateway/admin</code>.</p>
+        </div>
+      </div>
+
+      <h2 id="arch">معماری<a class="h-anchor" href="#arch">#</a></h2>
+      <p>دامنه‌های شما هرگز مستقیماً با بانک صحبت نمی‌کنند؛ همه‌چیز از گیت‌وی وبیرو عبور می‌کند. به این ترتیب اعتبار درگاه‌ها و ای‌نماد فقط روی وبیرو لازم است.</p>
+
+      <div class="diagram reveal" role="img" aria-label="نمودار معماری: فروشگاه، گیت‌وی وبیرو، درگاه بانکی">
+        <svg width="760" height="220" viewBox="0 0 760 220" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 10 5 0 10z" fill="#22c55e"/>
+            </marker>
+          </defs>
+          <!-- nodes -->
+          <rect class="dg-node" x="20" y="88" width="180" height="66" rx="12"/>
+          <text class="dg-text" x="110" y="114" text-anchor="middle" font-weight="700">فروشگاه شما</text>
+          <text class="dg-sub" x="110" y="136" text-anchor="middle" direction="ltr">lahze-app.ir · webirox.ir</text>
+
+          <rect class="dg-node" x="290" y="88" width="180" height="66" rx="12"/>
+          <text class="dg-text" x="380" y="114" text-anchor="middle" font-weight="700">Webiro Gateway</text>
+          <text class="dg-sub" x="380" y="136" text-anchor="middle" direction="ltr">webiro.ir/gateway</text>
+
+          <rect class="dg-node" x="560" y="88" width="180" height="66" rx="12"/>
+          <text class="dg-text" x="650" y="114" text-anchor="middle" font-weight="700">درگاه بانکی</text>
+          <text class="dg-sub" x="650" y="136" text-anchor="middle">زرین‌پال · زیبال · سامان · بلو</text>
+
+          <!-- arrows top -->
+          <path class="dg-line" d="M200 108 H290" marker-end="url(#arr)"/>
+          <path class="dg-line" d="M470 108 H560" marker-end="url(#arr)"/>
+          <!-- arrows bottom -->
+          <path class="dg-dash" d="M560 138 H470" marker-end="url(#arr)"/>
+          <path class="dg-dash" d="M290 138 H200" marker-end="url(#arr)"/>
+
+          <!-- labels -->
+          <text class="dg-lbl" x="245" y="98" text-anchor="middle">۱ ایجاد پرداخت</text>
+          <text class="dg-lbl" x="515" y="98" text-anchor="middle">۲ هدایت به بانک</text>
+          <text class="dg-lbl-mut" x="515" y="158" text-anchor="middle">۳ بازگشت کاربر</text>
+          <text class="dg-lbl-mut" x="245" y="158" text-anchor="middle">۵ ریدایرکت + ۶ وبهوک</text>
+          <text class="dg-lbl" x="650" y="182" text-anchor="middle">۴ تایید سمت سرور (Verify)</text>
+        </svg>
+      </div>
+
+      <h2 id="quick">شروع سریع در ۵ دقیقه<a class="h-anchor" href="#quick">#</a></h2>
+      <div class="steps">
+        <div class="step reveal">
+          <h3>کلید API برای دامنه بسازید</h3>
+          <p>روی سرور وبیرو، برای هر دامنه یک کلید بسازید و تکه‌ی خروجی را در <code>config/config.php</code> بخش <code>merchants</code> اضافه کنید:</p>
+          <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>SSH / Terminal</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>php /home/username/public_html/gateway/tools/make-api-key.php "lahze-app" "https://lahze-app.ir"</code></pre></div>
+        </div>
+        <div class="step reveal">
+          <h3>از دامنه‌ی خودتان درخواست پرداخت بزنید</h3>
+          <div class="tabs">
+            <div class="tab-bar" role="tablist">
+              <button type="button" class="active">PHP</button>
+              <button type="button">cURL</button>
+            </div>
+            <div class="tab-panel active">
+              <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>start-payment.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-k">require</span> <span class="tok-s">'WebiroGateway.php'</span>;
+
+<span class="tok-n">$gateway</span> = <span class="tok-k">new</span> <span class="tok-f">WebiroGateway</span>(
+    <span class="tok-s">'https://webiro.ir/gateway'</span>,
+    <span class="tok-s">'wgr_...'</span>,   <span class="tok-c">// API Key این دامنه</span>
+    <span class="tok-s">'wgs_...'</span>    <span class="tok-c">// Secret برای بررسی امضا</span>
+);
+
+<span class="tok-n">$payment</span> = <span class="tok-n">$gateway</span>-&gt;<span class="tok-f">requestPayment</span>([
+    <span class="tok-s">'amount'</span>       =&gt; <span class="tok-n">2500000</span>,                                <span class="tok-c">// ریال</span>
+    <span class="tok-s">'callback_url'</span> =&gt; <span class="tok-s">'https://lahze-app.ir/payment/result'</span>,
+    <span class="tok-s">'order_id'</span>     =&gt; <span class="tok-s">'ORD-101'</span>,
+    <span class="tok-s">'description'</span>  =&gt; <span class="tok-s">'خرید اشتراک یک‌ساله'</span>,
+    <span class="tok-s">'gateway'</span>      =&gt; <span class="tok-s">'auto'</span>,
+]);
+
+<span class="tok-f">header</span>(<span class="tok-s">'Location: '</span> . <span class="tok-n">$payment</span>[<span class="tok-s">'payment_url'</span>]);
+<span class="tok-k">exit</span>;</code></pre></div>
+            </div>
+            <div class="tab-panel">
+              <div class="code-wrap" data-lang="bash"><div class="code-head"><span class="code-lang"><span class="dot"></span>cURL</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>curl -X POST https://webiro.ir/gateway/api/v1/payments \
+  -H <span class="tok-s">"X-API-Key: wgr_..."</span> \
+  -H <span class="tok-s">"Content-Type: application/json"</span> \
+  -d <span class="tok-s">'{
+        "amount": 2500000,
+        "callback_url": "https://lahze-app.ir/payment/result",
+        "order_id": "ORD-101",
+        "gateway": "auto"
+      }'</span></code></pre></div>
+            </div>
+          </div>
+        </div>
+        <div class="step reveal">
+          <h3>در صفحه‌ی بازگشت، امضا را تایید کنید</h3>
+          <p>پس از پرداخت، کاربر با پارامترهای <strong>امضاشده</strong> به <code>callback_url</code> شما برمی‌گردد. فقط کافی است امضا را بررسی کنید (و توصیه‌شده: استعلام وضعیت هم بگیرید):</p>
+          <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>payment/result.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-n">$result</span> = <span class="tok-n">$gateway</span>-&gt;<span class="tok-f">verifyRedirect</span>();  <span class="tok-c">// امضای sig بررسی می‌شود</span>
+
+<span class="tok-k">if</span> (<span class="tok-n">$result</span>[<span class="tok-s">'ok'</span>]) {
+    <span class="tok-c">// سفارش را پرداخت‌شده کنید:  UPDATE orders SET paid=1 WHERE order_id=?</span>
+}</code></pre></div>
+        </div>
+      </div>
+
+      <div class="callout tip reveal">
+        <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p><b>بدون پول تست کنید:</b> درگاه <code>test</code> داخلی، یک صفحه‌ی شبیه‌ساز بانک دارد و کل جریان (callback، verify، وبهوک، امضا) را دقیقاً مثل بانک واقعی اجرا می‌کند. کافی است <code>"gateway": "test"</code> بفرستید.</p>
+      </div>
+
+      <h2 id="next">قدم بعدی<a class="h-anchor" href="#next">#</a></h2>
+      <div class="grid reveal">
+        <div class="card-box">
+          <h3>نصب روی سی‌پنل</h3>
+          <p>آپلود پوشه، ساخت کانفیگ و ست‌کردن کرون وبهوک — قدم به قدم.</p>
+          <a href="getting-started.html">راهنمای نصب ←</a>
+        </div>
+        <div class="card-box">
+          <h3>مرجع کامل API</h3>
+          <p>همه‌ی endpointها، پارامترها، پاسخ‌ها و کدهای خطا.</p>
+          <a href="api-reference.html">API Reference ←</a>
+        </div>
+        <div class="card-box">
+          <h3>تنظیم درگاه‌های بانکی</h3>
+          <p>اعتبارنامه‌های سامان، بلوبانک، زرین‌پال و زیبال را وارد کنید.</p>
+          <a href="gateways.html">تنظیمات درگاه‌ها ←</a>
+        </div>
+      </div>
+
+      <div class="pager">
+        <span></span>
+        <a class="next" href="getting-started.html"><small>صفحه بعد</small><b>نصب و راه‌اندازی</b></a>
+      </div>
+
+      <footer class="foot">
+        <span>Webiro Gateway v1.0 — مستندات رسمی</span>
+        <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# --- secrets & runtime data (never commit) ---
+config/config.php
+data/*
+!data/.htaccess
+logs/*
+!logs/.htaccess
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+
+# --- local dev ---
+*.sqlite
+*.sqlite3
+*.log

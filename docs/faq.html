@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="سوالات متداول و عیب‌یابی درگاه پرداخت وبیرو">
+<title>سوالات متداول | مستندات درگاه پرداخت وبیرو</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/index.min.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div id="progress"></div>
+
+<div class="shell">
+  <aside class="sidebar" aria-label="فهرست مستندات">
+    <div class="side-head">
+      <a class="brand" href="index.html">
+        <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
+        <div><b>Webiro Gateway</b><span>مستندات درگاه پرداخت — نسخه ۱.۰</span></div>
+      </a>
+      <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
+    </div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="جست‌وجو در منو…" aria-label="جست‌وجو">
+      <kbd>Ctrl K</kbd>
+      <div class="no-result">موردی در منو پیدا نشد.</div>
+    </div>
+    <nav>
+      <div class="nav-group">
+        <div class="nav-title">شروع</div>
+        <a class="item" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1Z"/></svg>معرفی و شروع سریع</a>
+        <a class="item" href="getting-started.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>نصب و راه‌اندازی</a>
+        <a class="item" href="payment-flow.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/><path d="M11 7h6a2 2 0 0 1 2 2v4M13 17H7a2 2 0 0 1-2-2v-4"/></svg>جریان پرداخت</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-title">مرجع</div>
+        <a class="item" href="api-reference.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>API Reference</a>
+        <a class="item" href="gateways.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V8l8-5 8 5v13M9 21v-4a3 3 0 0 1 6 0v4"/></svg>تنظیم درگاه‌ها</a>
+        <a class="item" href="sdk.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>PHP SDK</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-title">عمق</div>
+        <a class="item" href="security.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg>امنیت و امضا</a>
+        <a class="item active" href="faq.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>سوالات متداول</a>
+      </div>
+    </nav>
+  </aside>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="icon-btn" data-open-sidebar aria-label="باز کردن منو" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>Webiro Gateway</div>
+      <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
+    </div>
+
+    <div class="content">
+      <h1>سوالات متداول</h1>
+      <p class="lead">پاسخ کوتاه سوال‌های رایج + جدول عیب‌یابی خطاهای واقعی.</p>
+
+      <h2 id="general">سوالات عمومی<a class="h-anchor" href="#general">#</a></h2>
+      <div class="faq">
+        <details open>
+          <summary>چند دامنه می‌توانم وصل کنم؟ آیا محدودیتی هست؟<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="faq-body">بی‌نهایت. برای هر دامنه با <code>php tools/make-api-key.php</code> یک کلید بسازید و به <code>merchants</code> کانفیگ اضافه کنید. هر دامنه کلید، دامنه‌ی مجاز و وبهوک مستقل دارد.</div>
+        </details>
+        <details>
+          <summary>ای‌نماد و تایید شاپرک برای دامنه‌های دیگر لازم است؟</summary>
+          <div class="faq-body">نه. صفحه‌ی پرداخت روی <code>webiro.ir</code> سرو می‌شود — همان دامنه‌ای که درگاه و ای‌نماد دارد. دامنه‌های شما فقط کاربر را به گیت‌وی می‌فرستند و نتیجه را دریافت می‌کنند.</div>
+        </details>
+        <details>
+          <summary>واحد مبلغ چیست؟ تومان یا ریال؟</summary>
+          <div class="faq-body">پیش‌فرض <strong>ریال</strong> است و همه‌ی پاسخ‌ها/وبهوک‌ها ریال برمی‌گردانند. اگر راحت‌ترید تومان بفرستید: <code>"amount": 250000, "currency": "toman"</code> — خودکار ×۱۰ می‌شود.</div>
+        </details>
+        <details>
+          <summary>اگر درخواست پرداخت دوبار ارسال شود، دو تراکنش ساخته می‌شود؟</summary>
+          <div class="faq-body">نه، اگر <code>idempotency_key</code> بفرستید. با تکرار همان کلید، همان تراکنش قبلی بدون ساخت مورد جدید برگردانده می‌شود. توصیه: شماره سفارش را به‌عنوان کلید idempotency بفرستید.</div>
+        </details>
+        <details>
+          <summary>می‌توانم درگاه‌های جدید (ملت، پارسیان، آیدی‌پی و…) اضافه کنم؟</summary>
+          <div class="faq-body">بله. معماری درایورمحور است: کافی است کلاسی بسازید که <code>DriverInterface</code> را پیاده کند (دو متد: <code>createPayment</code> و <code>verifyPayment</code>)، آن را در <code>src/Drivers/</code> بگذارید و در <code>DriverFactory</code> و کانفیگ معرفی کنید. بقیه‌ی چرخه (توکن، callback، وبهوک، امضا، پنل) خودکار کار می‌کند.</div>
+        </details>
+        <details>
+          <summary>دیتابیس چه فرقی با درگاه‌های مستقیم دارد؟ آیا PCI/شاپرک مشکلی ندارد؟</summary>
+          <div class="faq-body">هیچ داده‌ی کارتی ذخیره نمی‌شود؛ فقط شماره کارت ماسک‌شده (۶ رقم اول و ۴ رقم آخر) در تراکنش ثبت می‌شود که استاندارد رایج درگاه‌های ایرانی است. اتصال بانکی هم مستقیم با وب‌سرویس رسمی پذیرنده‌ی خودتان است.</div>
+        </details>
+        <details>
+          <summary>کدوم درگاه رو پیش‌فرض بذارم؟</summary>
+          <div class="faq-body">هر کدام کارمزد بهتر و شاپرک پایدارتری برای شما دارد. چون همه از یک API استفاده می‌کنند، جابه‌جایی فقط یک خط در کانفیگ است (<code>default_gateway</code> یا <code>auto_order</code>).</div>
+        </details>
+      </div>
+
+      <h2 id="troubleshoot">عیب‌یابی<a class="h-anchor" href="#troubleshoot">#</a></h2>
+      <div class="tbl-wrap"><table>
+        <tr><th>علامت</th><th>علت رایج</th><th>راه‌حل</th></tr>
+        <tr><td><code>401 unauthorized</code></td><td>کلید اشتباه یا <code>enabled: false</code></td><td>مقدار <code>X-API-Key</code> را با کانفیگ مقایسه کنید.</td></tr>
+        <tr><td><code>403 forbidden_callback</code></td><td>دامنه‌ی callback با <code>callback_domain</code> نمی‌خواند</td><td>دامنه‌ی پذیرنده را در کانفیگ درست کنید (با www یا بدون آن را همان‌طور که می‌فرستید).</td></tr>
+        <tr><td><code>502 gateway_rejected</code></td><td>اعتبارنامه‌ی درگاه غلط یا درگاه غیرفعال</td><td>کد خطای بانک در پیام و لاگ هست — <a href="gateways.html">جدول کدها</a>.</td></tr>
+        <tr><td>خطای SOAP در سامان</td><td>اکستنشن <code>soap</code> خاموش یا WSDL فیلتر شده</td><td>اکستنشن را فعال کنید؛ اگر WSDL مسدود است از هاست درخواست بازکردن <code>sep.shaparak.ir</code> بدهید.</td></tr>
+        <tr><td>وبهوک نمی‌رسد</td><td>سرور پذیرنده 2xx نمی‌دهد یا فایروال</td><td>ستون «وبهوک» در پنل مدیریت تلاش‌ها و خطا را نشان می‌دهد؛ دکمه‌ی «ارسال مجدد» هم هست. مطمئن شوید کرون ست شده.</td></tr>
+        <tr><td>تراکنش همیشه <code>pending</code></td><td>کاربر به بانک نرفته یا callback نرسیده</td><td>طبیعی است؛ بعد از انقضا (۲۰ دقیقه) خودکار <code>expired</code> می‌شود.</td></tr>
+        <tr><td>مبلغ کسر شده ولی سفارش ناموفق</td><td>مغایرت مبلغ یا شکست verify</td><td>در پنل مدیریت، «پاسخ خام تایید بانک» را ببینید؛ با ref_no به پشتیبانی بانک پیگیری کنید.</td></tr>
+        <tr><td><code>429 rate_limited</code></td><td>بیش از ۶۰ درخواست در دقیقه</td><td>درخواست‌ها را فشرده نفرستید یا <code>payments.rate_limit</code> را بالا ببرید.</td></tr>
+        <tr><td>صفحه‌ی سفید یا 500</td><td>خطای PHP</td><td>موقع عیب‌یابی موقتاً <code>app.debug: true</code> کنید؛ لاگ کامل در <code>logs/app-*.log</code> است.</td></tr>
+      </table></div>
+
+      <div class="callout tip">
+        <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p><b>لاگ‌ها بهترین دوست شماست:</b> هر درخواست، خطای بانک، تلاش وبهوک و جریان callback با توکن تراکنش در <code>logs/app-YYYY-MM-DD.log</code> ثبت می‌شود و در پنل مدیریت هم «پاسخ خام تایید بانک» هر تراکنش قابل مشاهده است.</p>
+      </div>
+
+      <div class="pager">
+        <a href="security.html"><small>صفحه قبل</small><b>امنیت و امضا</b></a>
+        <a class="next" href="index.html"><small>ابتدای مستندات</small><b>معرفی و شروع سریع</b></a>
+      </div>
+
+      <footer class="foot">
+        <span>Webiro Gateway v1.0 — مستندات رسمی</span>
+        <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

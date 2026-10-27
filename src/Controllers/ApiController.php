@@ -1,0 +1,131 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Webiro\Controllers;
+
+use Webiro\ApiException;
+use Webiro\Core\Config;
+use Webiro\Core\Crypto;
+use Webiro\Core\Database;
+use Webiro\Core\Http\Request;
+use Webiro\Core\Http\Response;
+use Webiro\Core\RateLimiter;
+use Webiro\Drivers\DriverFactory;
+use Webiro\Models\Transaction;
+use Webiro\Services\PaymentService;
+
+/**
+ * Server-to-server JSON API for merchant domains.
+ */
+final class ApiController
+{
+    public function health(Request $request, array $params): Response
+    {
+        $dbOk = false;
+        try {
+            Database::pdo()->query('SELECT 1');
+            $dbOk = true;
+        } catch (\Throwable $e) {
+            // reported below
+        }
+
+        return Response::json([
+            'status'  => 'success',
+            'data'    => [
+                'service'  => 'Webiro Gateway',
+                'version'  => WG_VERSION,
+                'time'     => wg_now(),
+                'database' => $dbOk ? 'ok' : 'error',
+                'gateways' => array_keys(array_filter(DriverFactory::enabled())),
+            ],
+        ]);
+    }
+
+    public function gateways(Request $request, array $params): Response
+    {
+        $enabled = DriverFactory::enabled();
+        $list = [];
+        $meta = [
+            'zarinpal'      => ['name' => 'زرین‌پال',       'redirect' => 'GET',  'type' => 'bank'],
+            'zibal'         => ['name' => 'زیبال',          'redirect' => 'GET',  'type' => 'bank'],
+            'saman'         => ['name' => 'بانک سامان',     'redirect' => 'POST', 'type' => 'bank'],
+            'idpay'         => ['name' => 'آیدی‌پی',         'redirect' => 'GET',  'type' => 'bank'],
+            'nextpay'       => ['name' => 'نکست‌پی',         'redirect' => 'GET',  'type' => 'bank'],
+            'payping'       => ['name' => 'پی‌پینگ',         'redirect' => 'GET',  'type' => 'bank'],
+            'sepordeh'      => ['name' => 'سپرده',          'redirect' => 'GET',  'type' => 'bank'],
+            'payir'         => ['name' => 'پی.آی‌آر',        'redirect' => 'GET',  'type' => 'bank'],
+            'aqayepardakht' => ['name' => 'آقای پرداخت',    'redirect' => 'GET',  'type' => 'bank'],
+            'vandar'        => ['name' => 'وندار',          'redirect' => 'GET',  'type' => 'bank'],
+            'bluebank'      => ['name' => 'بلوبانک',        'redirect' => 'GET',  'type' => 'bank'],
+            'oxapay'        => ['name' => 'کریپتو OxaPay',  'redirect' => 'GET',  'type' => 'crypto'],
+            'test'          => ['name' => 'درگاه تست (سندباکس)', 'redirect' => 'GET', 'type' => 'test'],
+        ];
+        foreach ($enabled as $gateway => $isEnabled) {
+            if (!$isEnabled) {
+                continue;
+            }
+            $list[] = [
+                'id'       => $gateway,
+                'name'     => $meta[$gateway]['name'] ?? $gateway,
+                'redirect' => $meta[$gateway]['redirect'] ?? 'GET',
+                'type'     => $meta[$gateway]['type'] ?? 'bank',
+            ];
+        }
+
+        return Response::json(['status' => 'success', 'data' => ['gateways' => $list, 'default' => (string) Config::get('payments.default_gateway', 'zarinpal')]]);
+    }
+
+    public function create(Request $request, array $params): Response
+    {
+        $merchant = self::authenticate($request);
+
+        $limit = (int) Config::get('payments.rate_limit', 60);
+        if (!RateLimiter::allow('api:' . $request->ip(), $limit)) {
+            throw new ApiException(429, 'rate_limited', 'تعداد درخواست‌ها بیش از حد مجاز است. کمی بعد تلاش کنید.');
+        }
+
+        $data = PaymentService::create($request, $merchant);
+
+        return Response::json(['status' => 'success', 'data' => $data], 201);
+    }
+
+    public function status(Request $request, array $params): Response
+    {
+        $merchant = self::authenticate($request);
+        $token = (string) ($params['token'] ?? '');
+
+        $txn = Transaction::findByToken($token);
+        if ($txn === null || (string) $txn['merchant_id'] !== (string) $merchant['_id']) {
+            throw new ApiException(404, 'not_found', 'تراکنش یافت نشد.');
+        }
+
+        return Response::json(['status' => 'success', 'data' => PaymentService::statusPayload($txn)]);
+    }
+
+    /**
+     * Resolve the merchant from X-API-Key or "Authorization: Bearer <key>".
+     *
+     * @return array<string,mixed>
+     */
+    private static function authenticate(Request $request): array
+    {
+        $apiKey = $request->header('x-api-key');
+        if ($apiKey === '' && strpos($request->header('authorization'), 'Bearer ') === 0) {
+            $apiKey = trim(substr($request->header('authorization'), 7));
+        }
+        if ($apiKey === '') {
+            throw new ApiException(401, 'unauthorized', 'کلید API ارسال نشده است. هدر X-API-Key را بفرستید.');
+        }
+
+        $merchant = Config::merchantByApiKey($apiKey);
+        if ($merchant === null) {
+            throw new ApiException(401, 'unauthorized', 'کلید API نامعتبر است.');
+        }
+        if ((bool) ($merchant['enabled'] ?? false) === false) {
+            throw new ApiException(403, 'merchant_disabled', 'حساب پذیرنده غیرفعال است.');
+        }
+
+        return $merchant;
+    }
+}

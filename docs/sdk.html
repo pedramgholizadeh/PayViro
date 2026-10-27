@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PHP SDK درگاه پرداخت وبیرو — اتصال دامنه‌های دیگر به گیت‌وی با چند خط کد">
+<title>PHP SDK | مستندات درگاه پرداخت وبیرو</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/index.min.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div id="progress"></div>
+
+<div class="shell">
+  <aside class="sidebar" aria-label="فهرست مستندات">
+    <div class="side-head">
+      <a class="brand" href="index.html">
+        <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
+        <div><b>Webiro Gateway</b><span>مستندات درگاه پرداخت — نسخه ۱.۰</span></div>
+      </a>
+      <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
+    </div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="جست‌وجو در منو…" aria-label="جست‌وجو">
+      <kbd>Ctrl K</kbd>
+      <div class="no-result">موردی در منو پیدا نشد.</div>
+    </div>
+    <nav>
+      <div class="nav-group">
+        <div class="nav-title">شروع</div>
+        <a class="item" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1Z"/></svg>معرفی و شروع سریع</a>
+        <a class="item" href="getting-started.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>نصب و راه‌اندازی</a>
+        <a class="item" href="payment-flow.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/><path d="M11 7h6a2 2 0 0 1 2 2v4M13 17H7a2 2 0 0 1-2-2v-4"/></svg>جریان پرداخت</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-title">مرجع</div>
+        <a class="item" href="api-reference.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>API Reference</a>
+        <a class="item" href="gateways.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V8l8-5 8 5v13M9 21v-4a3 3 0 0 1 6 0v4"/></svg>تنظیم درگاه‌ها</a>
+        <a class="item active" href="sdk.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>PHP SDK</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-title">عمق</div>
+        <a class="item" href="security.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg>امنیت و امضا</a>
+        <a class="item" href="faq.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>سوالات متداول</a>
+      </div>
+    </nav>
+  </aside>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="icon-btn" data-open-sidebar aria-label="باز کردن منو" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>Webiro Gateway</div>
+      <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
+    </div>
+
+    <div class="content">
+      <h1>PHP SDK</h1>
+      <p class="lead">یک فایل، بدون وابستگی: <code>sdk/WebiroGateway.php</code> را از گیت‌وی بردارید و در هر دامنه‌ای (PHP 7.4+ با cURL) استفاده کنید.</p>
+
+      <h2 id="install">نصب<a class="h-anchor" href="#install">#</a></h2>
+      <p>فایل <code>WebiroGateway.php</code> را کپی کنید (مثلاً در <code>lib/</code> پروژه‌ی خودتان) و در ابتدای اسکریپت‌ها require کنید. مثال‌های آماده هم در <code>sdk/examples/</code> هست.</p>
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>boot.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-k">require</span> <span class="tok-s">__DIR__</span> . <span class="tok-s">'/lib/WebiroGateway.php'</span>;
+
+<span class="tok-n">$gateway</span> = <span class="tok-k">new</span> <span class="tok-f">WebiroGateway</span>(
+    <span class="tok-s">'https://webiro.ir/gateway'</span>,   <span class="tok-c">// آدرس گیت‌وی</span>
+    <span class="tok-s">'wgr_...'</span>,                      <span class="tok-c">// API Key این دامنه</span>
+    <span class="tok-s">'wgs_...'</span>,                      <span class="tok-c">// Secret (برای امضاها)</span>
+    <span class="tok-n">20</span>                              <span class="tok-c">// timeout (اختیاری)</span>
+);</code></pre></div>
+
+      <h2 id="methods">متدها<a class="h-anchor" href="#methods">#</a></h2>
+      <div class="tbl-wrap"><table>
+        <tr><th>متد</th><th>کار</th><th>خروجی / رفتار</th></tr>
+        <tr><td><code>requestPayment($fields)</code></td><td>ایجاد پرداخت</td><td>آرایه با <code>token</code> و <code>payment_url</code> — خطاها با <code>WebiroGatewayException</code></td></tr>
+        <tr><td><code>redirect($fields)</code></td><td>ایجاد + هدایت مستقیم</td><td>هدر Location می‌فرستد و اسکریپت تمام می‌شود</td></tr>
+        <tr><td><code>status($token)</code></td><td>استعلام وضعیت</td><td>آرایه‌ی کامل وضعیت (منبع حقیقت)</td></tr>
+        <tr><td><code>verifyRedirect($query)</code></td><td>تایید بازگشت کاربر</td><td>امضای <code>sig</code> را چک می‌کند؛ دستکاری → <code>WebiroSignatureException</code></td></tr>
+        <tr><td><code>readWebhook()</code></td><td>دریافت وبهوک</td><td>امضای هدر را روی بدنه‌ی خام چک می‌کند؛ خروجی <code>event</code> + <code>data</code></td></tr>
+      </table></div>
+
+      <h2 id="start">شروع پرداخت<a class="h-anchor" href="#start">#</a></h2>
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>payment/start.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-k">try</span> {
+    <span class="tok-n">$payment</span> = <span class="tok-n">$gateway</span>-&gt;<span class="tok-f">requestPayment</span>([
+        <span class="tok-s">'amount'</span>          =&gt; <span class="tok-n">2500000</span>,                 <span class="tok-c">// ریال</span>
+        <span class="tok-s">'callback_url'</span>    =&gt; <span class="tok-s">'https://lahze-app.ir/payment/result'</span>,
+        <span class="tok-s">'order_id'</span>        =&gt; <span class="tok-s">'ORD-101'</span>,
+        <span class="tok-s">'description'</span>     =&gt; <span class="tok-s">'خرید اشتراک یک‌ساله'</span>,
+        <span class="tok-s">'mobile'</span>          =&gt; <span class="tok-s">'09121234567'</span>,
+        <span class="tok-s">'gateway'</span>         =&gt; <span class="tok-s">'auto'</span>,
+        <span class="tok-s">'idempotency_key'</span> =&gt; <span class="tok-s">'ORD-101'</span>,              <span class="tok-c">// جلوگیری از تراکنش تکراری</span>
+    ]);
+
+    <span class="tok-c">// توکن را کنار سفارش ذخیره کنید تا بعداً استعلام بگیرید</span>
+    <span class="tok-f">saveOrderToken</span>(<span class="tok-s">'ORD-101'</span>, <span class="tok-n">$payment</span>[<span class="tok-s">'token'</span>]);
+
+    <span class="tok-f">header</span>(<span class="tok-s">'Location: '</span> . <span class="tok-n">$payment</span>[<span class="tok-s">'payment_url'</span>]);
+    <span class="tok-k">exit</span>;
+
+} <span class="tok-k">catch</span> (<span class="tok-f">WebiroGatewayException</span> <span class="tok-n">$e</span>) {
+    <span class="tok-c">// $e-&gt;errorCode() و $e-&gt;httpStatus() برای منطق برنامه</span>
+    <span class="tok-k">echo</span> <span class="tok-s">'خطا: '</span> . <span class="tok-f">htmlspecialchars</span>(<span class="tok-n">$e</span>-&gt;<span class="tok-f">getMessage</span>());
+}</code></pre></div>
+
+      <h2 id="callback">صفحه‌ی بازگشت<a class="h-anchor" href="#callback">#</a></h2>
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>payment/result.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-k">try</span> {
+    <span class="tok-n">$result</span> = <span class="tok-n">$gateway</span>-&gt;<span class="tok-f">verifyRedirect</span>();   <span class="tok-c">// پیش‌فرض: $_GET</span>
+
+    <span class="tok-c">// ✅ توصیه‌شده برای مبالغ بالا: استعلام دوباره از منبع حقیقت</span>
+    <span class="tok-n">$status</span> = <span class="tok-n">$gateway</span>-&gt;<span class="tok-f">status</span>(<span class="tok-n">$result</span>[<span class="tok-s">'token'</span>]);
+    <span class="tok-k">if</span> (<span class="tok-n">$status</span>[<span class="tok-s">'status'</span>] !== <span class="tok-s">'paid'</span>) {
+        <span class="tok-n">$result</span>[<span class="tok-s">'ok'</span>] = <span class="tok-k">false</span>;
+    }
+
+    <span class="tok-k">if</span> (<span class="tok-n">$result</span>[<span class="tok-s">'ok'</span>]) {
+        <span class="tok-f">markOrderPaid</span>(<span class="tok-n">$result</span>[<span class="tok-s">'order_id'</span>], <span class="tok-n">$result</span>[<span class="tok-s">'ref_no'</span>], <span class="tok-n">$result</span>[<span class="tok-s">'amount'</span>]);
+        <span class="tok-k">echo</span> <span class="tok-s">'پرداخت موفق — کد پیگیری: '</span> . <span class="tok-f">htmlspecialchars</span>(<span class="tok-n">$result</span>[<span class="tok-s">'ref_no'</span>]);
+    } <span class="tok-k">else</span> {
+        <span class="tok-k">echo</span> <span class="tok-s">'پرداخت ناموفق'</span>;
+    }
+
+} <span class="tok-k">catch</span> (<span class="tok-f">WebiroSignatureException</span> <span class="tok-n">$e</span>) {
+    <span class="tok-f">http_response_code</span>(<span class="tok-n">400</span>);
+    <span class="tok-k">exit</span>(<span class="tok-s">'پارامترهای بازگشت دستکاری شده‌اند.'</span>);
+}</code></pre></div>
+
+      <h2 id="webhook">دریافت وبهوک<a class="h-anchor" href="#webhook">#</a></h2>
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>api/payment/webhook.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-k">try</span> {
+    <span class="tok-n">$hook</span> = <span class="tok-n">$gateway</span>-&gt;<span class="tok-f">readWebhook</span>();
+} <span class="tok-k">catch</span> (<span class="tok-f">WebiroSignatureException</span> <span class="tok-n">$e</span>) {
+    <span class="tok-f">http_response_code</span>(<span class="tok-n">400</span>);
+    <span class="tok-k">exit</span>;
+}
+
+<span class="tok-n">$data</span> = <span class="tok-n">$hook</span>[<span class="tok-s">'data'</span>];
+
+<span class="tok-k">switch</span> (<span class="tok-n">$hook</span>[<span class="tok-s">'event'</span>]) {
+    <span class="tok-k">case</span> <span class="tok-s">'payment.succeeded'</span>:
+        <span class="tok-f">markOrderPaid</span>(<span class="tok-n">$data</span>[<span class="tok-s">'order_id'</span>], <span class="tok-n">$data</span>[<span class="tok-s">'ref_no'</span>], <span class="tok-n">$data</span>[<span class="tok-s">'amount'</span>]);
+        <span class="tok-k">break</span>;
+    <span class="tok-k">case</span> <span class="tok-s">'payment.failed'</span>:
+    <span class="tok-k">case</span> <span class="tok-s">'payment.canceled'</span>:
+        <span class="tok-f">markOrderUnpaid</span>(<span class="tok-n">$data</span>[<span class="tok-s">'order_id'</span>], <span class="tok-n">$data</span>[<span class="tok-s">'status'</span>]);
+        <span class="tok-k">break</span>;
+}
+
+<span class="tok-f">http_response_code</span>(<span class="tok-n">200</span>);   <span class="tok-c">// بدون 2xx گیت‌وی دوباره تلاش می‌کند</span>
+<span class="tok-k">echo</span> <span class="tok-s">'ok'</span>;</code></pre></div>
+      <div class="callout tip">
+        <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <p><b>دو خط دفاع:</b> سفارش را هم با ریدایرکت ثبت کنید، هم با وبهوک؛ چون عملیات ثبت سفارش idempotent نوشته شده (مثل <code>UPDATE … WHERE paid=0</code>)، اجرای دوباره مشکلی ایجاد نمی‌کند.</p>
+      </div>
+
+      <h2 id="laravel">استفاده در لاراول<a class="h-anchor" href="#laravel">#</a></h2>
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>routes/web.php + app/Http/Controllers/PaymentController.php</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-c">// فایل SDK را در app/Libraries/ کپی کنید (namespace آن global است)</span>
+<span class="tok-k">Route</span>::<span class="tok-f">get</span>(<span class="tok-s">'/payment/start/{order}'</span>, [<span class="tok-f">PaymentController</span>::<span class="tok-k">class</span>, <span class="tok-s">'start'</span>]);
+<span class="tok-k">Route</span>::<span class="tok-f">post</span>(<span class="tok-s">'/payment/result'</span>, [<span class="tok-f">PaymentController</span>::<span class="tok-k">class</span>, <span class="tok-s">'result'</span>])-&gt;<span class="tok-f">name</span>(<span class="tok-s">'payment.result'</span>);
+<span class="tok-k">Route</span>::<span class="tok-f">post</span>(<span class="tok-s">'/payment/webhook'</span>, [<span class="tok-f">PaymentController</span>::<span class="tok-k">class</span>, <span class="tok-s">'webhook'</span>])-&gt;<span class="tok-f">withoutMiddleware</span>(<span class="tok-f">VerifyCsrfToken</span>::<span class="tok-k">class</span>);
+
+<span class="tok-k">public function</span> <span class="tok-f">start</span>(Order <span class="tok-n">$order</span>)
+{
+    <span class="tok-n">$payment</span> = <span class="tok-n">$order</span>-&gt;<span class="tok-f">getGatewayTokenAttribute</span>() ?? <span class="tok-k">null</span>;
+
+    <span class="tok-n">$gw</span> = <span class="tok-k">new</span> \<span class="tok-f">WebiroGateway</span>(<span class="tok-f">config</span>(<span class="tok-s">'services.webiro.base_url'</span>), <span class="tok-f">config</span>(<span class="tok-s">'services.webiro.key'</span>), <span class="tok-f">config</span>(<span class="tok-s">'services.webiro.secret'</span>));
+    <span class="tok-n">$p</span> = <span class="tok-n">$gw</span>-&gt;<span class="tok-f">requestPayment</span>([
+        <span class="tok-s">'amount'</span>       =&gt; <span class="tok-n">$order</span>-&gt;<span class="tok-f">amount_rial</span>,
+        <span class="tok-s">'callback_url'</span> =&gt; <span class="tok-f">route</span>(<span class="tok-s">'payment.result'</span>),
+        <span class="tok-s">'order_id'</span>     =&gt; <span class="tok-n">$order</span>-&gt;<span class="tok-f">id</span>,
+        <span class="tok-s">'mobile'</span>       =&gt; <span class="tok-n">$order</span>-&gt;<span class="tok-f">user</span>-&gt;<span class="tok-f">mobile</span>,
+    ]);
+    <span class="tok-n">$order</span>-&gt;<span class="tok-f">update</span>([<span class="tok-s">'gateway_token'</span> =&gt; <span class="tok-n">$p</span>[<span class="tok-s">'token'</span>]]);
+
+    <span class="tok-k">return</span> <span class="tok-f">redirect</span>(<span class="tok-n">$p</span>[<span class="tok-s">'payment_url'</span>]);
+}</code></pre></div>
+
+      <h2 id="raw">بدون SDK (cURL خام)<a class="h-anchor" href="#raw">#</a></h2>
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>خام — بدون فایل SDK</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-n">$ch</span> = <span class="tok-f">curl_init</span>(<span class="tok-s">'https://webiro.ir/gateway/api/v1/payments'</span>);
+<span class="tok-f">curl_setopt_array</span>(<span class="tok-n">$ch</span>, [
+    CURLOPT_POST           =&gt; <span class="tok-k">true</span>,
+    CURLOPT_RETURNTRANSFER =&gt; <span class="tok-k">true</span>,
+    CURLOPT_HTTPHEADER     =&gt; [<span class="tok-s">'X-API-Key: wgr_...'</span>, <span class="tok-s">'Content-Type: application/json'</span>],
+    CURLOPT_POSTFIELDS     =&gt; <span class="tok-f">json_encode</span>([
+        <span class="tok-s">'amount'</span>       =&gt; <span class="tok-n">2500000</span>,
+        <span class="tok-s">'callback_url'</span> =&gt; <span class="tok-s">'https://lahze-app.ir/payment/result'</span>,
+        <span class="tok-s">'order_id'</span>     =&gt; <span class="tok-s">'ORD-101'</span>,
+    ]),
+]);
+<span class="tok-n">$res</span> = <span class="tok-f">json_decode</span>(<span class="tok-f">curl_exec</span>(<span class="tok-n">$ch</span>), <span class="tok-k">true</span>);
+<span class="tok-f">header</span>(<span class="tok-s">'Location: '</span> . <span class="tok-n">$res</span>[<span class="tok-s">'data'</span>][<span class="tok-s">'payment_url'</span>]);</code></pre></div>
+
+      <div class="callout warn">
+        <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4M12 17h.01"/></svg>
+        <p><b>سه قانون طلایی:</b> ۱) مبلغ همیشه از دیتابیس خودتان، نه ورودی کاربر. ۲) ثبت سفارش idempotent باشد (بدون ثبت تکراری). ۳) کلید <code>secret</code> فقط سمت سرور — هرگز در جاوااسکریپت یا گیت عمومی.</p>
+      </div>
+
+      <div class="pager">
+        <a href="gateways.html"><small>صفحه قبل</small><b>تنظیم درگاه‌ها</b></a>
+        <a class="next" href="security.html"><small>صفحه بعد</small><b>امنیت و امضا</b></a>
+      </div>
+
+      <footer class="foot">
+        <span>Webiro Gateway v1.0 — مستندات رسمی</span>
+        <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

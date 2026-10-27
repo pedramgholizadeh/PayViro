@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="جریان کامل پرداخت در گیت‌وی وبیرو — از ایجاد تراکنش تا وبهوک و ریدایرکت امضاشده">
+<title>جریان پرداخت | مستندات درگاه پرداخت وبیرو</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/index.min.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div id="progress"></div>
+
+<div class="shell">
+  <aside class="sidebar" aria-label="فهرست مستندات">
+    <div class="side-head">
+      <a class="brand" href="index.html">
+        <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
+        <div><b>Webiro Gateway</b><span>مستندات درگاه پرداخت — نسخه ۱.۰</span></div>
+      </a>
+      <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
+    </div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="جست‌وجو در منو…" aria-label="جست‌وجو">
+      <kbd>Ctrl K</kbd>
+      <div class="no-result">موردی در منو پیدا نشد.</div>
+    </div>
+    <nav>
+      <div class="nav-group">
+        <div class="nav-title">شروع</div>
+        <a class="item" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1Z"/></svg>معرفی و شروع سریع</a>
+        <a class="item" href="getting-started.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>نصب و راه‌اندازی</a>
+        <a class="item active" href="payment-flow.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/><path d="M11 7h6a2 2 0 0 1 2 2v4M13 17H7a2 2 0 0 1-2-2v-4"/></svg>جریان پرداخت</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-title">مرجع</div>
+        <a class="item" href="api-reference.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>API Reference</a>
+        <a class="item" href="gateways.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V8l8-5 8 5v13M9 21v-4a3 3 0 0 1 6 0v4"/></svg>تنظیم درگاه‌ها</a>
+        <a class="item" href="sdk.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>PHP SDK</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-title">عمق</div>
+        <a class="item" href="security.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg>امنیت و امضا</a>
+        <a class="item" href="faq.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>سوالات متداول</a>
+      </div>
+    </nav>
+  </aside>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="icon-btn" data-open-sidebar aria-label="باز کردن منو" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>Webiro Gateway</div>
+      <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
+    </div>
+
+    <div class="content">
+      <h1>جریان پرداخت</h1>
+      <p class="lead">هشت گام از کلیک دکمه‌ی پرداخت تا ثبت نهایی سفارش — و اینکه در هر سناریوی خرابی چه اتفاقی می‌افتد.</p>
+
+      <div class="diagram reveal" role="img" aria-label="نمودار جریان پرداخت">
+        <svg width="760" height="230" viewBox="0 0 760 230" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0 10 5 0 10z" fill="#22c55e"/>
+            </marker>
+          </defs>
+          <rect class="dg-node" x="20" y="95" width="180" height="66" rx="12"/>
+          <text class="dg-text" x="110" y="121" text-anchor="middle" font-weight="700">فروشگاه شما</text>
+          <text class="dg-sub" x="110" y="143" text-anchor="middle" direction="ltr">lahze-app.ir · webirox.ir</text>
+
+          <rect class="dg-node" x="290" y="95" width="180" height="66" rx="12"/>
+          <text class="dg-text" x="380" y="121" text-anchor="middle" font-weight="700">Webiro Gateway</text>
+          <text class="dg-sub" x="380" y="143" text-anchor="middle" direction="ltr">webiro.ir/gateway</text>
+
+          <rect class="dg-node" x="560" y="95" width="180" height="66" rx="12"/>
+          <text class="dg-text" x="650" y="121" text-anchor="middle" font-weight="700">درگاه بانکی</text>
+          <text class="dg-sub" x="650" y="143" text-anchor="middle">زرین‌پال · زیبال · سامان · بلو</text>
+
+          <path class="dg-line" d="M200 115 H290" marker-end="url(#arr2)"/>
+          <path class="dg-line" d="M470 115 H560" marker-end="url(#arr2)"/>
+          <path class="dg-dash" d="M560 145 H470" marker-end="url(#arr2)"/>
+          <path class="dg-dash" d="M290 145 H200" marker-end="url(#arr2)"/>
+
+          <text class="dg-lbl" x="245" y="105" text-anchor="middle">۱ و ۲ ایجاد پرداخت</text>
+          <text class="dg-lbl" x="515" y="105" text-anchor="middle">۳ هدایت به بانک</text>
+          <text class="dg-lbl-mut" x="515" y="165" text-anchor="middle">۴ بازگشت کاربر</text>
+          <text class="dg-lbl-mut" x="245" y="165" text-anchor="middle">۷ ریدایرکت + ۸ وبهوک</text>
+          <text class="dg-lbl" x="650" y="189" text-anchor="middle">۵ و ۶ تایید سمت سرور (Verify)</text>
+        </svg>
+      </div>
+
+      <h2 id="steps">گام‌ها<a class="h-anchor" href="#steps">#</a></h2>
+      <div class="steps">
+        <div class="step reveal">
+          <h3>ایجاد پرداخت — سرور شما → گیت‌وی</h3>
+          <p>سرور دامنه‌ی شما با <code>X-API-Key</code> به <code>POST /api/v1/payments</code> درخواست می‌زند. مبلغ را همیشه از دیتابیس خودتان بخوانید، نه از ورودی کاربر.</p>
+        </div>
+        <div class="step reveal">
+          <h3>پاسخ با token و payment_url</h3>
+          <p>گیت‌وی یک تراکنش <code>pending</code> می‌سازد، توکن بانکی می‌گیرد و <code>payment_url</code> برمی‌گرداند. شما توکن را کنار سفارش ذخیره و کاربر را به <code>payment_url</code> هدایت می‌کنید.</p>
+        </div>
+        <div class="step reveal">
+          <h3>هدایت به بانک</h3>
+          <p>گیت‌وی کاربر را به صفحه‌ی بانک می‌فرستد (درگاه‌های GET با ریدایرکت مستقیم، سامان با فرم POST خودکار). این صفحه روی وبیرو است — همان دامنه‌ای که ای‌نماد دارد.</p>
+        </div>
+        <div class="step reveal">
+          <h3>بازگشت کاربر به گیت‌وی</h3>
+          <p>بانک کاربر را به <code>/callback/{token}</code> برمی‌گرداند؛ با نتیجه در Query یا POST.</p>
+        </div>
+        <div class="step reveal">
+          <h3>تایید سمت سرور (Verify)</h3>
+          <p>گیت‌وی — بدون اعتماد به مرورگر — نتیجه را مستقیم از وب‌سرویس بانک استعلام می‌کند و مبلغ را با مبلغ تراکنش تطبیق می‌دهد. مغایرت مبلغ = شکست + درخواست برگشت وجه (سامان).</p>
+        </div>
+        <div class="step reveal">
+          <h3>نهایی‌سازی اتمیک</h3>
+          <p>تراکنش فقط یک‌بار از <code>pending</code> به <code>paid</code> تغییر می‌کند؛ اگر بانک دوبار callback بزند، دفعه‌ی دوم همان نتیجه را برمی‌گرداند و وبهوک تکراری ارسال نمی‌شود.</p>
+        </div>
+        <div class="step reveal">
+          <h3>ریدایرکت امضاشده به دامنه‌ی شما</h3>
+          <p>کاربر به <code>callback_url</code> شما با پارامترهای نتیجه + <code>sig</code> (HMAC-SHA256) برمی‌گردد. با <code>verifyRedirect()</code> در SDK امضا را چک کنید.</p>
+        </div>
+        <div class="step reveal">
+          <h3>وبهوک — گیت‌وی → سرور شما</h3>
+          <p>هم‌زمان یک <code>POST</code> امضاشده به <code>webhook_url</code> شما زده می‌شود. پاسخ <code>2xx</code> یعنی تحویل موفق؛ در غیر این صورت با backoff دوباره تلاش می‌شود.</p>
+        </div>
+      </div>
+
+      <h2 id="redirect">پارامترهای ریدایرکت بازگشت<a class="h-anchor" href="#redirect">#</a></h2>
+      <p>نمونه‌ی آدرس نهایی که کاربر به آن برمی‌گردد:</p>
+      <div class="code-wrap" data-lang="text"><div class="code-head"><span class="code-lang"><span class="dot"></span>GET callback</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>https://lahze-app.ir/payment/result
+  ?token=pay_bf5adb5758e2...
+  &amp;status=paid
+  &amp;order_id=ORD-101
+  &amp;amount=25000000
+  &amp;gateway=zarinpal
+  &amp;ref_no=123456
+  &amp;card_no=6104-******1234
+  &amp;message=پرداخت با موفقیت انجام شد.
+  &amp;sig=ef5c26f08fff1259...   ← HMAC-SHA256</code></pre></div>
+      <div class="tbl-wrap"><table>
+        <tr><th>پارامتر</th><th>نوع</th><th>توضیح</th></tr>
+        <tr><td><code>token</code></td><td>string</td><td>شناسه‌ی یکتای تراکنش در گیت‌وی (با پیشوند <code>pay_</code>).</td></tr>
+        <tr><td><code>status</code></td><td>string</td><td><code>paid</code> · <code>failed</code> · <code>canceled</code> · <code>expired</code></td></tr>
+        <tr><td><code>order_id</code></td><td>string</td><td>همان شماره سفارشی که شما فرستاده‌اید.</td></tr>
+        <tr><td><code>amount</code></td><td>integer</td><td>مبلغ به <strong>ریال</strong> — همیشه با سفارش خودتان مقایسه کنید.</td></tr>
+        <tr><td><code>gateway</code></td><td>string</td><td>درگاهی که پرداخت از طریق آن انجام شده.</td></tr>
+        <tr><td><code>ref_no</code></td><td>string</td><td>شماره پیگیری بانک (برای پشتیبانی و مغایرت‌گیری).</td></tr>
+        <tr><td><code>card_no</code></td><td>string</td><td>شماره‌ی ماسک‌شده‌ی کارت پرداخت‌کننده.</td></tr>
+        <tr><td><code>message</code></td><td>string</td><td>پیام قابل نمایش به کاربر (فارسی).</td></tr>
+        <tr><td><code>sig</code></td><td>string</td><td>امضای HMAC-SHA256 روی هفت فیلد اول — <a href="security.html">جزئیات</a>.</td></tr>
+      </table></div>
+
+      <h2 id="webhook">وبهوک<a class="h-anchor" href="#webhook">#</a></h2>
+      <p>وبهوک برای همگام‌سازی مطمئن سمت سرور است و به بازگشت کاربر وابسته نیست (کاربر ممکن است تب را ببندد). آدرس آن را در درخواست (<code>webhook_url</code>) یا به‌صورت پیش‌فرض در کانفیگ پذیرنده ست کنید.</p>
+      <div class="code-wrap" data-lang="text"><div class="code-head"><span class="code-lang"><span class="dot"></span>POST webhook_url — Headers</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>Content-Type: application/json
+X-Webiro-Event: payment.succeeded
+X-Webiro-Token: pay_bf5adb5758e2...
+X-Webiro-Signature: sha256=abcadf4005...   ← HMAC روی بدنه‌ی خام</code></pre></div>
+      <div class="code-wrap" data-lang="json"><div class="code-head"><span class="code-lang"><span class="dot"></span>Body</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>{
+  <span class="tok-p">"event"</span>: <span class="tok-s">"payment.succeeded"</span>,
+  <span class="tok-p">"sent_at"</span>: <span class="tok-s">"2026-10-27 21:20:25"</span>,
+  <span class="tok-p">"data"</span>: {
+    <span class="tok-p">"token"</span>: <span class="tok-s">"pay_bf5adb..."</span>,
+    <span class="tok-p">"order_id"</span>: <span class="tok-s">"ORD-101"</span>,
+    <span class="tok-p">"merchant"</span>: <span class="tok-s">"lahze-app"</span>,
+    <span class="tok-p">"gateway"</span>: <span class="tok-s">"zarinpal"</span>,
+    <span class="tok-p">"status"</span>: <span class="tok-s">"paid"</span>,
+    <span class="tok-p">"amount"</span>: <span class="tok-n">25000000</span>,
+    <span class="tok-p">"currency"</span>: <span class="tok-s">"rial"</span>,
+    <span class="tok-p">"ref_no"</span>: <span class="tok-s">"123456"</span>,
+    <span class="tok-p">"card_no"</span>: <span class="tok-s">"6104-******1234"</span>,
+    <span class="tok-p">"created_at"</span>: <span class="tok-s">"..."</span>,
+    <span class="tok-p">"paid_at"</span>: <span class="tok-s">"..."</span>
+  }
+}</code></pre></div>
+      <div class="tbl-wrap"><table>
+        <tr><th>رویداد</th><th>زمان ارسال</th></tr>
+        <tr><td><code>payment.succeeded</code></td><td>تراکنش تایید شد و مبلغ همخوان است.</td></tr>
+        <tr><td><code>payment.failed</code></td><td>پرداخت ناموفق بود یا مغایرت مبلغ/تایید بانک رخ داد.</td></tr>
+        <tr><td><code>payment.canceled</code></td><td>کاربر پرداخت را لغو کرد.</td></tr>
+      </table></div>
+      <h3>تلاش مجدد (Retry)</h3>
+      <p>اگر سرور شما پاسخ <code>2xx</code> ندهد، گیت‌وی با این فواصل دوباره تلاش می‌کند و بعد از ۵ تلاش تسلیم می‌شود: <code>۱ دقیقه → ۵ دقیقه → ۱۵ دقیقه → ۶۰ دقیقه → ۲۴۰ دقیقه</code>. تلاش‌ها توسط <a href="api-reference.html#cron">کرون</a> اجرا می‌شوند؛ می‌توانید از پنل مدیریت هم دستی ارسال مجدد بزنید.</p>
+
+      <h2 id="states">وضعیت‌های تراکنش<a class="h-anchor" href="#states">#</a></h2>
+      <div class="tbl-wrap"><table>
+        <tr><th>وضعیت</th><th>معنی</th><th>کدام مسیر؟</th></tr>
+        <tr><td><span class="chip">pending</span></td><td>ایجاد شده، منتظر نتیجه</td><td>بعد از ایجاد موفق</td></tr>
+        <tr><td><span class="chip on">paid</span></td><td>پرداخت و تایید بانک با مبلغ همخوان</td><td>بعد از verify موفق</td></tr>
+        <tr><td><span class="chip">failed</span></td><td>پرداخت ناموفق / مغایرت مبلغ / خطای تایید</td><td>بعد از verify ناموفق</td></tr>
+        <tr><td><span class="chip">canceled</span></td><td>کاربر پرداخت را لغو کرد</td><td>دکمه‌ی لغو بانک</td></tr>
+        <tr><td><span class="chip">expired</span></td><td>کاربر به بانک نرفت و مهلت (پیش‌فرض ۲۰ دقیقه) تمام شد</td><td>کرون یا ورود دیرهنگام</td></tr>
+      </table></div>
+
+      <h2 id="edge">سناریوهای مرزی<a class="h-anchor" href="#edge">#</a></h2>
+      <div class="faq">
+        <details>
+          <summary>کاربر بعد از پرداخت، مرورگر را بست<span class="chip on">مهم</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></summary>
+          <div class="faq-body">ریدایرکت انجام نمی‌شود، اما وبهوک مستقل از کاربر ارسال می‌شود. سفارش شما با رویداد <code>payment.succeeded</code> ثبت خواهد شد. به همین دلیل وبهوک «منبع حقیقت» است و ریدایرکت فقط UX کاربر.</div>
+        </details>
+        <details>
+          <summary>بانک دوبار callback بزند؟</summary>
+          <div class="faq-body">تغییر وضعیت اتمیک است (<code>WHERE status='pending'</code>)؛ فراخوانی دوم نتیجه‌ی همان تراکنش را دوباره برمی‌گرداند و وبهوک جدیدی ارسال نمی‌شود.</div>
+        </details>
+        <details>
+          <summary>وب‌سرویس تایید بانک موقتاً در دسترس نباشد؟</summary>
+          <div class="faq-body">تراکنش <code>pending</code> می‌ماند و کاربر با وضعیت «در حال بررسی» به دامنه‌ی شما برمی‌گردد. استعلام وضعیت بعداً جواب دقیق را می‌دهد؛ در سامان تا ۷۲ ساعت امکان تایید دیرهنگام وجود دارد.</div>
+        </details>
+        <details>
+          <summary>مبلغ تاییدشده‌ی بانک با تراکنش فرق داشته باشد؟</summary>
+          <div class="faq-body">تراکنش <code>failed</code> با دلیل «مغایرت مبلغ» ثبت می‌شود؛ در سامان خودکار درخواست برگشت وجه (Reverse) زده می‌شود و در سایر درگاه‌ها این مغایرت در لاگ و پنل مدیریت قابل رهگیری است.</div>
+        </details>
+      </div>
+
+      <div class="pager">
+        <a href="getting-started.html"><small>صفحه قبل</small><b>نصب و راه‌اندازی</b></a>
+        <a class="next" href="api-reference.html"><small>صفحه بعد</small><b>API Reference</b></a>
+      </div>
+
+      <footer class="foot">
+        <span>Webiro Gateway v1.0 — مستندات رسمی</span>
+        <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

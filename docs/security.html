@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="امنیت درگاه پرداخت وبیرو — امضای HMAC، تایید دوکاناله و چک‌لیست امنیتی">
+<title>امنیت و امضا | مستندات درگاه پرداخت وبیرو</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='2' y='5' width='20' height='14' rx='3' fill='%23052e16' stroke='%2322c55e' stroke-width='1.5'/%3E%3Cpath d='M2 10h20' stroke='%2322c55e' stroke-width='1.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.1.1/index.min.css" rel="stylesheet">
+<link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div id="progress"></div>
+
+<div class="shell">
+  <aside class="sidebar" aria-label="فهرست مستندات">
+    <div class="side-head">
+      <a class="brand" href="index.html">
+        <div class="mark"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
+        <div><b>Webiro Gateway</b><span>مستندات درگاه پرداخت — نسخه ۱.۰</span></div>
+      </a>
+      <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
+    </div>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input type="search" placeholder="جست‌وجو در منو…" aria-label="جست‌وجو">
+      <kbd>Ctrl K</kbd>
+      <div class="no-result">موردی در منو پیدا نشد.</div>
+    </div>
+    <nav>
+      <div class="nav-group">
+        <div class="nav-title">شروع</div>
+        <a class="item" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1Z"/></svg>معرفی و شروع سریع</a>
+        <a class="item" href="getting-started.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09Z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2Z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>نصب و راه‌اندازی</a>
+        <a class="item" href="payment-flow.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="13" width="8" height="8" rx="2"/><path d="M11 7h6a2 2 0 0 1 2 2v4M13 17H7a2 2 0 0 1-2-2v-4"/></svg>جریان پرداخت</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-title">مرجع</div>
+        <a class="item" href="api-reference.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg>API Reference</a>
+        <a class="item" href="gateways.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V8l8-5 8 5v13M9 21v-4a3 3 0 0 1 6 0v4"/></svg>تنظیم درگاه‌ها</a>
+        <a class="item" href="sdk.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>PHP SDK</a>
+      </div>
+      <div class="nav-group">
+        <div class="nav-title">عمق</div>
+        <a class="item active" href="security.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/><path d="m9 12 2 2 4-4"/></svg>امنیت و امضا</a>
+        <a class="item" href="faq.html"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>سوالات متداول</a>
+      </div>
+    </nav>
+  </aside>
+  <div class="sidebar-backdrop"></div>
+
+  <div class="main">
+    <div class="topbar">
+      <button class="icon-btn" data-open-sidebar aria-label="باز کردن منو" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <div class="tb-brand"><div class="mark"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>Webiro Gateway</div>
+      <button class="icon-btn" data-toggle-theme aria-label="تغییر تم روشن/تیره"></button>
+    </div>
+
+    <div class="content">
+      <h1>امنیت و امضا</h1>
+      <p class="lead">هر کانال اطلاع‌رسانی نتیجه‌ی پرداخت (ریدایرکت و وبهوک) با HMAC-SHA256 امضا می‌شود و تایید پرداخت همیشه سمت سرور و با استعلام مستقیم از بانک انجام می‌شود.</p>
+
+      <h2 id="channels">دو کانال نتیجه، یک منبع حقیقت<a class="h-anchor" href="#channels">#</a></h2>
+      <div class="tbl-wrap"><table>
+        <tr><th></th><th>ریدایرکت (Callback)</th><th>وبهوک (Server-to-Server)</th></tr>
+        <tr><td><strong>مخاطب</strong></td><td>مرورگر کاربر</td><td>سرور شما</td></tr>
+        <tr><td><strong>اعتمادپذیری</strong></td><td>خوب (با امضا)</td><td>عالی — مستقل از مرورگر</td></tr>
+        <tr><td><strong>سناریوی خرابی</strong></td><td>کاربر تب را می‌بندد / اینترنت قطع می‌شود</td><td>سرور شما down باشد → retry خودکار</td></tr>
+        <tr><td><strong>نقش</strong></td><td>UX کاربر + نمایش نتیجه</td><td>ثبت قطعی سفارش</td></tr>
+      </table></div>
+      <p>«منبع حقیقت» همیشه وضعیت خود گیت‌وی است که با استعلام از بانک ساخته می‌شود: <code>GET /api/v1/payments/{token}</code>.</p>
+
+      <h2 id="redirect-sig">امضای ریدایرکت<a class="h-anchor" href="#redirect-sig">#</a></h2>
+      <p>پارامتر <code>sig</code> با کلید <code>secret</code> پذیرنده ساخته می‌شود. رشته‌ی ورودی HMAC به‌ترتیبِ زیر از هفت مقدار با جداکننده <code>|</code> ساخته می‌شود:</p>
+      <div class="code-wrap" data-lang="text"><div class="code-head"><span class="code-lang"><span class="dot"></span>Canonical string</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code>token | order_id | amount | status | ref_no | card_no | gateway</code></pre></div>
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>تایید دستی (بدون SDK)</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-n">$expected</span> = <span class="tok-f">hash_hmac</span>(<span class="tok-s">'sha256'</span>, <span class="tok-f">implode</span>(<span class="tok-s">'|'</span>, [
+    <span class="tok-n">$_GET</span>[<span class="tok-s">'token'</span>]   ?? <span class="tok-s">''</span>,
+    <span class="tok-n">$_GET</span>[<span class="tok-s">'order_id'</span>] ?? <span class="tok-s">''</span>,
+    <span class="tok-n">$_GET</span>[<span class="tok-s">'amount'</span>]   ?? <span class="tok-s">''</span>,
+    <span class="tok-n">$_GET</span>[<span class="tok-s">'status'</span>]   ?? <span class="tok-s">''</span>,
+    <span class="tok-n">$_GET</span>[<span class="tok-s">'ref_no'</span>]   ?? <span class="tok-s">''</span>,
+    <span class="tok-n">$_GET</span>[<span class="tok-s">'card_no'</span>]  ?? <span class="tok-s">''</span>,
+    <span class="tok-n">$_GET</span>[<span class="tok-s">'gateway'</span>]  ?? <span class="tok-s">''</span>,
+], <span class="tok-n">$secret</span>);
+
+<span class="tok-k">if</span> (!<span class="tok-f">hash_equals</span>(<span class="tok-n">$expected</span>, <span class="tok-n">$_GET</span>[<span class="tok-s">'sig'</span>] ?? <span class="tok-s">''</span>)) {
+    <span class="tok-f">http_response_code</span>(<span class="tok-n">400</span>);
+    <span class="tok-k">exit</span>(<span class="tok-s">'امضا نامعتبر است'</span>);
+}</code></pre></div>
+      <div class="callout danger">
+        <svg class="c-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/></svg>
+        <p><b>همیشه <code>hash_equals</code> استفاده کنید</b> — مقایسه‌ی <code>===</code> در برابر حمله‌ی زمانی (timing attack) مقاوم نیست.</p>
+      </div>
+
+      <h2 id="webhook-sig">امضای وبهوک<a class="h-anchor" href="#webhook-sig">#</a></h2>
+      <p>هدر <code>X-Webiro-Signature: sha256=&lt;hex&gt;</code> روی <strong>بدنه‌ی خام</strong> درخواست (همان رشته‌ای که HTTP body می‌رسد، نه آرایه‌ی decode‌شده) محاسبه می‌شود:</p>
+      <div class="code-wrap" data-lang="php"><div class="code-head"><span class="code-lang"><span class="dot"></span>تایید وبهوک</span><button class="copy-btn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span class="copy-label">کپی</span></button></div><pre><code><span class="tok-n">$raw</span>   = <span class="tok-f">file_get_contents</span>(<span class="tok-s">'php://input'</span>);
+<span class="tok-n">$sig</span>  = <span class="tok-n">$_SERVER</span>[<span class="tok-s">'HTTP_X_WEBIRO_SIGNATURE'</span>] ?? <span class="tok-s">''</span>;
+<span class="tok-n">$calc</span> = <span class="tok-s">'sha256='</span> . <span class="tok-f">hash_hmac</span>(<span class="tok-s">'sha256'</span>, <span class="tok-n">$raw</span>, <span class="tok-n">$secret</span>);
+
+<span class="tok-k">if</span> (!<span class="tok-f">hash_equals</span>(<span class="tok-n">$calc</span>, <span class="tok-n">$sig</span>)) {
+    <span class="tok-f">http_response_code</span>(<span class="tok-n">400</span>);
+    <span class="tok-k">exit</span>;
+}
+<span class="tok-n">$hook</span> = <span class="tok-f">json_decode</span>(<span class="tok-n">$raw</span>, <span class="tok-k">true</span>);</code></pre></div>
+
+      <h2 id="gateway-side">محافظت‌های سمت گیت‌وی<a class="h-anchor" href="#gateway-side">#</a></h2>
+      <ul>
+        <li><strong>جداسازی پذیرنده‌ها:</strong> هر کلید فقط تراکنش‌های خودش را می‌بیند؛ استعلام توکن دیگران <code>404</code> است.</li>
+        <li><strong>قفل دامنه:</strong> <code>callback_url</code> باید هم‌دامنه با <code>callback_domain</code> پذیرنده باشد.</li>
+        <li><strong>اتصال ResNum:</strong> در سامان، شناسه‌ی سفارشِ برگشتی از بانک باید دقیقاً توکن تراکنش ما باشد — جلوی تزریق پارامتر گرفته می‌شود.</li>
+        <li><strong>تایید مبلغ:</strong> مبلغ تاییدشده‌ی بانک باید دقیقاً برابر مبلغ تراکنش باشد؛ مغایرت = fail (+ Reverse در سامان).</li>
+        <li><strong>نهایی‌سازی اتمیک:</strong> تغییر وضعیت فقط از <code>pending</code> با شرط SQL — callback تکراری اثر دوباره ندارد.</li>
+        <li><strong>Rate limit:</strong> پیش‌فرض ۶۰ درخواست API در دقیقه برای هر IP.</li>
+        <li><strong>حریم خصوصی:</strong> شماره کارت فقط ماسک‌شده ذخیره می‌شود؛ لاگ‌ها مقادیر حساس را مخفی می‌کنند؛ صفحات بانکی با <code>no-referrer</code> سرو می‌شوند.</li>
+        <li><strong>مسدودسازی وب:</strong> <code>config</code>، <code>data</code>، <code>logs</code>، <code>src</code>، <code>sdk</code> و <code>tools</code> با .htaccess از وب خارج هستند.</li>
+      </ul>
+
+      <h2 id="merchant-checklist">چک‌لیست امنیتی پذیرنده<a class="h-anchor" href="#merchant-checklist">#</a></h2>
+      <ul>
+        <li>مبلغ پرداخت را از دیتابیس خودتان بخوانید — هرگز از <code>$_GET/$_POST</code> کاربر.</li>
+        <li>امضای <code>sig</code> را قبل از هر استفاده تایید کنید و برای مبالغ مهم، <code>status()</code> هم بگیرید.</li>
+        <li>ثبت سفارش را idempotent بنویسید (<code>UPDATE orders SET paid=1 WHERE id=? AND paid=0</code>).</li>
+        <li>کلید <code>secret</code> را فقط در سمت سرور نگه دارید؛ در گیت و لاگ عمومی نگذارید.</li>
+        <li>اگر مبلغ را در callback نشان می‌دهید، آن را با رکورد سفارش خودتان مقایسه کنید.</li>
+        <li>برای endpoint وبهوک، CSRF را غیرفعال کنید (درخواست خارجی است) ولی امضا را الزامی.</li>
+      </ul>
+
+      <h2 id="keys">مدیریت کلیدها<a class="h-anchor" href="#keys">#</a></h2>
+      <ul>
+        <li>کلید API (<code>wgr_…</code>) هویت پذیرنده است؛ Secret (<code>wgs_…</code>) قلم امضاست. هر دو در <code>config/config.php</code>.</li>
+        <li>برای تعویض کلید لو‌رفته: مقدار جدید در کانفیگ بگذارید و پذیرنده را موقتاً <code>enabled: false</code> کنید تا جایگزین شود.</li>
+        <li>کلیدهای تولیدشده هرگز در دیتابیس ذخیره نمی‌شوند؛ فقط در کانفیگ — بکاپ کانفیگ را محافظت‌شده نگه دارید.</li>
+      </ul>
+
+      <div class="pager">
+        <a href="sdk.html"><small>صفحه قبل</small><b>PHP SDK</b></a>
+        <a class="next" href="faq.html"><small>صفحه بعد</small><b>سوالات متداول</b></a>
+      </div>
+
+      <footer class="foot">
+        <span>Webiro Gateway v1.0 — مستندات رسمی</span>
+        <a href="https://webiro.ir" target="_blank" rel="noopener">webiro.ir</a>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
